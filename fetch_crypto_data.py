@@ -30,7 +30,7 @@ FOR EACH COIN IN THE TOP 100:
     Forecasting… Build time series models, or even recurrent neural networks, on the delta between implied and actual volatility.
     
     Statistical arbitrage… Find similar stocks based on their price movements and other factors and look for periods when their prices diverge.
-
+    
 """
 
 

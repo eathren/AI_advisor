@@ -1,21 +1,19 @@
 This project needs to do several things
 
-track prices
-track sentiment
+track prices track sentiment
 
-track stock
-track crypto
+track stock track crypto
 
 ## track prices:
 
 Use a free API, or a cheap one to start
 
 Alpha Advantage: Stock  
- 500 requests a day  
- https://www.alphavantage.co/
+500 requests a day  
+https://www.alphavantage.co/
 
 or: access api directly.
-
+    
 AA:
 
 8NZYH3W3VFJUMQJU
