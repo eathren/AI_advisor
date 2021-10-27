@@ -23,6 +23,10 @@ sell.
 
 This folder exists since it is so easy to write to files in python, and setting up an actual DB can be a huge pain.
 
+### **You will need to get your own coin marketcap api key**
+
+https://pro.coinmarketcap.com/account
+
 ### Goals:
 
 Take stock market and crypto data, and parse it into the most and least promising.
