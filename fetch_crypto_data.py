@@ -52,7 +52,7 @@ class CryptoData:
     #     return data
 
     def fetch_data(self):
-        "this is for not blowing up CoinGecko's API. Use for dev."
+        # this is for not blowing up CoinGecko's API. Use for dev.
         with open('data/old.json') as old:
             data = json.load(old)
         return data

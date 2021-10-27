@@ -31,3 +31,10 @@ twitter action
 
 coingecko: track most searched coins recently
 https://api.coingecko.com/api/v3/search/trending
+
+
+Next steps:
+
+I want to apply a neural network for regression functions. 
+
+https://towardsdatascience.com/simple-stock-price-prediction-with-ml-in-python-learners-guide-to-ml-76896910e2ba
