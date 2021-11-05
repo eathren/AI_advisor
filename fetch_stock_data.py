@@ -2,6 +2,7 @@ import os
 import requests
 from dotenv import load_dotenv
 import csv
+import random
 
 load_dotenv()
 
@@ -47,9 +48,14 @@ class StockData:
                 id_data = response.json()
                 self.history.append(id_data)
 
+    def fetch_random(self):
+        # returns a random stock
+        print(self.data[random.randint(2, len(self.data) - 1)])
+
 
 if __name__ == '__main__':
     data = StockData()
-data.fetch_data()
-data.fetch_live_data()
-print(data.history)
+    data.fetch_data()
+    data.fetch_live_data()
+    print(data.history)
+    data.fetch_random()
