@@ -17,6 +17,11 @@ Set up a dict of each stock ticker, perhaps in a json file.
 For each file, analyze their daily open/endpoints.
 Try and find promising stocks from these. Find ones that have.
 
+ACTIONS THAT NEED TO BE TAKEN!
+Write functions for MA, MACD, RSI, STOCH RSI, and more!
+This data exists in a pandas dictionary for speed. If that doesn't do it, we can try Numpy
+
+
 Training for the models might need to come from historical data. Looks like the AA API can only do one ID at a time. 
 AA Free has a 500/day limit. 25/mo is the price for a unlimited daily calls. 
 Stocks do daily adjusted or weekly adjusted?
