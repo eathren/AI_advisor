@@ -17,22 +17,24 @@ https://blog.quantinsti.com/neural-network-python/
 """
 
 
-def evaluation_function(actual, predicted):
-    C = np.sum(.5 * ((actual - predicted) ** 2))
+def evaluation_function(actual, predicted):  # This might not work
+    c = np.sum(.5 * ((actual - predicted) ** 2))
 
 
 class NeuralNet:
     def __init__(self, id):
         # If file exists, use those values.
         # Else, populate as defaults. Save the file every so often.
-        file_path = "data/stocks/" + id + ".json"
+        file_path = "data/stocks/neural_nets/" + id + ".json"
         if handle_json.file_exists(file_path):
-            self.data = pd.read_json()
-            print(self.data)
             print("YES")
+            # self.data = pd.read_json()
+            # print(self.data)
         else:
             self.data = StockData(id)
             print("NO")
+            #     If historical data does not exist, populate neural net with defaults.
+
         self.learning_rate = 0
         self.historical_success = 0
         self.mentions = 0
@@ -41,8 +43,6 @@ class NeuralNet:
         self.PE = 0  # P/E
         self.age = 0
         self.recently_acquired = False
-
-        # self.C
 
         self.MACD = 0
         self.trend = 0

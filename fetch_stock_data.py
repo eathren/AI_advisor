@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 import csv
 import random
 import pandas as pd
+import json
+import matplotlib.pyplot as plt
 
 load_dotenv()
 
@@ -41,10 +43,16 @@ class StockData:
         else:
             print(f"An error has occured with fetching the json data for {self.id}")
 
-    def fetch_stock(self):
+    def fetch_stock(self) -> dict:
         data = pd.json_normalize(self.json)
         print(data)
         return data
+
+    def write_data(self):
+        file_path = "data/stocks/data/" + self.id + ".json"
+        with open(file_path, 'w', encoding='utf-8') as f:
+            # other choice to dump: self.data.to_json()
+            json.dump(self.json, f, ensure_ascii=False, indent=4)
 
     # def fetch_all_names(self):
     #     # Currently using nasdaq_ids.csv
@@ -79,3 +87,4 @@ if __name__ == '__main__':
     # print(stock.history)
     # stock.fetch_random()
     print(stock.json)
+    stock.write_data()
