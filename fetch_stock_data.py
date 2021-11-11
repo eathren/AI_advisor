@@ -5,6 +5,8 @@ import csv
 import random
 import pandas as pd
 import json
+import pyEX as p
+
 import matplotlib.pyplot as plt
 
 load_dotenv()
@@ -59,6 +61,19 @@ class StockData:
             # other choice to dump: self.data.to_json()
             json.dump(self.json, f, ensure_ascii=False, indent=4)
 
+    def plot_data(self):
+        df = pd.DataFrame(self.json['Time Series (Daily)'])
+        # df = self.json['Time Series (Daily)']
+        print(df)
+        df = df.T.iloc[::-1].head(10)
+        print(df)
+        plt.title(self.id)
+        plt.xticks(rotation=90)
+        plt.xlabel("date")
+        plt.ylabel("dollars")
+        plt.plot(pd.to_datetime(df.index), df["2. high"])
+        plt.show()
+
     # def fetch_all_names(self):
     #     # Currently using nasdaq_ids.csv
     #     with open('data/nasdaq_ids.csv') as csv_file:
@@ -93,3 +108,6 @@ if __name__ == '__main__':
     # stock.fetch_random()
     print(stock.json)
     stock.write_data()
+    print("here1")
+    stock.plot_data()
+    print("here2")
