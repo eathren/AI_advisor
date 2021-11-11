@@ -4,8 +4,11 @@ from dotenv import load_dotenv
 import csv
 import random
 import pandas as pd
+import numpy as np
 import json
-import pyEX as p
+import yfinance as yf
+import sklearn
+import tensorflow
 
 import matplotlib.pyplot as plt
 
@@ -61,53 +64,72 @@ class StockData:
             # other choice to dump: self.data.to_json()
             json.dump(self.json, f, ensure_ascii=False, indent=4)
 
+    @staticmethod
+    def moving_average(a, n=7):
+        ret = np.cumsum(a, dtype=float)
+        ret[n:] = ret[n:] - ret[:-n]
+        return ret[n - 1:] / n
+
     def plot_data(self):
         df = pd.DataFrame(self.json['Time Series (Daily)'])
         # df = self.json['Time Series (Daily)']
         print(df)
-        df = df.T.iloc[::-1].head(10)
+        df = df.T.iloc[::-1]
         print(df)
+        x = pd.to_datetime(df.index)
+        y = df["2. high"]
         plt.title(self.id)
         plt.xticks(rotation=90)
         plt.xlabel("date")
         plt.ylabel("dollars")
-        plt.plot(pd.to_datetime(df.index), df["2. high"])
+        plt.plot(x, y)
+        plt.plot(x, df["6. volume"])
         plt.show()
 
-    # def fetch_all_names(self):
-    #     # Currently using nasdaq_ids.csv
-    #     with open('data/nasdaq_ids.csv') as csv_file:
-    #         csv_data = csv.reader(csv_file)
-    #         for row in csv_data:
-    #             self.data.append(row)
+    def plot_yfinance(self):
+        ticker = yf.Ticker(self.id)
+        history = ticker.history(start="2020-01-01", end="2020-02-01")
+        history.head()
+        print(ticker.info)
+        data = yf.download(self.id)
+        data.tail()
+        data['Close'].plot(figsize=(10, 5))
 
-    # def fetch_live_data(self):
-    #     for row in self.data[1:2]:
-    #         params = {'symbol': str(row[0]), 'apikey': str(AA_KEY)}
-    #         print(row[0], AA_KEY)
-    #         response = requests.get(
-    #             "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED",
-    #             params=params)
-    #
-    #         if response.status_code == 200:
-    #             id_data = response.json()
-    #             self.history.append(id_data)
+    @staticmethod
+    def fetch_all_names():
+        # Currently using nasdaq_ids.csv
+        all_stocks = []
+        with open('data/nasdaq_ids.csv') as csv_file:
+            csv_data = csv.reader(csv_file)
+            for row in csv_data:
+                all_stocks.append(row)
+
+        return all_stocks
+
+        # def fetch_live_data(self):
+        #     for row in self.data[1:2]:
+        #         params = {'symbol': str(row[0]), 'apikey': str(AA_KEY)}
+        #         print(row[0], AA_KEY)
+        #         response = requests.get(
+        #             "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED",
+        #             params=params)
+        #
+        #         if response.status_code == 200:
+        #             id_data = response.json()
+        #             self.history.append(id_data)
 
     def print_random(self):
         """
         prints a random stock
         """
-        print(self.data[random.randint(2, len(self.data) - 1)])
+        all_stocks = self.fetch_all_names()
+        print(all_stocks[random.randint(2, len(all_stocks) - 1)])
 
 
 if __name__ == '__main__':
-    stock = StockData("AMZN")
-    # data.fetch_all_names()
-    # stock.fetch_live_data()
-    # print(stock.history)
-    # stock.fetch_random()
+    stock = StockData("AMZN")  # test value
     print(stock.json)
     stock.write_data()
-    print("here1")
-    stock.plot_data()
-    print("here2")
+    # stock.plot_data()
+    stock.print_random()
+    # stock.plot_yfinance()
