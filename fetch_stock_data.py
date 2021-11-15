@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np
 import json
 import yfinance as yf
+from time import sleep
 
 import matplotlib.pyplot as plt
 
@@ -167,6 +168,10 @@ K: 2000 - 3000
 if __name__ == '__main__':
     all_stocks = fetch_all_names()
     print(all_stocks)
+    for i, name in enumerate(all_stocks[1:1000]):
+        sleep(1) # this should be 1 second.
+        stock = StockData(name)
+        stock.write_data()
     # stock = StockData("AMZN")  # test value
     # print(stock.json)
     # stock.write_data()
