@@ -7,8 +7,6 @@ import pandas as pd
 import numpy as np
 import json
 import yfinance as yf
-import sklearn
-import tensorflow
 
 import matplotlib.pyplot as plt
 
@@ -19,8 +17,10 @@ AA_KEY = os.getenv('AA_KEY')
 """
 How this is going to work:
 Set up a dict of each stock ticker, perhaps in a json file.
+Start a neural net with default configurations. 
+Run the stock's data through the neural net day by day. 
 For each file, analyze their daily open/endpoints.
-Try and find promising stocks from these. Find ones that have.
+Try and find promising stocks from these.
 
 ACTIONS THAT NEED TO BE TAKEN!
 Write functions for MA, MACD, RSI, STOCH RSI, and more!
@@ -130,6 +130,6 @@ if __name__ == '__main__':
     stock = StockData("AMZN")  # test value
     print(stock.json)
     stock.write_data()
-    # stock.plot_data()
+    stock.plot_data()
     stock.print_random()
     # stock.plot_yfinance()
