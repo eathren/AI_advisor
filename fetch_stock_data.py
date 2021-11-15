@@ -127,16 +127,6 @@ class StockData:
         data.tail()
         data['Close'].plot(figsize=(10, 5))
 
-    @staticmethod
-    def fetch_all_names():
-        # Currently using nasdaq_ids.csv
-        all_stocks = []
-        with open('data/nasdaq_ids.csv') as csv_file:
-            csv_data = csv.reader(csv_file)
-            for row in csv_data:
-                all_stocks.append(row)
-
-        return all_stocks
 
         # def fetch_live_data(self):
         #     for row in self.data[1:2]:
@@ -158,10 +148,28 @@ class StockData:
         print(all_stocks[random.randint(2, len(all_stocks) - 1)])
 
 
+def fetch_all_names():
+    # Currently using nasdaq_ids.csv
+    all_stocks = []
+    with open('data/nasdaq_ids.csv') as csv_file:
+        csv_data = csv.reader(csv_file)
+        for row in csv_data:
+            all_stocks.append(row[0])
+
+    return all_stocks
+
+
+"""
+N: 1-1000 stocks
+Z: 1001 - 2000
+K: 2000 - 3000
+"""
 if __name__ == '__main__':
-    stock = StockData("AMZN")  # test value
-    print(stock.json)
-    stock.write_data()
-    stock.plot_data()
-    stock.print_random()
+    all_stocks = fetch_all_names()
+    print(all_stocks)
+    # stock = StockData("AMZN")  # test value
+    # print(stock.json)
+    # stock.write_data()
+    # stock.plot_data()
+    # stock.print_random()
     # stock.plot_yfinance()
