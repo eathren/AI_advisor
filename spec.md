@@ -45,3 +45,10 @@ https://towardsdatascience.com/simple-stock-price-prediction-with-ml-in-python-l
 https://towardsdatascience.com/how-to-build-your-own-neural-network-from-scratch-in-python-68998a08e4f6
 
 https://www.youtube.com/watch?v=tIeHLnjs5U8
+
+
+
+### Notes from Nov 15
+
+Fetch all data with for loop, save to stocks/data folder
+

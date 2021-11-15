@@ -53,6 +53,8 @@ class StockData:
         else:
             print(f"An error has occured with fetching the json data for {self.id}")
 
+    #
+
     def fetch_stock(self) -> dict:
         data = pd.json_normalize(self.json)
         print(data)
@@ -64,11 +66,41 @@ class StockData:
             # other choice to dump: self.data.to_json()
             json.dump(self.json, f, ensure_ascii=False, indent=4)
 
-    @staticmethod
-    def moving_average(a, n=7):
+    @staticmethod   # This works with numpy. System moved to pandas. Either way works
+    def moving_average(self, a, n=7):    #as long as it's consistent.
         ret = np.cumsum(a, dtype=float)
         ret[n:] = ret[n:] - ret[:-n]
         return ret[n - 1:] / n
+
+    # METHODS HERE FOR GROUP
+    def calc_stoch_rsi(self):
+        pass
+
+    def calc_rsi(self):
+        pass
+
+    def calc_7d_ma(self):
+        pass
+
+    def calc_14d_ma(self):
+        pass
+
+    def calc_21d_ma(self):
+        pass
+
+    def calc_macd(self):
+        pass
+
+    def calc_obv(self):
+        pass
+
+    def calc_adx(self):
+        pass
+
+    def calc_ad_line(self):
+        pass
+
+
 
     def plot_data(self):
         df = pd.DataFrame(self.json['Time Series (Daily)'])
