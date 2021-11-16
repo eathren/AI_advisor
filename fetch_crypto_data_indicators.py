@@ -37,12 +37,14 @@ FOR EACH COIN IN THE TOP 100:
 class CryptoData:
     def __init__(self):
         self.data = self.fetch_data()
-        self.top_risers = self.get_weekly_risers()
+        self.adjusted_close_df = self.create_adjusted_close_df()
 
-        self.best_to_buy = []
-        self.best_to_sell = []
-        self.fear_and_greed = fear_and_greed.get().value
-        self.buy_signal = False
+
+        #self.top_risers = self.get_weekly_risers()
+        #self.best_to_buy = []
+        #self.best_to_sell = []
+        #self.fear_and_greed = fear_and_greed.get().value
+        #self.buy_signal = False
 
     # FOR LIVE DATA USE THIS
     # def fetch_data(self):
@@ -53,16 +55,29 @@ class CryptoData:
 
     def fetch_data(self):
         # this is for not blowing up CoinGecko's API. Use for dev.
-        with open('data/old.json') as old:
+        with open('data/stocks/data/TSLA.json') as old:
             data = json.load(old)
         return data
 
-    def moving_average(self, a, n=7):
-        ret = np.cumsum(a, dtype=float)
-        ret[n:] = ret[n:] - ret[:-n]
-        return ret[n - 1:] / n
+    def create_adjusted_close_df(self):
+        daily_data = self.data["Time Series (Daily)"]
+        date_list = []
+        adjusted_close_list = []
+
+        for date_key in daily_data:
+            adjusted_close_list.append(float(daily_data[date_key]['5. adjusted close']))
+            date_list.append(date_key)
+
+        date_adjusted_close_dict = {'date': date_list, 'adjusted close': adjusted_close_list}
+        adjusted_close_df = pd.DataFrame(date_adjusted_close_dict)
+
+        return adjusted_close_df
 
 
+    def add_moving_average(self, num_days):
+        self.adjusted_close_df[str(num_days) + '_Day_MovingAverage'] = self.adjusted_close_df.rolling(window = num_days).mean()
+
+        print(self.adjusted_close_df)
 
     def get_weekly_risers(self):
         top_risers = []
@@ -79,7 +94,13 @@ class CryptoData:
 
 if __name__ == '__main__':
     data = CryptoData()
-    print(data.top_risers)
-    print(data.fear_and_greed)
+
+    data.add_moving_average(10)
+
+    print(data.adjusted_close_df)
+
+
+    #print(data.top_risers)
+    #print(data.fear_and_greed)
 
     # Add data to a dictionary. If it's in the dict 3 times, then print a medium buy signal.
