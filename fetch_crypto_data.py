@@ -62,6 +62,8 @@ class CryptoData:
         ret[n:] = ret[n:] - ret[:-n]
         return ret[n - 1:] / n
 
+
+
     def get_weekly_risers(self):
         top_risers = []
         for coin in self.data[0:100]:
