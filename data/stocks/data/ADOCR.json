@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ADOCR",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "0.4",
+            "2. high": "0.4",
+            "3. low": "0.4",
+            "4. close": "0.4",
+            "5. adjusted close": "0.4",
+            "6. volume": "109",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "0.410649",
             "2. high": "0.410649",
@@ -994,16 +1004,6 @@
             "4. close": "0.43845",
             "5. adjusted close": "0.43845",
             "6. volume": "859",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "0.395101",
-            "2. high": "0.409899",
-            "3. low": "0.39",
-            "4. close": "0.395",
-            "5. adjusted close": "0.395",
-            "6. volume": "17734",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

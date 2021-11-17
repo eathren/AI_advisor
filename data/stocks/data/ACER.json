@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ACER",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "2.47",
+            "2. high": "2.4737",
+            "3. low": "2.39",
+            "4. close": "2.4004",
+            "5. adjusted close": "2.4004",
+            "6. volume": "41803",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "2.39",
             "2. high": "2.5",
@@ -994,16 +1004,6 @@
             "4. close": "2.98",
             "5. adjusted close": "2.98",
             "6. volume": "79906",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "2.98",
-            "2. high": "3.0",
-            "3. low": "2.86",
-            "4. close": "2.94",
-            "5. adjusted close": "2.94",
-            "6. volume": "82992",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

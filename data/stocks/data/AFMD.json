@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AFMD",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "5.92",
+            "2. high": "6.04",
+            "3. low": "5.846",
+            "4. close": "6.04",
+            "5. adjusted close": "6.04",
+            "6. volume": "2330743",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "5.79",
             "2. high": "5.91",
@@ -994,16 +1004,6 @@
             "4. close": "8.24",
             "5. adjusted close": "8.24",
             "6. volume": "2159155",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "8.76",
-            "2. high": "8.7694",
-            "3. low": "8.24",
-            "4. close": "8.31",
-            "5. adjusted close": "8.31",
-            "6. volume": "1078185",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

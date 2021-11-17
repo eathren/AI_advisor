@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AGNCO",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "25.8658",
+            "2. high": "25.8658",
+            "3. low": "25.6709",
+            "4. close": "25.71",
+            "5. adjusted close": "25.71",
+            "6. volume": "20281",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "25.92",
             "2. high": "25.92",
@@ -994,16 +1004,6 @@
             "4. close": "25.58",
             "5. adjusted close": "24.7912624357",
             "6. volume": "29045",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "25.7",
-            "2. high": "25.77",
-            "3. low": "25.67",
-            "4. close": "25.67",
-            "5. adjusted close": "24.8784873622",
-            "6. volume": "26351",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

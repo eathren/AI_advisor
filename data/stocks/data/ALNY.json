@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ALNY",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "169.74",
+            "2. high": "174.6",
+            "3. low": "169.27",
+            "4. close": "173.31",
+            "5. adjusted close": "173.31",
+            "6. volume": "571323",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "174.05",
             "2. high": "174.74",
@@ -994,16 +1004,6 @@
             "4. close": "175.39",
             "5. adjusted close": "175.39",
             "6. volume": "914794",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "176.31",
-            "2. high": "176.97",
-            "3. low": "172.86",
-            "4. close": "173.68",
-            "5. adjusted close": "173.68",
-            "6. volume": "790224",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

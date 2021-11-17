@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ADILW",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "0.8498",
+            "2. high": "0.8499",
+            "3. low": "0.7581",
+            "4. close": "0.78",
+            "5. adjusted close": "0.78",
+            "6. volume": "3205",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "0.765001",
             "2. high": "0.765001",
@@ -994,16 +1004,6 @@
             "4. close": "0.6504",
             "5. adjusted close": "0.6504",
             "6. volume": "3148",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "0.7",
-            "2. high": "0.7",
-            "3. low": "0.68697",
-            "4. close": "0.68697",
-            "5. adjusted close": "0.68697",
-            "6. volume": "887",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

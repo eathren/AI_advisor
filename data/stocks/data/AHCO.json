@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AHCO",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "25.4",
+            "2. high": "25.44",
+            "3. low": "24.98",
+            "4. close": "25.29",
+            "5. adjusted close": "25.29",
+            "6. volume": "3310451",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "24.93",
             "2. high": "25.3",
@@ -994,16 +1004,6 @@
             "4. close": "29.9",
             "5. adjusted close": "29.9",
             "6. volume": "3493543",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "29.37",
-            "2. high": "29.97",
-            "3. low": "29.12",
-            "4. close": "29.49",
-            "5. adjusted close": "29.49",
-            "6. volume": "779277",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AIRG",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "10.67",
+            "2. high": "10.69",
+            "3. low": "10.21",
+            "4. close": "10.27",
+            "5. adjusted close": "10.27",
+            "6. volume": "29663",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "10.43",
             "2. high": "10.72",
@@ -994,16 +1004,6 @@
             "4. close": "20.77",
             "5. adjusted close": "20.77",
             "6. volume": "61339",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "20.16",
-            "2. high": "21.08",
-            "3. low": "20.16",
-            "4. close": "20.85",
-            "5. adjusted close": "20.85",
-            "6. volume": "63126",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AEI",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "1.88",
+            "2. high": "1.97",
+            "3. low": "1.84",
+            "4. close": "1.92",
+            "5. adjusted close": "1.92",
+            "6. volume": "1776327",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "1.8",
             "2. high": "1.865",
@@ -994,16 +1004,6 @@
             "4. close": "6.25",
             "5. adjusted close": "6.25",
             "6. volume": "5337218",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "6.02",
-            "2. high": "6.03",
-            "3. low": "5.72",
-            "4. close": "6.0",
-            "5. adjusted close": "6.0",
-            "6. volume": "2813080",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

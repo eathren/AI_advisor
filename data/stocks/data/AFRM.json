@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AFRM",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "150.62",
+            "2. high": "150.68",
+            "3. low": "144.51",
+            "4. close": "147.99",
+            "5. adjusted close": "147.99",
+            "6. volume": "6722619",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "148.14",
             "2. high": "149.67",
@@ -994,16 +1004,6 @@
             "4. close": "64.4",
             "5. adjusted close": "64.4",
             "6. volume": "1812015",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "66.64",
-            "2. high": "68.33",
-            "3. low": "65.65",
-            "4. close": "66.33",
-            "5. adjusted close": "66.33",
-            "6. volume": "1820101",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

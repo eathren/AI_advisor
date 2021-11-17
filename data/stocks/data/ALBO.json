@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ALBO",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "29.15",
+            "2. high": "29.18",
+            "3. low": "27.42",
+            "4. close": "27.75",
+            "5. adjusted close": "27.75",
+            "6. volume": "207410",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "28.25",
             "2. high": "29.03",
@@ -994,16 +1004,6 @@
             "4. close": "36.87",
             "5. adjusted close": "36.87",
             "6. volume": "324119",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "35.65",
-            "2. high": "36.88",
-            "3. low": "35.63",
-            "4. close": "36.87",
-            "5. adjusted close": "36.87",
-            "6. volume": "217642",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

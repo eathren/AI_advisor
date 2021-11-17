@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ALRM",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "85.17",
+            "2. high": "85.2857",
+            "3. low": "83.1",
+            "4. close": "83.65",
+            "5. adjusted close": "83.65",
+            "6. volume": "196205",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "85.22",
             "2. high": "85.89",
@@ -994,16 +1004,6 @@
             "4. close": "86.3",
             "5. adjusted close": "86.3",
             "6. volume": "578149",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "84.09",
-            "2. high": "85.21",
-            "3. low": "83.828",
-            "4. close": "84.56",
-            "5. adjusted close": "84.56",
-            "6. volume": "154161",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

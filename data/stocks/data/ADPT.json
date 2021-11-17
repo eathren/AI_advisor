@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ADPT",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "33.25",
+            "2. high": "33.82",
+            "3. low": "32.5007",
+            "4. close": "32.58",
+            "5. adjusted close": "32.58",
+            "6. volume": "516902",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "33.96",
             "2. high": "34.02",
@@ -994,16 +1004,6 @@
             "4. close": "40.41",
             "5. adjusted close": "40.41",
             "6. volume": "2874959",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "41.07",
-            "2. high": "42.2099",
-            "3. low": "40.0323",
-            "4. close": "40.27",
-            "5. adjusted close": "40.27",
-            "6. volume": "585134",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }
