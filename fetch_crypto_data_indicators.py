@@ -37,7 +37,7 @@ FOR EACH COIN IN THE TOP 100:
 class CryptoData:
     def __init__(self):
         self.data = self.fetch_data()
-        self.adjusted_close_df = self.create_adjusted_close_df()
+        self.df = self.create_pd_df()
 
 
         #self.top_risers = self.get_weekly_risers()
@@ -59,25 +59,91 @@ class CryptoData:
             data = json.load(old)
         return data
 
-    def create_adjusted_close_df(self):
+    def create_pd_df(self):
         daily_data = self.data["Time Series (Daily)"]
         date_list = []
         adjusted_close_list = []
+        high_list= []
+        low_list = []
+        volume_list = []
 
         for date_key in daily_data:
             adjusted_close_list.append(float(daily_data[date_key]['5. adjusted close']))
             date_list.append(date_key)
+            high.append(float(daily_data[date_key]["2. high"]))
+            low.append(float(daily_data[date_key]["3. low"]))
+            volume.append(int(daily_data[date_key]["6. volume"]))
 
-        date_adjusted_close_dict = {'date': date_list, 'adjusted close': adjusted_close_list}
-        adjusted_close_df = pd.DataFrame(date_adjusted_close_dict)
+        dict = {'date': date_list, 'adjusted close': adjusted_close_list,
+                                    'high':high_list, 'low':low_list, 'volume': volume_list}
 
-        return adjusted_close_df
+        df = pd.DataFrame(dict)
+
+        return df
 
 
-    def add_moving_average(self, num_days):
-        self.adjusted_close_df[str(num_days) + '_Day_MovingAverage'] = self.adjusted_close_df.rolling(window = num_days).mean()
+    def add_SMA_moving_average(self, interval):
+        self.df[str(interval) + '_Day_SMA'] = self.df['adjusted close'].rolling(window = interval).mean()
 
-        print(self.adjusted_close_df)
+    def add_EMA_moving_average(self, num_days):
+        self.df[str(interval) + '_Day_EMA'] = self.df['adjusted close'].ewm(com = interval, min_periods=0, adjust=False, ignore_na=False).mean()
+
+    def add_RSI(self, interval):
+
+        adjusted_delta = self.df['adjusted close'].diff()
+
+        up_clip = adjusted_delta.clip(lower = 0)
+        down_clip = -1 * adjusted_delta.clip(upper = 0)
+
+
+        ma_up = up_clip.ewm(com = interval - 1, min_periods = 0, adjust = False, ignore_na = False).mean()
+        ma_down = down_clip.ewm(com = interval - 1, min_periods = 0, adjust = False, ignore_na = False).mean()
+
+        RSI = ma_up/ma_down
+        self.df[str(interval) + '_Day_RSI'] = 100 - (100/(1 + RSI))
+
+
+    def add_stochastic_RSI(self, interval, K = 3, D = 3):
+        adjusted_delta = self.df['adjusted close'].diff()
+
+        up_clip = adjusted_delta.clip(lower=0)
+        down_clip = -1 * adjusted_delta.clip(upper=0)
+
+        ma_up = up_clip.ewm(com= interval - 1, min_periods=0, adjust=False, ignore_na=False).mean()
+        ma_down = down_clip.ewm(com= interval - 1, min_periods=0, adjust=False, ignore_na=False).mean()
+
+        RSI = ma_up / ma_down
+        RSI = 100 - (100 / (1 + RSI))
+
+        stochastic_RSI = (RSI - RSI.rolling(interval).min()) / (RSI.rolling(interval).max() - RSI.rolling(interval).min())
+
+        self.df[str(interval) + '_Day_Stochastic_RSI'] = stochastic_RSI
+        self.df[str(interval) + '_Day_Stochastic_RSI_K'] = stochastic_RSI.rolling(K).mean()
+
+        stochastic_RSI_K = stochastic_RSI.rolling(K).mean()
+        self.df[str(interval) + '_Day_Stochastic_RSI_D'] = stochastic_RSI_K.rolling(D).mean()
+
+
+    # refer from: https://www.alpharithms.com/calculate-macd-python-272222/
+    def add_MACD(self, fast = 12, slow = 26, signal = 9):
+
+        K = self.df['adjusted close'].ewm(span= fast, adjust = False, min_periods = fast).mean()
+        D = self.df['adjusted close'].ewm(span = slow, adjust = False, min_periods = slow).mean()
+
+        MACD = K - D
+        MACD_S = MACD.ewm(span = signal, adjust = False, min_periods = signal).mean()
+        MACD_H = MACD - MACD_S
+
+        self.df['MACD'] = MACD
+        self.df['MACD_H'] = MACD_H
+        self.df['MACD_S'] = MACD_S
+
+    # refer from https://python.plainenglish.io/trading-using-python-average-directional-index-adx-aeab999cffe7
+    def add_ADX(self, num_days):
+        return null  # TODO
+
+
+
 
     def get_weekly_risers(self):
         top_risers = []
@@ -95,9 +161,15 @@ class CryptoData:
 if __name__ == '__main__':
     data = CryptoData()
 
-    data.add_moving_average(10)
+    data.add_SMA_moving_average(14) #need to drop 0:interval - 1
+    data.add_EMA_moving_average(14) #need to drop 0:interval - 1
+    data.add_RSI(14) #need to drop 0:interval - 1
+    data.add_stochastic_RSI(14) #need to drop 0:interval - 1
+    data.add_MACD() #need to drop 0:slow - 1
 
-    print(data.adjusted_close_df)
+
+
+    print(data.df)
 
 
     #print(data.top_risers)
