@@ -38,8 +38,7 @@ http://www.fmlabs.com/reference/default.htm?url=SimpleMA.htm
 
 class StockData:
     def __init__(self, id=None):
-        self.id = id
-        self.history = []
+        self.id = id.upper()
         self.json = self.fetch_json()
         self.data = self.fetch_stock()
 
@@ -145,6 +144,15 @@ class StockData:
         all_stocks = self.fetch_all_names()
         print(all_stocks[random.randint(2, len(all_stocks) - 1)])
 
+    @static
+    def fetch_fresh_data(self):
+        all_stocks = fetch_all_names()
+        print(all_stocks)
+        for i, name in enumerate(all_stocks[1:]):
+            sleep(1)  # this should be 1 second.
+            stock = StockData(name)
+            stock.write_data()
+
 
 def fetch_all_names():
     # Currently using nasdaq_ids.csv
@@ -163,15 +171,10 @@ Z: 1001 - 2000
 K: 2000 - 3000
 """
 if __name__ == '__main__':
-    all_stocks = fetch_all_names()
-    print(all_stocks)
-    for i, name in enumerate(all_stocks[999:]):
-        sleep(1)  # this should be 1 second.
-        stock = StockData(name)
-        stock.write_data()
-    # stock = StockData("AMZN")  # test value
-    # print(stock.json)
-    # stock.write_data()
-    # stock.plot_data()
-    # stock.print_random()
-    # stock.plot_yfinance()
+
+# stock = StockData("AMZN")  # test value
+# print(stock.json)
+# stock.write_data()
+# stock.plot_data()
+# stock.print_random()
+# stock.plot_yfinance()
