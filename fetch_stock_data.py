@@ -67,8 +67,8 @@ class StockData:
             # other choice to dump: self.data.to_json()
             json.dump(self.json, f, ensure_ascii=False, indent=4)
 
-    @staticmethod   # This works with numpy. System moved to pandas. Either way works
-    def moving_average(self, a, n=7):    #as long as it's consistent.
+    @staticmethod  # This works with numpy. System moved to pandas. Either way works
+    def moving_average(self, a, n=7):  # as long as it's consistent.
         ret = np.cumsum(a, dtype=float)
         ret[n:] = ret[n:] - ret[:-n]
         return ret[n - 1:] / n
@@ -101,8 +101,6 @@ class StockData:
     def calc_ad_line(self):
         pass
 
-
-
     def plot_data(self):
         df = pd.DataFrame(self.json['Time Series (Daily)'])
         # df = self.json['Time Series (Daily)']
@@ -127,7 +125,6 @@ class StockData:
         data = yf.download(self.id)
         data.tail()
         data['Close'].plot(figsize=(10, 5))
-
 
         # def fetch_live_data(self):
         #     for row in self.data[1:2]:
@@ -168,8 +165,8 @@ K: 2000 - 3000
 if __name__ == '__main__':
     all_stocks = fetch_all_names()
     print(all_stocks)
-    for i, name in enumerate(all_stocks[1:1000]):
-        sleep(1) # this should be 1 second.
+    for i, name in enumerate(all_stocks[999:]):
+        sleep(1)  # this should be 1 second.
         stock = StockData(name)
         stock.write_data()
     # stock = StockData("AMZN")  # test value
