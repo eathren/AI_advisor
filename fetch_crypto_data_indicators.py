@@ -70,9 +70,9 @@ class CryptoData:
         for date_key in daily_data:
             adjusted_close_list.append(float(daily_data[date_key]['5. adjusted close']))
             date_list.append(date_key)
-            high.append(float(daily_data[date_key]["2. high"]))
-            low.append(float(daily_data[date_key]["3. low"]))
-            volume.append(int(daily_data[date_key]["6. volume"]))
+            high_list.append(float(daily_data[date_key]["2. high"]))
+            low_list.append(float(daily_data[date_key]["3. low"]))
+            volume_list.append(int(daily_data[date_key]["6. volume"]))
 
         dict = {'date': date_list, 'adjusted close': adjusted_close_list,
                                     'high':high_list, 'low':low_list, 'volume': volume_list}
@@ -85,19 +85,19 @@ class CryptoData:
     def add_SMA_moving_average(self, interval):
         self.df[str(interval) + '_Day_SMA'] = self.df['adjusted close'].rolling(window = interval).mean()
 
-    def add_EMA_moving_average(self, num_days):
+    def add_EMA_moving_average(self, interval):
         self.df[str(interval) + '_Day_EMA'] = self.df['adjusted close'].ewm(com = interval, min_periods=0, adjust=False, ignore_na=False).mean()
 
     def add_RSI(self, interval):
 
         adjusted_delta = self.df['adjusted close'].diff()
 
-        up_clip = adjusted_delta.clip(lower = 0)
-        down_clip = -1 * adjusted_delta.clip(upper = 0)
+        up = adjusted_delta.clip(lower = 0)
+        down = -1 * adjusted_delta.clip(upper = 0)
 
 
-        ma_up = up_clip.ewm(com = interval - 1, min_periods = 0, adjust = False, ignore_na = False).mean()
-        ma_down = down_clip.ewm(com = interval - 1, min_periods = 0, adjust = False, ignore_na = False).mean()
+        ma_up = up.ewm(com = interval - 1, min_periods = 0, adjust = False, ignore_na = False).mean()
+        ma_down = down.ewm(com = interval - 1, min_periods = 0, adjust = False, ignore_na = False).mean()
 
         RSI = ma_up/ma_down
         self.df[str(interval) + '_Day_RSI'] = 100 - (100/(1 + RSI))
@@ -106,11 +106,11 @@ class CryptoData:
     def add_stochastic_RSI(self, interval, K = 3, D = 3):
         adjusted_delta = self.df['adjusted close'].diff()
 
-        up_clip = adjusted_delta.clip(lower=0)
-        down_clip = -1 * adjusted_delta.clip(upper=0)
+        up = adjusted_delta.clip(lower=0)
+        down = -1 * adjusted_delta.clip(upper=0)
 
-        ma_up = up_clip.ewm(com= interval - 1, min_periods=0, adjust=False, ignore_na=False).mean()
-        ma_down = down_clip.ewm(com= interval - 1, min_periods=0, adjust=False, ignore_na=False).mean()
+        ma_up = up.ewm(com= interval - 1, min_periods=0, adjust=False, ignore_na=False).mean()
+        ma_down = down.ewm(com= interval - 1, min_periods=0, adjust=False, ignore_na=False).mean()
 
         RSI = ma_up / ma_down
         RSI = 100 - (100 / (1 + RSI))
@@ -139,10 +139,49 @@ class CryptoData:
         self.df['MACD_S'] = MACD_S
 
     # refer from https://python.plainenglish.io/trading-using-python-average-directional-index-adx-aeab999cffe7
-    def add_ADX(self, num_days):
-        return null  # TODO
+    def add_ADX(self, interval = 14):
+
+        self.df['negative_DM'] = self.df['low'].shift(1) - self.df['low']
+        self.df['positive_DM'] = self.df['high'] - self.df['high'].shift(1)
+
+        self.df['positive_DM'] = np.where((self.df['positive_DM'] > self.df['negative_DM']) & (self.df['positive_DM'] > 0), self.df['positive_DM'], 0.0)
+
+        self.df['negative_DM'] = np.where((self.df['negative_DM'] > self.df['positive_DM']) & (self.df['negative_DM'] > 0), self.df['negative_DM'], 0.0)
+
+        self.df['true_range_1'] = self.df['high'] - self.df['low']
+        self.df['true_range_2'] = np.abs(self.df['high'] - self.df['adjusted close'].shift(1))
+        self.df['true_range_3'] = np.abs(self.df['low'] - self.df['adjusted close'].shift(1))
+
+        self.df['true_range'] = self.df[['true_range_1', 'true_range_2', 'true_range_3']].max(axis=1)
+
+        self.df[str(interval) + '_true_range'] = self.df['true_range'].rolling(interval).sum()
+        self.df[str(interval) + 'positive_directional_movement_index'] = self.df['positive_DM'].rolling(interval).sum()
+        self.df[str(interval) + 'negative_directional_movement_index'] = self.df['negative_DM'].rolling(interval).sum()
 
 
+        self.df[str(interval) + 'positive_directional_index'] = self.df[str(interval) + 'positive_directional_movement_index'] / self.df[str(interval) + '_true_range'] * 100
+        self.df[str(interval) + 'negative_directional_index'] = self.df[str(interval) + 'negative_directional_movement_index'] / self.df[str(interval) + '_true_range'] * 100
+        self.df[str(interval) + '_negative_directional_index_temp'] = abs(self.df[str(interval) + 'positive_directional_index']  - self.df[str(interval) + 'negative_directional_index'])
+        self.df[str(interval) + 'directional_index'] = self.df[str(interval) + 'positive_directional_index'] + self.df[str(interval) + 'negative_directional_index']
+
+        self.df['Directional_Index'] = 100* (self.df[str(interval) + '_negative_directional_index_temp'] / self.df[str(interval) + 'directional_index'])
+
+        self.df[str(interval) + '_ADX'] = self.df['Directional_Index'].rolling(interval).mean()
+        #self.df[str(interval) + '_ADX'] = self.df[str(interval) + '_ADX'].fillna(self.df[str(interval) + '_ADX'].mean())
+        del self.df['Directional_Index']
+        del self.df['true_range_1']
+        del self.df['true_range_2']
+        del self.df['true_range_3']
+        del self.df[str(interval) + 'positive_directional_index']
+        del self.df[str(interval) + 'negative_directional_index']
+        del self.df[str(interval) + '_negative_directional_index_temp']
+        del self.df[str(interval) + 'directional_index']
+        del self.df[str(interval) + 'positive_directional_movement_index']
+        del self.df[str(interval) + 'negative_directional_movement_index']
+        del self.df['positive_DM']
+        del self.df['negative_DM']
+        del self.df[str(interval) + '_true_range']
+        del self.df['true_range']
 
 
     def get_weekly_risers(self):
@@ -166,6 +205,7 @@ if __name__ == '__main__':
     data.add_RSI(14) #need to drop 0:interval - 1
     data.add_stochastic_RSI(14) #need to drop 0:interval - 1
     data.add_MACD() #need to drop 0:slow - 1
+    data.add_ADX(14)
 
 
 
