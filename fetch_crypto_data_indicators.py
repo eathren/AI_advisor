@@ -35,8 +35,8 @@ FOR EACH COIN IN THE TOP 100:
 
 
 class CryptoData:
-    def __init__(self):
-        self.data = self.fetch_data()
+    def __init__(self, Stock_Abv):
+        self.data = self.fetch_data(Stock_Abv)
         self.df = self.create_pd_df()
 
 
@@ -53,9 +53,9 @@ class CryptoData:
     #     data = np.array(raw.json())
     #     return data
 
-    def fetch_data(self):
+    def fetch_data(self, Stock_Abv):
         # this is for not blowing up CoinGecko's API. Use for dev.
-        with open('data/stocks/data/TSLA.json') as old:
+        with open('data/stocks/data/' + Stock_Abv+ '.json') as old:
             data = json.load(old)
         return data
 
@@ -167,7 +167,7 @@ class CryptoData:
         self.df['Directional_Index'] = 100* (self.df[str(interval) + '_negative_directional_index_temp'] / self.df[str(interval) + 'directional_index'])
 
         self.df[str(interval) + '_ADX'] = self.df['Directional_Index'].rolling(interval).mean()
-        #self.df[str(interval) + '_ADX'] = self.df[str(interval) + '_ADX'].fillna(self.df[str(interval) + '_ADX'].mean())
+        self.df[str(interval) + '_ADX'] = self.df[str(interval) + '_ADX'].fillna(self.df[str(interval) + '_ADX'].mean())
         del self.df['Directional_Index']
         del self.df['true_range_1']
         del self.df['true_range_2']
@@ -182,6 +182,46 @@ class CryptoData:
         del self.df['negative_DM']
         del self.df[str(interval) + '_true_range']
         del self.df['true_range']
+
+    # refer from: https://randerson112358.medium.com/stock-trading-strategy-using-on-balance-volume-obv-python-77a7c719cdac
+    def add_OBV(self, interval):
+        On_balance_Volumn = []
+        adjust_close_list = []
+        On_balance_Volumn.append(0)
+
+        for index in self.df.index:
+            adjust_close_list.append(self.df['adjusted close'][index])
+
+
+        for i in range(1, len(adjust_close_list)):
+            previous_OBV = On_balance_Volumn[-1]
+            current_volumn = adjust_close_list[i]
+            if adjust_close_list[i] > adjust_close_list[i - 1]:
+                On_balance_Volumn.append(previous_OBV + current_volumn)
+
+            elif adjust_close_list[i] < adjust_close_list[i - 1]:
+                On_balance_Volumn.append(previous_OBV - current_volumn)
+            else:
+                On_balance_Volumn.append(previous_OBV)
+
+        self.df['OBV'] = On_balance_Volumn
+        self.df[str(interval) + '_EMA_OBV'] = self.df['OBV'].ewm(com = interval).mean()
+
+    # refer from: https://github.com/voice32/stock_market_indicators/blob/master/indicators.py
+    def add_AD_line(self, interval):
+
+        accumulation_list = []
+        for index, row in self.df.iterrows():
+            if row['high'] != row['low']:
+                accumulation = ((row["adjusted close"] - row['low']) - (row['high'] - row['adjusted close'])) / (
+                            row['high'] - row['low']) * row['volume']
+            else:
+                accumulation = 0
+
+            accumulation_list.append(accumulation)
+
+        self.df['A/D line'] =  accumulation_list
+        self.df[ str(interval) + '_EMA_AD-line'] = self.df['A/D line'].ewm(ignore_na=False, min_periods=0, com = interval, adjust=True).mean()
 
 
     def get_weekly_risers(self):
@@ -198,16 +238,24 @@ class CryptoData:
 
 
 if __name__ == '__main__':
-    data = CryptoData()
 
+
+    data = CryptoData('TSLA')
+
+    data.add_SMA_moving_average(7)  # need to drop 0:interval - 1
+    data.add_EMA_moving_average(7)  # need to drop 0:interval - 1
     data.add_SMA_moving_average(14) #need to drop 0:interval - 1
     data.add_EMA_moving_average(14) #need to drop 0:interval - 1
+    data.add_SMA_moving_average(21)  # need to drop 0:interval - 1
+    data.add_EMA_moving_average(21)  # need to drop 0:interval - 1
     data.add_RSI(14) #need to drop 0:interval - 1
     data.add_stochastic_RSI(14) #need to drop 0:interval - 1
-    data.add_MACD() #need to drop 0:slow - 1
+    data.add_MACD(12, 21, 9) #need to drop 0:slow - 1
     data.add_ADX(14)
+    data.add_OBV(14)
+    data.add_AD_line(14)
 
-
+    data.df = data.df.dropna()
 
     print(data.df)
 
