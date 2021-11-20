@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import handle_json
 from fetch_stock_data import StockData
+from fetch_crypto_data_indicators import CryptoData
 
 """
 take the data from one stock
@@ -15,7 +16,6 @@ Closing stock price of the next day
 helpful docs:
 https://blog.quantinsti.com/neural-network-python/
 """
-
 
 def evaluation_function(actual, predicted):  # This might not work
     c = np.sum(.5 * ((actual - predicted) ** 2))
