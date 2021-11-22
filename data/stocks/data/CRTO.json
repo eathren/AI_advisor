@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "CRTO",
+<<<<<<< HEAD
+<<<<<<< refs/remotes/origin/master
         "3. Last Refreshed": "2021-11-16",
+=======
+        "3. Last Refreshed": "2021-11-12",
+>>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
+=======
+        "3. Last Refreshed": "2021-11-12",
+>>>>>>> zw
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+<<<<<<< HEAD
+<<<<<<< refs/remotes/origin/master
         "2021-11-16": {
             "1. open": "42.35",
             "2. high": "42.35",
@@ -27,6 +37,10 @@
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },
+=======
+>>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
+=======
+>>>>>>> zw
         "2021-11-12": {
             "1. open": "40.9886",
             "2. high": "42.285",
@@ -1006,6 +1020,35 @@
             "6. volume": "515913",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
+<<<<<<< HEAD
+<<<<<<< refs/remotes/origin/master
+=======
+=======
+>>>>>>> zw
+        },
+        "2021-06-25": {
+            "1. open": "43.86",
+            "2. high": "44.63",
+            "3. low": "43.13",
+            "4. close": "43.56",
+            "5. adjusted close": "43.56",
+            "6. volume": "465834",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "39.05",
+            "2. high": "44.28",
+            "3. low": "39.05",
+            "4. close": "43.51",
+            "5. adjusted close": "43.51",
+            "6. volume": "1273840",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+<<<<<<< HEAD
+>>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
+=======
+>>>>>>> zw
         }
     }
 }

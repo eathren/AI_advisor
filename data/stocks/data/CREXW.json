@@ -1,4 +1,6 @@
 {
+<<<<<<< HEAD
+<<<<<<< refs/remotes/origin/master
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "CREXW",
@@ -1008,4 +1010,10 @@
             "8. split coefficient": "1.0"
         }
     }
+=======
+    "Note": "Thank you for using Alpha Vantage! Our standard API call frequency is 5 calls per minute and 500 calls per day. Please visit https://www.alphavantage.co/premium/ if you would like to target a higher API call frequency."
+>>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
+=======
+    "Note": "Thank you for using Alpha Vantage! Our standard API call frequency is 5 calls per minute and 500 calls per day. Please visit https://www.alphavantage.co/premium/ if you would like to target a higher API call frequency."
+>>>>>>> zw
 }

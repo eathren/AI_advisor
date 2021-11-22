@@ -194,11 +194,25 @@ Z: 1001 - 2000
 K: 2000 - 3000
 """
 if __name__ == '__main__':
-    stock = StockData("AMZN")
-    print(stock.df)
-    # stock = StockData("AMZN")  # test value
+    '''
+    all_stocks = fetch_all_names()
+    print(all_stocks)
+    for i, name in enumerate(all_stocks[0:1000]):
+<<<<<<< HEAD
+        stock = StockData(name)
+        stock.write_data()
+    stock = StockData("TSLA")  # test value
+        '''
+        sleep(1) # this should be 1 second.
+=======
+        sleep(1) # this should be 1 second.
+        stock = StockData(name)
+        stock.write_data()
+        '''
+    stock = StockData("TSLA")  # test value
+>>>>>>> zw
     # print(stock.json)
-    # stock.write_data()
+    stock.write_data()
     # stock.plot_data()
     # stock.print_random()
     # stock.plot_yfinance()
