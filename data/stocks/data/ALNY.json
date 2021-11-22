@@ -2,16 +2,51 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ALNY",
-<<<<<<< refs/remotes/origin/master
-        "3. Last Refreshed": "2021-11-15",
-=======
-        "3. Last Refreshed": "2021-11-12",
->>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-<<<<<<< refs/remotes/origin/master
+        "2021-11-19": {
+            "1. open": "174.72",
+            "2. high": "182.315",
+            "3. low": "172.57",
+            "4. close": "181.0",
+            "5. adjusted close": "181.0",
+            "6. volume": "645359",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "182.29",
+            "2. high": "189.69",
+            "3. low": "178.51",
+            "4. close": "178.98",
+            "5. adjusted close": "178.98",
+            "6. volume": "1717499",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "171.7",
+            "2. high": "173.64",
+            "3. low": "167.435",
+            "4. close": "172.73",
+            "5. adjusted close": "172.73",
+            "6. volume": "483780",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-16": {
+            "1. open": "172.79",
+            "2. high": "174.65",
+            "3. low": "169.78",
+            "4. close": "172.94",
+            "5. adjusted close": "172.94",
+            "6. volume": "305683",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-15": {
             "1. open": "169.74",
             "2. high": "174.6",
@@ -22,8 +57,6 @@
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },
-=======
->>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
         "2021-11-12": {
             "1. open": "174.05",
             "2. high": "174.74",
@@ -973,59 +1006,6 @@
             "6. volume": "522436",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
-        },
-        "2021-06-30": {
-            "1. open": "165.41",
-            "2. high": "173.91",
-            "3. low": "163.29",
-            "4. close": "169.52",
-            "5. adjusted close": "169.52",
-            "6. volume": "652014",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-29": {
-            "1. open": "166.9",
-            "2. high": "167.155",
-            "3. low": "164.51",
-            "4. close": "165.87",
-            "5. adjusted close": "165.87",
-            "6. volume": "756188",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-28": {
-            "1. open": "155.14",
-            "2. high": "168.34",
-            "3. low": "154.0155",
-            "4. close": "166.2",
-            "5. adjusted close": "166.2",
-            "6. volume": "2069677",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-25": {
-            "1. open": "174.13",
-            "2. high": "176.75",
-            "3. low": "172.65",
-            "4. close": "175.39",
-            "5. adjusted close": "175.39",
-            "6. volume": "914794",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-<<<<<<< refs/remotes/origin/master
-=======
-        },
-        "2021-06-24": {
-            "1. open": "176.31",
-            "2. high": "176.97",
-            "3. low": "172.86",
-            "4. close": "173.68",
-            "5. adjusted close": "173.68",
-            "6. volume": "790224",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
->>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
         }
     }
 }

@@ -2,11 +2,51 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "BSGAR",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "0.8",
+            "2. high": "0.82",
+            "3. low": "0.67",
+            "4. close": "0.67",
+            "5. adjusted close": "0.67",
+            "6. volume": "305917",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "0.736",
+            "2. high": "0.89",
+            "3. low": "0.611",
+            "4. close": "0.7999",
+            "5. adjusted close": "0.7999",
+            "6. volume": "1550149",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "0.525",
+            "2. high": "0.525",
+            "3. low": "0.45",
+            "4. close": "0.45",
+            "5. adjusted close": "0.45",
+            "6. volume": "37902",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-16": {
+            "1. open": "0.43",
+            "2. high": "0.6001",
+            "3. low": "0.43",
+            "4. close": "0.525",
+            "5. adjusted close": "0.525",
+            "6. volume": "64190",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-15": {
             "1. open": "0.4141",
             "2. high": "0.43",

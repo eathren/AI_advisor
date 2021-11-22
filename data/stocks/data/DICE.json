@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "DICE",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "36.04",
+            "2. high": "37.0",
+            "3. low": "35.4",
+            "4. close": "35.85",
+            "5. adjusted close": "35.85",
+            "6. volume": "228195",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "37.65",
+            "2. high": "38.18",
+            "3. low": "35.24",
+            "4. close": "36.34",
+            "5. adjusted close": "36.34",
+            "6. volume": "424867",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "34.45",
+            "2. high": "37.79",
+            "3. low": "33.53",
+            "4. close": "37.54",
+            "5. adjusted close": "37.54",
+            "6. volume": "256164",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "31.52",
             "2. high": "34.31",
             "3. low": "31.4",
             "4. close": "34.15",
             "5. adjusted close": "34.15",
-            "6. volume": "105940",
+            "6. volume": "117720",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

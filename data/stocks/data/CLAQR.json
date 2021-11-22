@@ -2,11 +2,51 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "CLAQR",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "0.3",
+            "2. high": "0.3",
+            "3. low": "0.3",
+            "4. close": "0.3",
+            "5. adjusted close": "0.3",
+            "6. volume": "1",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "0.2501",
+            "2. high": "0.3",
+            "3. low": "0.2501",
+            "4. close": "0.3",
+            "5. adjusted close": "0.3",
+            "6. volume": "28852",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "0.290101",
+            "2. high": "0.290101",
+            "3. low": "0.290101",
+            "4. close": "0.290101",
+            "5. adjusted close": "0.290101",
+            "6. volume": "5",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-16": {
+            "1. open": "0.3",
+            "2. high": "0.3",
+            "3. low": "0.29",
+            "4. close": "0.290101",
+            "5. adjusted close": "0.290101",
+            "6. volume": "1130",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-15": {
             "1. open": "0.3",
             "2. high": "0.3",

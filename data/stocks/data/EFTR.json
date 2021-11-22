@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "EFTR",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "8.17",
+            "2. high": "8.4865",
+            "3. low": "8.02",
+            "4. close": "8.04",
+            "5. adjusted close": "8.04",
+            "6. volume": "68822",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "9.11",
+            "2. high": "9.2",
+            "3. low": "8.01",
+            "4. close": "8.05",
+            "5. adjusted close": "8.05",
+            "6. volume": "140181",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "9.48",
+            "2. high": "9.48",
+            "3. low": "8.85",
+            "4. close": "9.05",
+            "5. adjusted close": "9.05",
+            "6. volume": "106117",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "9.67",
             "2. high": "9.67",
             "3. low": "9.25",
             "4. close": "9.53",
             "5. adjusted close": "9.53",
-            "6. volume": "68117",
+            "6. volume": "69004",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

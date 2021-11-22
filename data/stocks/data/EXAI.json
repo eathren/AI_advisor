@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "EXAI",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "21.59",
+            "2. high": "21.59",
+            "3. low": "20.105",
+            "4. close": "20.55",
+            "5. adjusted close": "20.55",
+            "6. volume": "35274",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "21.27",
+            "2. high": "21.27",
+            "3. low": "20.0",
+            "4. close": "20.28",
+            "5. adjusted close": "20.28",
+            "6. volume": "175132",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "20.1",
+            "2. high": "21.27",
+            "3. low": "20.1",
+            "4. close": "21.27",
+            "5. adjusted close": "21.27",
+            "6. volume": "106932",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "20.14",
             "2. high": "20.7336",
             "3. low": "20.01",
             "4. close": "20.57",
             "5. adjusted close": "20.57",
-            "6. volume": "32226",
+            "6. volume": "32229",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

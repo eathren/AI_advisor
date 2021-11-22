@@ -1,21 +1,49 @@
 {
-<<<<<<< HEAD
-<<<<<<< refs/remotes/origin/master
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "CRNX",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "26.57",
+            "2. high": "27.485",
+            "3. low": "26.57",
+            "4. close": "27.26",
+            "5. adjusted close": "27.26",
+            "6. volume": "503300",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "27.5",
+            "2. high": "27.51",
+            "3. low": "26.74",
+            "4. close": "27.04",
+            "5. adjusted close": "27.04",
+            "6. volume": "185097",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "27.43",
+            "2. high": "27.74",
+            "3. low": "27.0488",
+            "4. close": "27.41",
+            "5. adjusted close": "27.41",
+            "6. volume": "142608",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "26.84",
             "2. high": "27.9704",
             "3. low": "26.84",
             "4. close": "27.58",
             "5. adjusted close": "27.58",
-            "6. volume": "243158",
+            "6. volume": "245620",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },
@@ -978,42 +1006,6 @@
             "6. volume": "190786",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
-        },
-        "2021-06-30": {
-            "1. open": "19.14",
-            "2. high": "19.25",
-            "3. low": "18.82",
-            "4. close": "18.85",
-            "5. adjusted close": "18.85",
-            "6. volume": "70348",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-29": {
-            "1. open": "19.68",
-            "2. high": "19.82",
-            "3. low": "18.88",
-            "4. close": "19.15",
-            "5. adjusted close": "19.15",
-            "6. volume": "132535",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-28": {
-            "1. open": "19.92",
-            "2. high": "20.2",
-            "3. low": "19.48",
-            "4. close": "19.68",
-            "5. adjusted close": "19.68",
-            "6. volume": "85281",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
         }
     }
-=======
-    "Note": "Thank you for using Alpha Vantage! Our standard API call frequency is 5 calls per minute and 500 calls per day. Please visit https://www.alphavantage.co/premium/ if you would like to target a higher API call frequency."
->>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
-=======
-    "Note": "Thank you for using Alpha Vantage! Our standard API call frequency is 5 calls per minute and 500 calls per day. Please visit https://www.alphavantage.co/premium/ if you would like to target a higher API call frequency."
->>>>>>> zw
 }

@@ -2,11 +2,41 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "DNAC",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "9.91",
+            "2. high": "9.9198",
+            "3. low": "9.91",
+            "4. close": "9.9198",
+            "5. adjusted close": "9.9198",
+            "6. volume": "160995",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "9.9066",
+            "2. high": "9.92",
+            "3. low": "9.9",
+            "4. close": "9.9",
+            "5. adjusted close": "9.9",
+            "6. volume": "11173",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "9.9",
+            "2. high": "9.9392",
+            "3. low": "9.875",
+            "4. close": "9.9",
+            "5. adjusted close": "9.9",
+            "6. volume": "20869",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "9.87",
             "2. high": "9.97",
@@ -974,16 +1004,6 @@
             "4. close": "10.04",
             "5. adjusted close": "10.04",
             "6. volume": "478686",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-30": {
-            "1. open": "10.05",
-            "2. high": "10.14",
-            "3. low": "9.9946",
-            "4. close": "10.11",
-            "5. adjusted close": "10.11",
-            "6. volume": "2819642",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

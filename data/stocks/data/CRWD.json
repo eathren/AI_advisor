@@ -2,28 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "CRWD",
-<<<<<<< HEAD
-<<<<<<< refs/remotes/origin/master
-        "3. Last Refreshed": "2021-11-16",
-=======
-        "3. Last Refreshed": "2021-11-12",
->>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
-=======
-        "3. Last Refreshed": "2021-11-12",
->>>>>>> zw
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-<<<<<<< HEAD
-<<<<<<< refs/remotes/origin/master
+        "2021-11-19": {
+            "1. open": "269.4",
+            "2. high": "269.66",
+            "3. low": "256.91",
+            "4. close": "257.63",
+            "5. adjusted close": "257.63",
+            "6. volume": "2587219",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "270.42",
+            "2. high": "274.98",
+            "3. low": "264.56",
+            "4. close": "264.72",
+            "5. adjusted close": "264.72",
+            "6. volume": "2552500",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "265.39",
+            "2. high": "270.58",
+            "3. low": "262.3912",
+            "4. close": "269.78",
+            "5. adjusted close": "269.78",
+            "6. volume": "3368795",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "255.31",
             "2. high": "262.88",
             "3. low": "253.99",
             "4. close": "262.51",
             "5. adjusted close": "262.51",
-            "6. volume": "4162738",
+            "6. volume": "4216675",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },
@@ -37,10 +57,6 @@
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },
-=======
->>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
-=======
->>>>>>> zw
         "2021-11-12": {
             "1. open": "283.96",
             "2. high": "289.53",
@@ -990,65 +1006,6 @@
             "6. volume": "2511532",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
-        },
-        "2021-06-30": {
-            "1. open": "257.1383",
-            "2. high": "260.02",
-            "3. low": "251.3",
-            "4. close": "251.31",
-            "5. adjusted close": "251.31",
-            "6. volume": "2820584",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-29": {
-            "1. open": "255.09",
-            "2. high": "259.75",
-            "3. low": "251.31",
-            "4. close": "257.12",
-            "5. adjusted close": "257.12",
-            "6. volume": "2298550",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-28": {
-            "1. open": "255.0",
-            "2. high": "260.82",
-            "3. low": "253.8",
-            "4. close": "255.09",
-            "5. adjusted close": "255.09",
-            "6. volume": "3167904",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-<<<<<<< HEAD
-<<<<<<< refs/remotes/origin/master
-=======
-=======
->>>>>>> zw
-        },
-        "2021-06-25": {
-            "1. open": "255.0",
-            "2. high": "256.79",
-            "3. low": "249.55",
-            "4. close": "253.24",
-            "5. adjusted close": "253.24",
-            "6. volume": "3799215",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "255.7715",
-            "2. high": "258.39",
-            "3. low": "251.08",
-            "4. close": "253.7",
-            "5. adjusted close": "253.7",
-            "6. volume": "3231137",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-<<<<<<< HEAD
->>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
-=======
->>>>>>> zw
         }
     }
 }

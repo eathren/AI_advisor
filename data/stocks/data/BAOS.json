@@ -2,11 +2,51 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "BAOS",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "1.45",
+            "2. high": "1.49",
+            "3. low": "1.41",
+            "4. close": "1.4799",
+            "5. adjusted close": "1.4799",
+            "6. volume": "347522",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "1.55",
+            "2. high": "1.55",
+            "3. low": "1.41",
+            "4. close": "1.46",
+            "5. adjusted close": "1.46",
+            "6. volume": "398606",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "1.56",
+            "2. high": "1.57",
+            "3. low": "1.45",
+            "4. close": "1.54",
+            "5. adjusted close": "1.54",
+            "6. volume": "301155",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-16": {
+            "1. open": "1.58",
+            "2. high": "1.61",
+            "3. low": "1.55",
+            "4. close": "1.58",
+            "5. adjusted close": "1.58",
+            "6. volume": "244574",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-15": {
             "1. open": "1.68",
             "2. high": "1.7",
@@ -964,46 +1004,6 @@
             "4. close": "3.52",
             "5. adjusted close": "3.52",
             "6. volume": "87406",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-30": {
-            "1. open": "3.76",
-            "2. high": "3.93",
-            "3. low": "3.3101",
-            "4. close": "3.4",
-            "5. adjusted close": "3.4",
-            "6. volume": "676240",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-29": {
-            "1. open": "3.37",
-            "2. high": "4.44",
-            "3. low": "3.37",
-            "4. close": "3.89",
-            "5. adjusted close": "3.89",
-            "6. volume": "3388544",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-28": {
-            "1. open": "3.27",
-            "2. high": "3.42",
-            "3. low": "3.27",
-            "4. close": "3.38",
-            "5. adjusted close": "3.38",
-            "6. volume": "53775",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-25": {
-            "1. open": "3.2",
-            "2. high": "3.5",
-            "3. low": "3.2",
-            "4. close": "3.31",
-            "5. adjusted close": "3.31",
-            "6. volume": "93594",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

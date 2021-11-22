@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "EVCM",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "18.11",
+            "2. high": "18.64",
+            "3. low": "17.5865",
+            "4. close": "18.43",
+            "5. adjusted close": "18.43",
+            "6. volume": "161461",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "18.54",
+            "2. high": "18.54",
+            "3. low": "17.325",
+            "4. close": "17.86",
+            "5. adjusted close": "17.86",
+            "6. volume": "683308",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "17.11",
+            "2. high": "17.75",
+            "3. low": "15.88",
+            "4. close": "17.31",
+            "5. adjusted close": "17.31",
+            "6. volume": "555823",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "17.55",
             "2. high": "18.01",
             "3. low": "16.605",
             "4. close": "17.52",
             "5. adjusted close": "17.52",
-            "6. volume": "560627",
+            "6. volume": "571556",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },
