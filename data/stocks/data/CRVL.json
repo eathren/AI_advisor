@@ -2,15 +2,20 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "CRVL",
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/master
         "3. Last Refreshed": "2021-11-16",
 =======
         "3. Last Refreshed": "2021-11-12",
 >>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
+=======
+        "3. Last Refreshed": "2021-11-12",
+>>>>>>> zw
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/master
         "2021-11-16": {
             "1. open": "194.08",
@@ -34,6 +39,8 @@
         },
 =======
 >>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
+=======
+>>>>>>> zw
         "2021-11-12": {
             "1. open": "197.08",
             "2. high": "200.715",
@@ -1013,8 +1020,11 @@
             "6. volume": "40594",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/master
 =======
+=======
+>>>>>>> zw
         },
         "2021-06-25": {
             "1. open": "129.87",
@@ -1035,7 +1045,10 @@
             "6. volume": "32259",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
+<<<<<<< HEAD
 >>>>>>> add_fetch_crypto_data_indicators.py_for_MA_pd
+=======
+>>>>>>> zw
         }
     }
 }
