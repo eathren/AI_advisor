@@ -343,7 +343,7 @@ class StockData:
 def fetch_fresh_data():
     all_stocks = fetch_all_names()
     print(all_stocks)
-    for i, name in enumerate(all_stocks[1456:]):
+    for i, name in enumerate(all_stocks[2325:]):
         sleep(1)  # this should be 1 second.
         stock = StockData(name)
         stock.write_data()
