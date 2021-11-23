@@ -55,9 +55,10 @@ class StockData:
         self.add_MACD(12, 21, 9)  # need to drop 0:slow - 1
         self.add_ADX(14)
         self.add_OBV(14)
+        self.add_HL()
+        self.add_OC()
         # self.add_AD_line(14)
         self.df = self.df.dropna()
-
 
     def read_data(self) -> dict:
         """
@@ -76,10 +77,11 @@ class StockData:
         return None
 
     def fetch_json(self):
-        params = {'symbol': self.id, 'apikey': AA_KEY}
+        params = {'symbol': self.id, 'apikey': AA_KEY, 'outputsize':'full'}
         response = requests.get(
             "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED",
             params=params)
+        print(response.url)
         if response.status_code == 200:
             return response.json()
         else:
@@ -93,8 +95,10 @@ class StockData:
         """
         df = pd.DataFrame(self.data['Time Series (Daily)']).transpose()
         # Pandas is dumb when it comes to renaming rows. Make them columns briefly to rename instead.
-        df = df.rename(columns={'1. open': 'open', '2. high': 'high', '3. low': 'low', '4. close': 'close', '5. adjusted close': 'adjusted close', '6. volume': 'volume', '7. dividend amount': 'dividend amount', '8. split coefficient': 'split coefficient'})
-        #change datatypes from Objects to floats
+        df = df.rename(columns={'1. open': 'open', '2. high': 'high', '3. low': 'low', '4. close': 'close',
+                                '5. adjusted close': 'adjusted close', '6. volume': 'volume',
+                                '7. dividend amount': 'dividend amount', '8. split coefficient': 'split coefficient'})
+        # change datatypes from Objects to floats
         df = df.astype(float)
         return df
 
@@ -151,6 +155,7 @@ class StockData:
         RSI = ma_up / ma_down
 
         self.df[str(interval) + '_Day_RSI'] = 100 - (100 / (1 + RSI))
+
     def add_stochastic_RSI(self, interval, K=3, D=3):
         adjusted_delta = self.df['adjusted close'].diff()
 
@@ -265,6 +270,12 @@ class StockData:
         self.df['OBV'] = On_balance_Volumn
         self.df[str(interval) + '_EMA_OBV'] = self.df['OBV'].ewm(com=interval).mean()
 
+    def add_HL(self):
+        self.df['HL'] = self.df['high'] - self.df['low']
+
+    def add_OC(self):
+        self.df['OC'] = self.df['close'] - self.df['open']
+
     # refer from: https://github.com/voice32/stock_market_indicators/blob/master/indicators.py
     def add_AD_line(self, interval):
 
@@ -280,28 +291,6 @@ class StockData:
             accumulation_list.append(accumulation)
         self.df['A/D line'] = accumulation_list
         self.df[str(interval) + '_EMA_AD-line'] = self.df['A/D line'].ewm(ignore_na=False, min_periods=0, com=interval)
-    # def calc_ema(self):
-    #     self.df[str(interval) + '_Day_EMA'] = \
-    #         self.df['adjusted close'].ewm(com=interval, min_periods=0, adjust=False,
-    #                                       ignore_na=False).mean()
-    #
-    # def calc_sma(self, interval):
-    #     return self.df['adjusted close'].rolling(window=interval).mean()
-    #
-    # def calc_ema(self, interval):
-    #     return self.df['adjusted close'].ewm(com=interval, min_periods=0, adjust=False, ignore_na=False).mean()
-    #
-    # def calc_macd(self):
-    #     pass
-    #
-    # def calc_obv(self):
-    #     pass
-    #
-    # def calc_adx(self):
-    #     pass
-    #
-    # def calc_ad_line(self):
-    #     pass
 
     def plot_data(self):
         df = pd.DataFrame(self.json['Time Series (Daily)'])
@@ -347,14 +336,14 @@ class StockData:
         print(all_stocks[random.randint(2, len(all_stocks) - 1)])
 
 
-
 def fetch_fresh_data():
     all_stocks = fetch_all_names()
     print(all_stocks)
-    for i, name in enumerate(all_stocks[2325:]):
+    for i, name in enumerate(all_stocks[1:]):
         sleep(1)  # this should be 1 second.
         stock = StockData(name)
         stock.write_data()
+
 
 # End class methods here
 def fetch_all_names():
@@ -381,6 +370,5 @@ if __name__ == '__main__':
     for i, name in enumerate(all_stocks[0:1000]):
         '''
     stock = StockData("AACG")
-
-
+    fetch_fresh_data()
     print("yes", stock.df)
