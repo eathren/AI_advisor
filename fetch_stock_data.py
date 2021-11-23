@@ -6,7 +6,7 @@ import random
 import pandas as pd
 import numpy as np
 import json
-import yfinance as yf
+# import yfinance as yf
 from time import sleep
 
 import handle_json
@@ -42,10 +42,22 @@ class StockData:
         self.id = id.upper()
         # self.data = self.read_data()
         self.data = self.fetch_json()
-
         self.df = self.json_to_pd_df()
-        # I'm not sure if I like modifying data like this.
-        # put all the data into the dataframe
+        # populate indicators in pandas dataframe data.
+        self.add_SMA_moving_average(7)  # need to drop 0:interval - 1
+        self.add_EMA_moving_average(7)  # need to drop 0:interval - 1
+        self.add_SMA_moving_average(14)  # need to drop 0:interval - 1
+        self.add_EMA_moving_average(14)  # need to drop 0:interval - 1
+        self.add_SMA_moving_average(21)  # need to drop 0:interval - 1
+        self.add_EMA_moving_average(21)  # need to drop 0:interval - 1
+        self.add_RSI(14)  # need to drop 0:interval - 1
+        self.add_stochastic_RSI(14)  # need to drop 0:interval - 1
+        self.add_MACD(12, 21, 9)  # need to drop 0:slow - 1
+        self.add_ADX(14)
+        self.add_OBV(14)
+        # self.add_AD_line(14)
+        self.df = self.df.dropna()
+
 
     def read_data(self) -> dict:
         """
@@ -79,7 +91,12 @@ class StockData:
         :param self.json, json stock data from Alpha Advantage.
         :return df, a PD dataframe object:
         """
-        return pd.DataFrame(self.data['Time Series (Daily)'])
+        df = pd.DataFrame(self.data['Time Series (Daily)']).transpose()
+        # Pandas is dumb when it comes to renaming rows. Make them columns briefly to rename instead.
+        df = df.rename(columns={'1. open': 'open', '2. high': 'high', '3. low': 'low', '4. close': 'close', '5. adjusted close': 'adjusted close', '6. volume': 'volume', '7. dividend amount': 'dividend amount', '8. split coefficient': 'split coefficient'})
+        #change datatypes from Objects to floats
+        df = df.astype(float)
+        return df
 
     def fetch_stock(self) -> dict:
         data = pd.json_normalize(self.json)
@@ -122,18 +139,18 @@ class StockData:
                                                                             ignore_na=False).mean()
 
     def add_RSI(self, interval):
-
-        adjusted_delta = self.df['adjusted close'].diff()
-
+        adjusted_delta = self.df['adjusted close'].astype(float).diff()
         up = adjusted_delta.clip(lower=0)
+
         down = -1 * adjusted_delta.clip(upper=0)
 
         ma_up = up.ewm(com=interval - 1, min_periods=0, adjust=False, ignore_na=False).mean()
+
         ma_down = down.ewm(com=interval - 1, min_periods=0, adjust=False, ignore_na=False).mean()
 
         RSI = ma_up / ma_down
-        self.df[str(interval) + '_Day_RSI'] = 100 - (100 / (1 + RSI))
 
+        self.df[str(interval) + '_Day_RSI'] = 100 - (100 / (1 + RSI))
     def add_stochastic_RSI(self, interval, K=3, D=3):
         adjusted_delta = self.df['adjusted close'].diff()
 
@@ -252,6 +269,7 @@ class StockData:
     def add_AD_line(self, interval):
 
         accumulation_list = []
+        print('1')
         for index, row in self.df.iterrows():
             if row['high'] != row['low']:
                 accumulation = ((row["adjusted close"] - row['low']) - (row['high'] - row['adjusted close'])) / (
@@ -260,18 +278,8 @@ class StockData:
                 accumulation = 0
 
             accumulation_list.append(accumulation)
-
         self.df['A/D line'] = accumulation_list
         self.df[str(interval) + '_EMA_AD-line'] = self.df['A/D line'].ewm(ignore_na=False, min_periods=0, com=interval)
-
-    # def calc_stoch_rsi(self):
-    #     pass
-    #
-    # def calc_rsi(self):
-    #     pass
-    #
-    #
-    #
     # def calc_ema(self):
     #     self.df[str(interval) + '_Day_EMA'] = \
     #         self.df['adjusted close'].ewm(com=interval, min_periods=0, adjust=False,
@@ -365,30 +373,14 @@ N: 1-1000 stocks
 Z: 1001 - 2000
 K: 2000 - 3000
 """
+
 if __name__ == '__main__':
     '''
     all_stocks = fetch_all_names()
     print(all_stocks)
     for i, name in enumerate(all_stocks[0:1000]):
         '''
-    stock = StockData("TSLA")
-    print(stock.data)
-    fetch_fresh_data()
-    # stock.add_SMA_moving_average(7)  # need to drop 0:interval - 1
-    # stock.add_EMA_moving_average(7)  # need to drop 0:interval - 1
-    # stock.add_SMA_moving_average(14)  # need to drop 0:interval - 1
-    # stock.add_EMA_moving_average(14)  # need to drop 0:interval - 1
-    # stock.add_SMA_moving_average(21)  # need to drop 0:interval - 1
-    # stock.add_EMA_moving_average(21)  # need to drop 0:interval - 1
-    # stock.add_RSI(14)  # need to drop 0:interval - 1
-    # stock.add_stochastic_RSI(14)  # need to drop 0:interval - 1
-    # stock.add_MACD(12, 21, 9)  # need to drop 0:slow - 1
-    # stock.add_ADX(14)
-    # stock.add_OBV(14)
-    # stock.add_AD_line(14)
-    #
-    # stock.df = stock.df.dropna()
+    stock = StockData("AACG")
 
-    # print(stock.df)
-    # stock.write_data()
-    # stock.plot_yfinance()
+
+    print("yes", stock.df)
