@@ -59,6 +59,7 @@ class StockData:
         self.add_OC()
         # self.add_AD_line(14)
         self.df = self.df.dropna()
+        self.df = self.df.iloc[::-1] # order dates in opposite order.
 
     def read_data(self) -> dict:
         """
