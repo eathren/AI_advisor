@@ -97,8 +97,8 @@ class NeuralNet:
         train_df = dataset.filter(['adjusted close'])
         data_unscaled = train_df.values
 
-        # Get the number of rows to train the model on 80% of the data
-        train_data_length = math.ceil(len(data_unscaled) * 0.8)
+        # Get the number of rows to train the model on 95% of the data
+        train_data_length = math.ceil(len(data_unscaled) * 0.95)
 
         # Transform features by scaling each feature to a range between 0 and 1
         mmscaler = MinMaxScaler(feature_range=(0, 1))
@@ -108,18 +108,18 @@ class NeuralNet:
         sequence_length = 50
 
         # Prediction Index
-        index_Close = train_df.columns.get_loc("adjusted close")
+        index_close = train_df.columns.get_loc("adjusted close")
         # Split the training data into train and train data sets
-        # As a first step, we get the number of rows to train the model on 80% of the data
-        train_data_len = math.ceil(np_data.shape[0] * 0.8)
+        # As a first step, we get the number of rows to train the model on 95% of the data
+        train_data_len = math.ceil(np_data.shape[0] * 0.95)
 
         # Create the training and test data
         train_data = np_data[0:train_data_len, :]
         test_data = np_data[train_data_len - sequence_length:, :]
 
         # Generate training data and test data
-        x_train, y_train = self.partition_dataset(sequence_length, train_data, index_Close)
-        x_test, y_test = self.partition_dataset(sequence_length, test_data, index_Close)
+        x_train, y_train = self.partition_dataset(sequence_length, train_data, index_close)
+        x_test, y_test = self.partition_dataset(sequence_length, test_data, index_close)
 
         # Print the shapes: the result is: (rows, training_sequence, features) (prediction value, )
         print(x_train.shape, y_train.shape)
@@ -127,7 +127,7 @@ class NeuralNet:
 
         # Validate that the prediction value and the input match up
         # The last close price of the second input sample should equal the first prediction value
-        print(x_test[1][sequence_length - 1][index_Close])
+        print(x_test[1][sequence_length - 1][index_close])
         print(y_test[0])
 
         # Configure the neural network model
@@ -236,13 +236,13 @@ class NeuralNet:
         # plt.legend()
         # plt.show()
 
-    def partition_dataset(self, sequence_length, train_df, index_Close):
+    def partition_dataset(self, sequence_length, train_df, index_close):
         x, y = [], []
         data_len = train_df.shape[0]
         for i in range(sequence_length, data_len):
             x.append(train_df[i - sequence_length:i, :])  # contains sequence_length values 0-sequence_length * columsn
             y.append(train_df[
-                         i, index_Close])  # contains the prediction values for validation (3rd column = Close),  for single-step prediction
+                         i, index_close])  # contains the prediction values for validation (3rd column = Close),  for single-step prediction
 
         # Convert the x and y to numpy arrays
         x = np.array(x)
