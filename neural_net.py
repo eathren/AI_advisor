@@ -253,5 +253,5 @@ class NeuralNet:
         return input * self.weight
 
 if __name__ == "__main__":
-    net = NeuralNet("AMZN")
+    net = NeuralNet("INTU")
     net.train()

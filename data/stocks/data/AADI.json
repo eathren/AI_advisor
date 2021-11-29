@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AADI",
-        "3. Last Refreshed": "2021-11-22",
+        "3. Last Refreshed": "2021-11-26",
         "4. Output Size": "Full size",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-26": {
+            "1. open": "22.46",
+            "2. high": "22.88",
+            "3. low": "21.79",
+            "4. close": "22.5",
+            "5. adjusted close": "22.5",
+            "6. volume": "105217",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-24": {
+            "1. open": "24.24",
+            "2. high": "24.24",
+            "3. low": "21.86",
+            "4. close": "22.91",
+            "5. adjusted close": "22.91",
+            "6. volume": "278452",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-23": {
+            "1. open": "31.56",
+            "2. high": "32.5",
+            "3. low": "22.57",
+            "4. close": "24.33",
+            "5. adjusted close": "24.33",
+            "6. volume": "2224706",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-22": {
             "1. open": "25.07",
             "2. high": "25.73",
             "3. low": "24.06",
             "4. close": "25.52",
             "5. adjusted close": "25.52",
-            "6. volume": "95309",
+            "6. volume": "95567",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

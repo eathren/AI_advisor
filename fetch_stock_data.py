@@ -6,7 +6,6 @@ import random
 import pandas as pd
 import numpy as np
 import json
-# import yfinance as yf
 from time import sleep
 
 import handle_json
@@ -43,22 +42,23 @@ class StockData:
         # self.data = self.read_data()
         self.data = self.fetch_json()
         self.df = self.json_to_pd_df()
+
         # populate indicators in pandas dataframe data.
-        self.add_SMA_moving_average(7)  # need to drop 0:interval - 1
-        self.add_EMA_moving_average(7)  # need to drop 0:interval - 1
-        self.add_SMA_moving_average(14)  # need to drop 0:interval - 1
-        self.add_EMA_moving_average(14)  # need to drop 0:interval - 1
-        self.add_SMA_moving_average(21)  # need to drop 0:interval - 1
-        self.add_EMA_moving_average(21)  # need to drop 0:interval - 1
-        self.add_RSI(14)  # need to drop 0:interval - 1
-        self.add_stochastic_RSI(14)  # need to drop 0:interval - 1
+        self.add_SMA_moving_average(7)   
+        self.add_EMA_moving_average(7)   
+        self.add_SMA_moving_average(14)   
+        self.add_EMA_moving_average(14)   
+        self.add_SMA_moving_average(21)   
+        self.add_EMA_moving_average(21)   
+        self.add_RSI(14)   
+        self.add_stochastic_RSI(14)   
         self.add_MACD(12, 21, 9)  # need to drop 0:slow - 1
         self.add_ADX(14)
         self.add_OBV(14)
         self.add_HL()
         self.add_OC()
         # self.add_AD_line(14)
-        self.df = self.df.dropna()
+        # self.df = self.df.dropna()
         self.df = self.df.iloc[::-1] # order dates in opposite order.
 
     def read_data(self) -> dict:
@@ -78,6 +78,13 @@ class StockData:
         return None
 
     def fetch_json(self):
+        """
+        name: fetch_json
+
+        This function fetches all the stock data for a given stock ID.
+
+        :return json stock data:
+        """
         params = {'symbol': self.id, 'apikey': AA_KEY, 'outputsize':'full'}
         response = requests.get(
             "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED",
@@ -365,11 +372,6 @@ K: 2000 - 3000
 """
 
 if __name__ == '__main__':
-    '''
-    all_stocks = fetch_all_names()
-    print(all_stocks)
-    for i, name in enumerate(all_stocks[0:1000]):
-        '''
-    stock = StockData("AACG")
-    fetch_fresh_data()
+    stock = StockData("INTU")
+    # fetch_fresh_data()
     print("yes", stock.df)
