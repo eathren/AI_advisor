@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ADIL",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "3.27",
+            "2. high": "3.33",
+            "3. low": "3.0938",
+            "4. close": "3.16",
+            "5. adjusted close": "3.16",
+            "6. volume": "230552",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "3.32",
             "2. high": "3.335",
@@ -994,16 +1004,6 @@
             "4. close": "2.48",
             "5. adjusted close": "2.48",
             "6. volume": "1366892",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "2.76",
-            "2. high": "2.8",
-            "3. low": "2.45",
-            "4. close": "2.52",
-            "5. adjusted close": "2.52",
-            "6. volume": "3679031",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

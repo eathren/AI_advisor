@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ADXS",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "0.444",
+            "2. high": "0.449",
+            "3. low": "0.4051",
+            "4. close": "0.4085",
+            "5. adjusted close": "0.4085",
+            "6. volume": "6657079",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "0.4434",
             "2. high": "0.448",
@@ -994,16 +1004,6 @@
             "4. close": "0.489",
             "5. adjusted close": "0.489",
             "6. volume": "2269939",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "0.48",
-            "2. high": "0.498",
-            "3. low": "0.4708",
-            "4. close": "0.495",
-            "5. adjusted close": "0.495",
-            "6. volume": "3305572",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

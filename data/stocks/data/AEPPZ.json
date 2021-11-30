@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AEPPZ",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "49.9",
+            "2. high": "50.021",
+            "3. low": "49.793",
+            "4. close": "49.8884",
+            "5. adjusted close": "49.8884",
+            "6. volume": "7291",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "50.05",
             "2. high": "50.15",
@@ -994,16 +1004,6 @@
             "4. close": "50.97",
             "5. adjusted close": "49.4978982729",
             "6. volume": "2112",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "50.24",
-            "2. high": "50.54",
-            "3. low": "50.24",
-            "4. close": "50.534",
-            "5. adjusted close": "49.0744907068",
-            "6. volume": "47059",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

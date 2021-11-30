@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ADOCW",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "0.26",
+            "2. high": "0.289",
+            "3. low": "0.26",
+            "4. close": "0.28",
+            "5. adjusted close": "0.28",
+            "6. volume": "1493",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "0.2998",
             "2. high": "0.2998",
@@ -994,16 +1004,6 @@
             "4. close": "0.3199",
             "5. adjusted close": "0.3199",
             "6. volume": "11142",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "0.3149",
-            "2. high": "0.329099",
-            "3. low": "0.3003",
-            "4. close": "0.32",
-            "5. adjusted close": "0.32",
-            "6. volume": "2350",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

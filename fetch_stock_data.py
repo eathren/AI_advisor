@@ -9,6 +9,7 @@ import json
 import yfinance as yf
 from time import sleep
 
+import handle_json
 import matplotlib.pyplot as plt
 
 load_dotenv()
@@ -38,10 +39,32 @@ http://www.fmlabs.com/reference/default.htm?url=SimpleMA.htm
 
 class StockData:
     def __init__(self, id=None):
-        self.id = id
-        self.history = []
-        self.json = self.fetch_json()
-        self.data = self.fetch_stock()
+        self.id = id.upper()
+        self.data = self.read_data()
+        self.df = self.json_to_pd_df()
+        # I'm not sure if I like modifying data like this.
+        # put all the data into the dataframe
+        
+        self.populate_df_with_indicators()
+        self.sma_7d = self.calc_sma(7)
+        self.sma_14d = self.calc_sma(14)
+        self.sma_21d = self.calc_sma(21)
+
+    def read_data(self) -> dict:
+        """
+        This function will read the data from the stock/data folder if it exists.
+        If it doesn't it will fetch new data.
+
+        :return dictionary of stock price data:
+        """
+        file_path = f"data/stocks/data/{self.id}.json"
+        if handle_json.file_exists(file_path):
+            with open(file_path, "r") as f:
+                temp = json.load(f)
+            return temp
+        else:
+            return self.fetch_json()
+        return None
 
     def fetch_json(self):
         params = {'symbol': self.id, 'apikey': AA_KEY}
@@ -54,11 +77,16 @@ class StockData:
         else:
             print(f"An error has occured with fetching the json data for {self.id}")
 
-    #
+    def json_to_pd_df(self):
+        """
+        Turns the json data into a pandas datafram
+        :param self.json, json stock data from Alpha Advantage.
+        :return df, a PD dataframe object:
+        """
+        return pd.DataFrame(self.data['Time Series (Daily)'])
 
     def fetch_stock(self) -> dict:
         data = pd.json_normalize(self.json)
-        print(data)
         return data
 
     def write_data(self):
@@ -67,27 +95,22 @@ class StockData:
             # other choice to dump: self.data.to_json()
             json.dump(self.json, f, ensure_ascii=False, indent=4)
 
-    @staticmethod   # This works with numpy. System moved to pandas. Either way works
-    def moving_average(self, a, n=7):    #as long as it's consistent.
-        ret = np.cumsum(a, dtype=float)
-        ret[n:] = ret[n:] - ret[:-n]
-        return ret[n - 1:] / n
-
-    # METHODS HERE FOR GROUP
     def calc_stoch_rsi(self):
         pass
 
     def calc_rsi(self):
         pass
 
-    def calc_7d_ma(self):
-        pass
+    def calc_ema(self):
+        self.df[str(interval) + '_Day_EMA'] = \
+            self.df['adjusted close'].ewm(com=interval, min_periods=0, adjust=False,
+                                          ignore_na=False).mean()
 
-    def calc_14d_ma(self):
-        pass
+    def calc_sma(self, interval):
+        return self.df['adjusted close'].rolling(window=interval).mean()
 
-    def calc_21d_ma(self):
-        pass
+    def calc_ema(self, interval):
+        return self.df['adjusted close'].ewm(com=interval, min_periods=0, adjust=False, ignore_na=False).mean()
 
     def calc_macd(self):
         pass
@@ -101,11 +124,8 @@ class StockData:
     def calc_ad_line(self):
         pass
 
-
-
     def plot_data(self):
         df = pd.DataFrame(self.json['Time Series (Daily)'])
-        # df = self.json['Time Series (Daily)']
         print(df)
         df = df.T.iloc[::-1]
         print(df)
@@ -128,7 +148,6 @@ class StockData:
         data.tail()
         data['Close'].plot(figsize=(10, 5))
 
-
         # def fetch_live_data(self):
         #     for row in self.data[1:2]:
         #         params = {'symbol': str(row[0]), 'apikey': str(AA_KEY)}
@@ -148,7 +167,16 @@ class StockData:
         all_stocks = self.fetch_all_names()
         print(all_stocks[random.randint(2, len(all_stocks) - 1)])
 
+    def fetch_fresh_data(self):
+        all_stocks = fetch_all_names()
+        print(all_stocks)
+        for i, name in enumerate(all_stocks[1:]):
+            sleep(1)  # this should be 1 second.
+            stock = StockData(name)
+            stock.write_data()
 
+
+# End class methods here
 def fetch_all_names():
     # Currently using nasdaq_ids.csv
     all_stocks = []
@@ -170,11 +198,19 @@ if __name__ == '__main__':
     all_stocks = fetch_all_names()
     print(all_stocks)
     for i, name in enumerate(all_stocks[0:1000]):
+<<<<<<< HEAD
+        stock = StockData(name)
+        stock.write_data()
+    stock = StockData("TSLA")  # test value
+        '''
+        sleep(1) # this should be 1 second.
+=======
         sleep(1) # this should be 1 second.
         stock = StockData(name)
         stock.write_data()
         '''
     stock = StockData("TSLA")  # test value
+>>>>>>> zw
     # print(stock.json)
     stock.write_data()
     # stock.plot_data()

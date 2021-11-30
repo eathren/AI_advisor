@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ADBE",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "658.37",
+            "2. high": "663.665",
+            "3. low": "655.19",
+            "4. close": "659.73",
+            "5. adjusted close": "659.73",
+            "6. volume": "1077608",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "649.01",
             "2. high": "658.4725",
@@ -994,16 +1004,6 @@
             "4. close": "579.66",
             "5. adjusted close": "579.66",
             "6. volume": "2133465",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "575.9",
-            "2. high": "580.966",
-            "3. low": "574.96",
-            "4. close": "578.26",
-            "5. adjusted close": "578.26",
-            "6. volume": "1835008",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

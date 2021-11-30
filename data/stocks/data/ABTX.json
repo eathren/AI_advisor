@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ABTX",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "42.55",
+            "2. high": "43.3",
+            "3. low": "42.0",
+            "4. close": "43.09",
+            "5. adjusted close": "43.09",
+            "6. volume": "126451",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "41.97",
             "2. high": "42.4",
@@ -994,16 +1004,6 @@
             "4. close": "39.93",
             "5. adjusted close": "39.8008463612",
             "6. volume": "172905",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "39.28",
-            "2. high": "40.0",
-            "3. low": "39.19",
-            "4. close": "39.95",
-            "5. adjusted close": "39.8207816712",
-            "6. volume": "36092",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

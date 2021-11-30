@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AIKI",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "0.8098",
+            "2. high": "0.8098",
+            "3. low": "0.7719",
+            "4. close": "0.7836",
+            "5. adjusted close": "0.7836",
+            "6. volume": "1178843",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "0.8",
             "2. high": "0.817",
@@ -994,16 +1004,6 @@
             "4. close": "1.015",
             "5. adjusted close": "1.015",
             "6. volume": "1210372",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "1.01",
-            "2. high": "1.02",
-            "3. low": "0.976",
-            "4. close": "1.01",
-            "5. adjusted close": "1.01",
-            "6. volume": "2885114",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

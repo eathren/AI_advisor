@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ACB",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "8.61",
+            "2. high": "8.69",
+            "3. low": "8.075",
+            "4. close": "8.11",
+            "5. adjusted close": "8.11",
+            "6. volume": "14281808",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "7.75",
             "2. high": "8.58",
@@ -994,16 +1004,6 @@
             "4. close": "9.11",
             "5. adjusted close": "9.11",
             "6. volume": "2780733",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "9.13",
-            "2. high": "9.43",
-            "3. low": "9.09",
-            "4. close": "9.35",
-            "5. adjusted close": "9.35",
-            "6. volume": "3728640",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

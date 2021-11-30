@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ALLK",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "82.72",
+            "2. high": "84.65",
+            "3. low": "81.75",
+            "4. close": "82.85",
+            "5. adjusted close": "82.85",
+            "6. volume": "370289",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "83.8",
             "2. high": "84.135",
@@ -994,16 +1004,6 @@
             "4. close": "92.29",
             "5. adjusted close": "92.29",
             "6. volume": "1314014",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "91.92",
-            "2. high": "94.78",
-            "3. low": "91.06",
-            "4. close": "94.26",
-            "5. adjusted close": "94.26",
-            "6. volume": "230068",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

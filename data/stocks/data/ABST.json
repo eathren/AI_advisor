@@ -2,11 +2,21 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ABST",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-15",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-15": {
+            "1. open": "10.51",
+            "2. high": "10.51",
+            "3. low": "9.77",
+            "4. close": "9.8",
+            "5. adjusted close": "9.8",
+            "6. volume": "341986",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "10.41",
             "2. high": "10.44",
@@ -994,16 +1004,6 @@
             "4. close": "14.36",
             "5. adjusted close": "14.2927400468",
             "6. volume": "100830",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "14.3",
-            "2. high": "14.58",
-            "3. low": "14.3",
-            "4. close": "14.46",
-            "5. adjusted close": "14.3922716628",
-            "6. volume": "108129",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }
