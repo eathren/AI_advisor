@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AEHL",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "2.83",
-            "2. high": "2.83",
-            "3. low": "2.72",
-            "4. close": "2.75",
-            "5. adjusted close": "2.75",
-            "6. volume": "137393",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "2.71",
             "2. high": "2.83",
@@ -1004,6 +994,16 @@
             "4. close": "2.95",
             "5. adjusted close": "2.95",
             "6. volume": "999323",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "2.97",
+            "2. high": "3.0257",
+            "3. low": "2.85",
+            "4. close": "2.92",
+            "5. adjusted close": "2.92",
+            "6. volume": "270324",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

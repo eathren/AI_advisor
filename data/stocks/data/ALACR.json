@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ALACR",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "0.545",
-            "2. high": "0.5699",
-            "3. low": "0.5",
-            "4. close": "0.51",
-            "5. adjusted close": "0.51",
-            "6. volume": "25348",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "0.5798",
             "2. high": "0.5798",
@@ -1004,6 +994,16 @@
             "4. close": "0.5499",
             "5. adjusted close": "0.5499",
             "6. volume": "3712",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "0.521",
+            "2. high": "0.55",
+            "3. low": "0.5101",
+            "4. close": "0.52",
+            "5. adjusted close": "0.52",
+            "6. volume": "8913",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

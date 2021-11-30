@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AGFY",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "21.98",
-            "2. high": "23.55",
-            "3. low": "21.14",
-            "4. close": "22.32",
-            "5. adjusted close": "22.32",
-            "6. volume": "729799",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "19.8",
             "2. high": "21.95",
@@ -1004,6 +994,16 @@
             "4. close": "13.09",
             "5. adjusted close": "13.09",
             "6. volume": "1168019",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "11.96",
+            "2. high": "12.65",
+            "3. low": "11.6",
+            "4. close": "12.39",
+            "5. adjusted close": "12.39",
+            "6. volume": "563480",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

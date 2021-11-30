@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ALTM",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "64.35",
-            "2. high": "66.4874",
-            "3. low": "64.05",
-            "4. close": "65.0",
-            "5. adjusted close": "65.0",
-            "6. volume": "69765",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "63.6508",
             "2. high": "65.025",
@@ -1004,6 +994,16 @@
             "4. close": "70.68",
             "5. adjusted close": "69.0431310792",
             "6. volume": "593795",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "69.36",
+            "2. high": "69.36",
+            "3. low": "68.06",
+            "4. close": "69.23",
+            "5. adjusted close": "67.6267114405",
+            "6. volume": "39156",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

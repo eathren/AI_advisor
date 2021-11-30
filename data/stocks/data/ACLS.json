@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ACLS",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "62.13",
-            "2. high": "62.73",
-            "3. low": "61.0544",
-            "4. close": "61.81",
-            "5. adjusted close": "61.81",
-            "6. volume": "357380",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "62.0",
             "2. high": "62.35",
@@ -1004,6 +994,16 @@
             "4. close": "39.12",
             "5. adjusted close": "39.12",
             "6. volume": "645295",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "38.8",
+            "2. high": "39.67",
+            "3. low": "38.75",
+            "4. close": "39.58",
+            "5. adjusted close": "39.58",
+            "6. volume": "285491",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AEMD",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "3.14",
-            "2. high": "3.15",
-            "3. low": "2.971",
-            "4. close": "3.03",
-            "5. adjusted close": "3.03",
-            "6. volume": "147014",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "2.97",
             "2. high": "3.22",
@@ -1004,6 +994,16 @@
             "4. close": "5.12",
             "5. adjusted close": "5.12",
             "6. volume": "1152910",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "5.5",
+            "2. high": "5.95",
+            "3. low": "5.05",
+            "4. close": "5.33",
+            "5. adjusted close": "5.33",
+            "6. volume": "2411151",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

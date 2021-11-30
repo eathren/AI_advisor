@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AIRT",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "28.575",
-            "2. high": "29.4",
-            "3. low": "28.53",
-            "4. close": "28.53",
-            "5. adjusted close": "28.53",
-            "6. volume": "2126",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "30.08",
             "2. high": "31.0",
@@ -1004,6 +994,16 @@
             "4. close": "24.9",
             "5. adjusted close": "24.9",
             "6. volume": "4890",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "24.56",
+            "2. high": "25.25",
+            "3. low": "24.5463",
+            "4. close": "25.0",
+            "5. adjusted close": "25.0",
+            "6. volume": "1334",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

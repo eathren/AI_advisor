@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AAON",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "77.34",
-            "2. high": "77.8",
-            "3. low": "76.34",
-            "4. close": "76.75",
-            "5. adjusted close": "76.75",
-            "6. volume": "289982",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "76.9",
             "2. high": "78.32",
@@ -1004,6 +994,16 @@
             "4. close": "61.08",
             "5. adjusted close": "61.08",
             "6. volume": "391415",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "61.19",
+            "2. high": "61.94",
+            "3. low": "60.6001",
+            "4. close": "61.26",
+            "5. adjusted close": "61.26",
+            "6. volume": "129269",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

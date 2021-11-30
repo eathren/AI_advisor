@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ACAD",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "20.91",
-            "2. high": "20.93",
-            "3. low": "19.745",
-            "4. close": "19.77",
-            "5. adjusted close": "19.77",
-            "6. volume": "1278804",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "20.73",
             "2. high": "20.85",
@@ -1004,6 +994,16 @@
             "4. close": "26.17",
             "5. adjusted close": "26.17",
             "6. volume": "16283596",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "24.55",
+            "2. high": "25.57",
+            "3. low": "24.48",
+            "4. close": "25.01",
+            "5. adjusted close": "25.01",
+            "6. volume": "1459950",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

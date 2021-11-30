@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AEACU",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "10.06",
-            "2. high": "10.06",
-            "3. low": "10.06",
-            "4. close": "10.06",
-            "5. adjusted close": "10.06",
-            "6. volume": "7",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "10.09",
             "2. high": "10.09",
@@ -1004,6 +994,16 @@
             "4. close": "10.1",
             "5. adjusted close": "10.1",
             "6. volume": "4283",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "10.09",
+            "2. high": "10.09",
+            "3. low": "10.05",
+            "4. close": "10.09",
+            "5. adjusted close": "10.09",
+            "6. volume": "2819",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

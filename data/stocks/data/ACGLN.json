@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ACGLN",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "25.79",
-            "2. high": "25.79",
-            "3. low": "25.53",
-            "4. close": "25.68",
-            "5. adjusted close": "25.68",
-            "6. volume": "54154",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "25.86",
             "2. high": "25.86",
@@ -1004,6 +994,16 @@
             "4. close": "25.66",
             "5. adjusted close": "25.3231309566",
             "6. volume": "125344",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "25.75",
+            "2. high": "25.85",
+            "3. low": "25.69",
+            "4. close": "25.85",
+            "5. adjusted close": "25.5106366028",
+            "6. volume": "239501",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

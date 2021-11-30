@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AGIO",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "42.24",
-            "2. high": "42.24",
-            "3. low": "40.43",
-            "4. close": "40.58",
-            "5. adjusted close": "40.58",
-            "6. volume": "530758",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "42.78",
             "2. high": "42.9",
@@ -1004,6 +994,16 @@
             "4. close": "56.72",
             "5. adjusted close": "56.72",
             "6. volume": "8013609",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "56.43",
+            "2. high": "57.26",
+            "3. low": "55.79",
+            "4. close": "56.59",
+            "5. adjusted close": "56.59",
+            "6. volume": "494783",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

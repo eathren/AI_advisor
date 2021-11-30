@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ADI",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "185.72",
-            "2. high": "185.72",
-            "3. low": "183.74",
-            "4. close": "185.06",
-            "5. adjusted close": "185.06",
-            "6. volume": "1337191",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "183.57",
             "2. high": "185.7",
@@ -1004,6 +994,16 @@
             "4. close": "167.66",
             "5. adjusted close": "166.971601309",
             "6. volume": "2959516",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "166.2",
+            "2. high": "167.27",
+            "3. low": "165.24",
+            "4. close": "167.04",
+            "5. adjusted close": "166.35414698",
+            "6. volume": "2059924",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

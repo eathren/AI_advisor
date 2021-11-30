@@ -39,6 +39,20 @@ class CryptoData:
         self.data = self.fetch_data(Stock_Abv)
         self.df = self.create_pd_df()
 
+        self.add_SMA_moving_average(7)
+        self.add_EMA_moving_average(7)
+        self.add_SMA_moving_average(14)
+        self.add_EMA_moving_average(14)
+        self.add_SMA_moving_average(21)
+        self.add_EMA_moving_average(21)
+        self.add_RSI(7)
+        self.add_stochastic_RSI(14)
+        self.add_MACD(7, 14, 9)
+        self.add_ADX(14)
+        self.add_AD_line(14)
+
+        self.df = self.df.dropna()
+
 
         #self.top_risers = self.get_weekly_risers()
         #self.best_to_buy = []
@@ -183,45 +197,23 @@ class CryptoData:
         del self.df[str(interval) + '_true_range']
         del self.df['true_range']
 
-    # refer from: https://randerson112358.medium.com/stock-trading-strategy-using-on-balance-volume-obv-python-77a7c719cdac
-    def add_OBV(self, interval):
-        On_balance_Volumn = []
-        adjust_close_list = []
-        On_balance_Volumn.append(0)
-
-        for index in self.df.index:
-            adjust_close_list.append(self.df['adjusted close'][index])
-
-
-        for i in range(1, len(adjust_close_list)):
-            previous_OBV = On_balance_Volumn[-1]
-            current_volumn = adjust_close_list[i]
-            if adjust_close_list[i] > adjust_close_list[i - 1]:
-                On_balance_Volumn.append(previous_OBV + current_volumn)
-
-            elif adjust_close_list[i] < adjust_close_list[i - 1]:
-                On_balance_Volumn.append(previous_OBV - current_volumn)
-            else:
-                On_balance_Volumn.append(previous_OBV)
-
-        self.df['OBV'] = On_balance_Volumn
-        self.df[str(interval) + '_EMA_OBV'] = self.df['OBV'].ewm(com = interval).mean()
-
     # refer from: https://github.com/voice32/stock_market_indicators/blob/master/indicators.py
+    # https://school.stockcharts.com/doku.php?st=accumulation%20distribution&id=technical_indicators:accumulation_distribution_line
     def add_AD_line(self, interval):
 
         accumulation_list = []
-        for index, row in self.df.iterrows():
-            if row['high'] != row['low']:
-                accumulation = ((row["adjusted close"] - row['low']) - (row['high'] - row['adjusted close'])) / (
-                            row['high'] - row['low']) * row['volume']
+
+        for key, value in self.df.iterrows():
+            if value['high'] != value['low']:
+                accumulation = ((value["adjusted close"] - value['low']) - (value['high'] - value['adjusted close'])) / (
+                            value['high'] - value['low']) * value['volume']
             else:
                 accumulation = 0
 
             accumulation_list.append(accumulation)
 
         self.df['A/D line'] =  accumulation_list
-        self.df[ str(interval) + '_EMA_AD-line'] = self.df['A/D line'].ewm(ignore_na=False, min_periods=0, com = interval, adjust=True).mean()
+        #self.df[ str(interval) + '_EMA_AD-line'] = self.df['A/D line'].ewm(ignore_na=False, min_periods=0, com = interval, adjust=True).mean()
 
 
     def get_weekly_risers(self):
@@ -239,28 +231,7 @@ class CryptoData:
 
 if __name__ == '__main__':
 
-
-    data = CryptoData('TSLA')
-
-    data.add_SMA_moving_average(7)  # need to drop 0:interval - 1
-    data.add_EMA_moving_average(7)  # need to drop 0:interval - 1
-    data.add_SMA_moving_average(14) #need to drop 0:interval - 1
-    data.add_EMA_moving_average(14) #need to drop 0:interval - 1
-    data.add_SMA_moving_average(21)  # need to drop 0:interval - 1
-    data.add_EMA_moving_average(21)  # need to drop 0:interval - 1
-    data.add_RSI(14) #need to drop 0:interval - 1
-    data.add_stochastic_RSI(14) #need to drop 0:interval - 1
-    data.add_MACD(12, 21, 9) #need to drop 0:slow - 1
-    data.add_ADX(14)
-    data.add_OBV(14)
-    data.add_AD_line(14)
-
-    data.df = data.df.dropna()
-
-    print(data.df)
-
-
-    #print(data.top_risers)
+    # print(data.top_risers)
     #print(data.fear_and_greed)
-
     # Add data to a dictionary. If it's in the dict 3 times, then print a medium buy signal.
+    main()

@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ABNB",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "206.2",
-            "2. high": "209.24",
-            "3. low": "204.16",
-            "4. close": "207.21",
-            "5. adjusted close": "207.21",
-            "6. volume": "7479309",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "192.465",
             "2. high": "208.16",
@@ -1004,6 +994,16 @@
             "4. close": "149.67",
             "5. adjusted close": "149.67",
             "6. volume": "6452449",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "152.67",
+            "2. high": "153.6272",
+            "3. low": "149.86",
+            "4. close": "150.73",
+            "5. adjusted close": "150.73",
+            "6. volume": "8173384",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

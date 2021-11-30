@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AKU",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "1.91",
-            "2. high": "2.15",
-            "3. low": "1.91",
-            "4. close": "2.15",
-            "5. adjusted close": "2.15",
-            "6. volume": "299550",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "1.88",
             "2. high": "1.91",
@@ -1004,6 +994,16 @@
             "4. close": "3.37",
             "5. adjusted close": "3.37",
             "6. volume": "1153840",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "2.93",
+            "2. high": "3.05",
+            "3. low": "2.9",
+            "4. close": "3.02",
+            "5. adjusted close": "3.02",
+            "6. volume": "50011",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

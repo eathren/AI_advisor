@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ACHV",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "8.22",
-            "2. high": "8.365",
-            "3. low": "8.0505",
-            "4. close": "8.1",
-            "5. adjusted close": "8.1",
-            "6. volume": "43600",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "8.27",
             "2. high": "8.27",
@@ -1004,6 +994,16 @@
             "4. close": "8.35",
             "5. adjusted close": "8.35",
             "6. volume": "498937",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "8.25",
+            "2. high": "8.47",
+            "3. low": "8.1",
+            "4. close": "8.29",
+            "5. adjusted close": "8.29",
+            "6. volume": "563061",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

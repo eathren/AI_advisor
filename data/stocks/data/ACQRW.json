@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ACQRW",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "1.24",
-            "2. high": "1.2401",
-            "3. low": "1.19",
-            "4. close": "1.19",
-            "5. adjusted close": "1.19",
-            "6. volume": "15929",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "1.68",
             "2. high": "1.68",
@@ -1004,6 +994,16 @@
             "4. close": "0.98",
             "5. adjusted close": "0.98",
             "6. volume": "314",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "0.98",
+            "2. high": "0.98",
+            "3. low": "0.98",
+            "4. close": "0.98",
+            "5. adjusted close": "0.98",
+            "6. volume": "1",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

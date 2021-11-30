@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AGCWW",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "5.38",
-            "2. high": "5.71",
-            "3. low": "4.26",
-            "4. close": "4.7",
-            "5. adjusted close": "4.7",
-            "6. volume": "202745",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "5.75",
             "2. high": "5.9",
@@ -1004,6 +994,16 @@
             "4. close": "3.17",
             "5. adjusted close": "3.17",
             "6. volume": "14464",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "3.25",
+            "2. high": "3.34",
+            "3. low": "3.21",
+            "4. close": "3.24",
+            "5. adjusted close": "3.24",
+            "6. volume": "22654",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

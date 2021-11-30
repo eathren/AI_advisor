@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AERI",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "12.06",
-            "2. high": "12.27",
-            "3. low": "11.54",
-            "4. close": "11.63",
-            "5. adjusted close": "11.63",
-            "6. volume": "437275",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "12.05",
             "2. high": "12.1581",
@@ -1004,6 +994,16 @@
             "4. close": "18.78",
             "5. adjusted close": "18.78",
             "6. volume": "1181382",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "17.5",
+            "2. high": "18.94",
+            "3. low": "17.41",
+            "4. close": "18.84",
+            "5. adjusted close": "18.84",
+            "6. volume": "862095",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

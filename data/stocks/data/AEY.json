@@ -2,21 +2,11 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AEY",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-12",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
-        "2021-11-15": {
-            "1. open": "2.17",
-            "2. high": "2.17",
-            "3. low": "2.0001",
-            "4. close": "2.03",
-            "5. adjusted close": "2.03",
-            "6. volume": "85368",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
         "2021-11-12": {
             "1. open": "2.22",
             "2. high": "2.2746",
@@ -1004,6 +994,16 @@
             "4. close": "2.43",
             "5. adjusted close": "2.43",
             "6. volume": "19222",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-06-24": {
+            "1. open": "2.553",
+            "2. high": "2.553",
+            "3. low": "2.4",
+            "4. close": "2.47",
+            "5. adjusted close": "2.47",
+            "6. volume": "21716",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }
