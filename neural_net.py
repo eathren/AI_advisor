@@ -31,9 +31,6 @@ helpful docs:
 https://blog.quantinsti.com/neural-network-python/
 """
 
-def evaluation_function(actual, predicted):  # This might not work
-    c = np.sum(.5 * ((actual - predicted) ** 2))
-
 
 class NeuralNet:
     def __init__(self, id):
@@ -41,40 +38,8 @@ class NeuralNet:
         # Else, populate as defaults. Save the file every so often.
         file_path = f"data/stocks/neural_nets/{id}.json"
         self.id = id
-        self.data = StockData(id).df
-        self.input_layer_size = 6
-        self.output_layer_size = 1
-        self.hidden_layer_size = 3
-        # if handle_json.file_exists(file_path):
-        #     self.weights = pd.read_json()
-        #     # self.data = pd.read_json()
-        #     # print(self.data)
-        # else:
-        self.weights = [.5, .5, .5]
-        self.weight = 1.0
-
         self.data = StockData(id)
-        # with open(file_path, "w+") as f:
-        #     json.dump(self.input, f, ensure_ascii=False, indent=4)
-            #     If historical data does not exist, populate neural net with defaults.
-        self.alpha = .01
 
-        self.learning_rate = 0
-        self.historical_success = 0
-        self.mentions = 0
-        self.curr_trajectory = 0
-        self.cost_per_share = 0  # cost/share
-        self.PE = 0  # P/E
-        self.age = 0
-        self.recently_acquired = False
-
-        self.MACD = 0
-        self.trend = 0
-        self.stoch_rsi = 0
-        self.rsi = 0
-        self.MA = 0  # Moving average
-
-        self.outputs = 0
 
     def activation_sigmoid(self, s):
         pass
@@ -223,7 +188,7 @@ class NeuralNet:
 
         plus = '+';
         minus = ''
-        print(f'The close price for {id} at {today} was {price_today}')
+        print(f'The close price for {self.id} at the previous close was {price_today}')
         print(f'The predicted close price is {predicted_price} ({plus if percent > 0 else minus}{percent}%)')
 
         # print(data)
@@ -248,6 +213,8 @@ class NeuralNet:
         x = np.array(x)
         y = np.array(y)
         return x, y
+
+
 
     def predict(self, input):
         return input * self.weight

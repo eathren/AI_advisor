@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np
 import json
 from time import sleep
+import pandas_ta as ta
 
 import handle_json
 import matplotlib.pyplot as plt
@@ -14,6 +15,9 @@ import matplotlib.pyplot as plt
 load_dotenv()
 
 AA_KEY = os.getenv('AA_KEY')
+
+RISER_THRESHOLD = -3
+FALLER_THRESHOLD = 3
 
 """
 How this is going to work:
@@ -37,21 +41,24 @@ http://www.fmlabs.com/reference/default.htm?url=SimpleMA.htm
 
 
 class StockData:
-    def __init__(self, id=None):
+    def __init__(self, id=None, full=True):
         self.id = id.upper()
+        self.full = full
         # self.data = self.read_data()
         self.data = self.fetch_json()
         self.df = self.json_to_pd_df()
-
+        #
         # populate indicators in pandas dataframe data.
-        self.add_SMA_moving_average(7)   
-        self.add_EMA_moving_average(7)   
-        self.add_SMA_moving_average(14)   
-        self.add_EMA_moving_average(14)   
-        self.add_SMA_moving_average(21)   
-        self.add_EMA_moving_average(21)   
-        self.add_RSI(14)   
-        self.add_stochastic_RSI(14)   
+        self.add_SMA_moving_average(7)
+        self.add_EMA_moving_average(7)
+        self.add_SMA_moving_average(14)
+        self.add_EMA_moving_average(14)
+        self.add_SMA_moving_average(21)
+        self.add_EMA_moving_average(21)
+        self.add_RSI(7)
+        self.add_RSI(14)
+        self.add_RSI(30)
+        self.add_stochastic_RSI(14)
         self.add_MACD(12, 21, 9)  # need to drop 0:slow - 1
         self.add_ADX(14)
         self.add_OBV(14)
@@ -59,7 +66,7 @@ class StockData:
         self.add_OC()
         # self.add_AD_line(14)
         # self.df = self.df.dropna()
-        self.df = self.df.iloc[::-1] # order dates in opposite order.
+        self.df = self.df.iloc[::-1]  # order dates in opposite order.
 
     def read_data(self) -> dict:
         """
@@ -85,7 +92,12 @@ class StockData:
 
         :return json stock data:
         """
-        params = {'symbol': self.id, 'apikey': AA_KEY, 'outputsize':'full'}
+        # This is a check on how much data to request from the API. compact is 30 days. Full is all.
+        if self.full:
+            size = 'full'
+        else:
+            size = 'compact'
+        params = {'symbol': self.id, 'apikey': AA_KEY, 'outputsize': size}
         response = requests.get(
             "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED",
             params=params)
@@ -101,8 +113,9 @@ class StockData:
         :param self.json, json stock data from Alpha Advantage.
         :return df, a PD dataframe object:
         """
+        # Pandas is dumb when it comes to renaming rows. Make them columns to rename instead.
         df = pd.DataFrame(self.data['Time Series (Daily)']).transpose()
-        # Pandas is dumb when it comes to renaming rows. Make them columns briefly to rename instead.
+        # rename columns, since the api has a terrible naming convention.
         df = df.rename(columns={'1. open': 'open', '2. high': 'high', '3. low': 'low', '4. close': 'close',
                                 '5. adjusted close': 'adjusted close', '6. volume': 'volume',
                                 '7. dividend amount': 'dividend amount', '8. split coefficient': 'split coefficient'})
@@ -140,8 +153,47 @@ class StockData:
                 'high': high_list, 'low': low_list, 'volume': volume_list}
 
         df = pd.DataFrame(dict)
-        print(df)
+        # print(df)
         return df
+
+    def calc_if_riser_or_faller(self):
+        df = self.df
+        score = 0  # this will be used to calculae a riser or faller.
+        # score < 0 will be a possible faller.
+        # score > 0 will be a possible riser.
+        # Temporary rsi using pandas ta until ours works a little better.
+        rsi = df.ta.rsi(close='adjusted close', length=14, append=True)
+        macd = df.ta.macd(close='adjusted close', fast=12, slow=26, signal=9, append=True, signal_indicators=True)
+        cci = df.ta.cci(high='high', low='low', close='adjusted close', append=True)
+        cci_val = df['CCI_14_0.015'].iloc[-1]
+        print("CCI", cci)
+
+        print("CCI val", cci_val)
+        # score += 1 if rsi.tail() < 70 else score -= 1
+        # print(cci_val)
+        # rsi oscillator check
+        rsi_val = rsi.iloc[-1]
+        if rsi_val > 90:
+            score += 3
+        elif 70 > rsi_val > 90:
+            score += 2
+        elif rsi_val > 70:
+            score += 1
+        elif 30 < rsi_val < 70:
+            pass
+        elif rsi_val <= 30:
+            score -= 1
+        else:  # Rsi value is below 30, buy signal
+            score -= 3
+
+        if cci_val > 100:
+            score += 2
+        if cci_val < -100:
+            score -= 2
+
+        return self.id, score, rsi_val, cci_val
+
+        # print(self.df['MACD_12_26_9'])
 
     def add_SMA_moving_average(self, interval):
         self.df[str(interval) + '_Day_SMA'] = self.df['adjusted close'].rolling(window=interval).mean()
@@ -151,18 +203,20 @@ class StockData:
                                                                             ignore_na=False).mean()
 
     def add_RSI(self, interval):
-        adjusted_delta = self.df['adjusted close'].astype(float).diff()
-        up = adjusted_delta.clip(lower=0)
+        delta = self.df['adjusted close'].astype(float).diff()
+        up = delta.clip(lower=0)
 
-        down = -1 * adjusted_delta.clip(upper=0)
+        down = -1 * delta.clip(upper=0)
 
-        ma_up = up.ewm(com=interval - 1, min_periods=0, adjust=False, ignore_na=False).mean()
+        ema_up = up.ewm(com=interval, adjust=False).mean()
 
-        ma_down = down.ewm(com=interval - 1, min_periods=0, adjust=False, ignore_na=False).mean()
+        ema_down = down.ewm(com=interval, adjust=False).mean()
 
-        RSI = ma_up / ma_down
+        rs = round(ema_up / ema_down, 2)
 
-        self.df[str(interval) + '_Day_RSI'] = 100 - (100 / (1 + RSI))
+        ind = str(interval) + '_Day_RSI'
+
+        self.df[ind] = 100 - (100 / (1 + rs))
 
     def add_stochastic_RSI(self, interval, K=3, D=3):
         adjusted_delta = self.df['adjusted close'].diff()
@@ -286,9 +340,7 @@ class StockData:
 
     # refer from: https://github.com/voice32/stock_market_indicators/blob/master/indicators.py
     def add_AD_line(self, interval):
-
         accumulation_list = []
-        print('1')
         for index, row in self.df.iterrows():
             if row['high'] != row['low']:
                 accumulation = ((row["adjusted close"] - row['low']) - (row['high'] - row['adjusted close'])) / (
@@ -300,42 +352,6 @@ class StockData:
         self.df['A/D line'] = accumulation_list
         self.df[str(interval) + '_EMA_AD-line'] = self.df['A/D line'].ewm(ignore_na=False, min_periods=0, com=interval)
 
-    def plot_data(self):
-        df = pd.DataFrame(self.json['Time Series (Daily)'])
-        print(df)
-        df = df.T.iloc[::-1]
-        print(df)
-        x = pd.to_datetime(df.index)
-        y = df["2. high"]
-        plt.title(self.id)
-        plt.xticks(rotation=90)
-        plt.xlabel("date")
-        plt.ylabel("dollars")
-        plt.plot(x, y)
-        plt.plot(x, df["6. volume"])
-        plt.show()
-
-    def plot_yfinance(self):
-        ticker = yf.Ticker(self.id)
-        history = ticker.history(start="2020-01-01", end="2020-02-01")
-        history.head()
-        print(ticker.info)
-        data = yf.download(self.id)
-        data.tail()
-        data['Close'].plot(figsize=(10, 5))
-
-        # def fetch_live_data(self):
-        #     for row in self.data[1:2]:
-        #         params = {'symbol': str(row[0]), 'apikey': str(AA_KEY)}
-        #         print(row[0], AA_KEY)
-        #         response = requests.get(
-        #             "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED",
-        #             params=params)
-        #
-        #         if response.status_code == 200:
-        #             id_data = response.json()
-        #             self.history.append(id_data)
-
     def print_random(self):
         """
         prints a random stock
@@ -346,10 +362,10 @@ class StockData:
 
 def fetch_fresh_data():
     all_stocks = fetch_all_names()
-    print(all_stocks)
+    # print(all_stocks)
     for i, name in enumerate(all_stocks[1:]):
-        sleep(1)  # this should be 1 second.
-        stock = StockData(name)
+        sleep(1)  # this should be 1 second, api is limited to 70 req/min
+        stock = StockData(name, full=True)
         stock.write_data()
 
 
@@ -365,13 +381,30 @@ def fetch_all_names():
     return all_stocks
 
 
-"""
+def calc_all_risers_and_fallers():
+    all_stocks = fetch_all_names()
+    risers = {}
+    fallers = {}
+    for i, name in enumerate(all_stocks[1:15]):
+        stock = StockData(name)
+        id, score, rsi, cci = stock.calc_if_riser_or_faller()
+        if score >= FALLER_THRESHOLD:
+            fallers[id] = {"score": score, "rsi": rsi, "cci": cci}
+        if score <= RISER_THRESHOLD:
+            risers[id] = {"score": score, "rsi": rsi, "cci":cci}
+
+    with open('data/stocks/risers/risers.json', 'w', encoding='utf-8') as f:
+        json.dump(risers, f, ensure_ascii=False, indent=4)
+    with open('data/stocks/fallers/fallers.json', 'w', encoding='utf-8') as f:
+        json.dump(fallers, f, ensure_ascii=False, indent=4)
+
+
+"""     
 N: 1-1000 stocks
 Z: 1001 - 2000
 K: 2000 - 3000
 """
 
 if __name__ == '__main__':
-    stock = StockData("INTU")
-    # fetch_fresh_data()
-    print("yes", stock.df)
+    fetch_fresh_data()  # this updates the data every day after closing
+    calc_all_risers_and_fallers()  # this populates the risers and fallers list
