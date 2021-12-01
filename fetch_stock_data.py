@@ -41,11 +41,14 @@ http://www.fmlabs.com/reference/default.htm?url=SimpleMA.htm
 
 
 class StockData:
-    def __init__(self, id=None, full=True):
+    def __init__(self, id=None, full=True, new_data = False):
         self.id = id.upper()
         self.full = full
-        # self.data = self.read_data()
-        self.data = self.fetch_json()
+
+        if new_data:
+            self.data = self.fetch_json()
+        else:
+            self.data = self.read_data()
         self.df = self.json_to_pd_df()
         #
         # populate indicators in pandas dataframe data.
@@ -153,7 +156,6 @@ class StockData:
                 'high': high_list, 'low': low_list, 'volume': volume_list}
 
         df = pd.DataFrame(dict)
-        # print(df)
         return df
 
     def calc_if_riser_or_faller(self):
@@ -165,31 +167,34 @@ class StockData:
         rsi = df.ta.rsi(close='adjusted close', length=14, append=True)
         macd = df.ta.macd(close='adjusted close', fast=12, slow=26, signal=9, append=True, signal_indicators=True)
         cci = df.ta.cci(high='high', low='low', close='adjusted close', append=True)
-        cci_val = df['CCI_14_0.015'].iloc[-1]
-        print("CCI", cci)
 
-        print("CCI val", cci_val)
-        # score += 1 if rsi.tail() < 70 else score -= 1
-        # print(cci_val)
+        cci_val = df['CCI_14_0.015'].iloc[-1]
+
         # rsi oscillator check
         rsi_val = rsi.iloc[-1]
         if rsi_val > 90:
             score += 3
-        elif 70 > rsi_val > 90:
+        elif 70 < rsi_val < 90:
             score += 2
         elif rsi_val > 70:
             score += 1
-        elif 30 < rsi_val < 70:
-            pass
-        elif rsi_val <= 30:
+        elif 20 < rsi_val <= 30:
             score -= 1
-        else:  # Rsi value is below 30, buy signal
+        elif rsi_val < 20:  # Rsi value is below 30, buy signal
             score -= 3
 
-        if cci_val > 100:
+        if cci_val > 200:
+            score += 4
+        elif 100 < cci_val < 200:
+            score += 3
+        elif cci_val > 100:
             score += 2
-        if cci_val < -100:
+        elif cci_val < -100:
             score -= 2
+        elif -200 < cci_val < -100:
+            score += 3
+        elif cci_val < -200:
+            score += 4
 
         return self.id, score, rsi_val, cci_val
 
@@ -385,14 +390,18 @@ def calc_all_risers_and_fallers():
     all_stocks = fetch_all_names()
     risers = {}
     fallers = {}
-    for i, name in enumerate(all_stocks[1:15]):
-        stock = StockData(name)
-        id, score, rsi, cci = stock.calc_if_riser_or_faller()
-        if score >= FALLER_THRESHOLD:
-            fallers[id] = {"score": score, "rsi": rsi, "cci": cci}
-        if score <= RISER_THRESHOLD:
-            risers[id] = {"score": score, "rsi": rsi, "cci":cci}
-
+    for i, name in enumerate(all_stocks[1:50]):
+        try:
+            stock = StockData(name, full=True, new_data = False)
+            id, score, rsi, cci = stock.calc_if_riser_or_faller()
+            print(f"id: {id}, score:{score}, rsi:{rsi}, cci:{cci}")
+            if score >= FALLER_THRESHOLD:
+                fallers[id] = {"score": score, "rsi": rsi, "cci": cci}
+            if score <= RISER_THRESHOLD:
+                print("YASS")
+                risers[id] = {"score": score, "rsi": rsi, "cci":cci}
+        except:
+            print("Something happend for stock: ", name)
     with open('data/stocks/risers/risers.json', 'w', encoding='utf-8') as f:
         json.dump(risers, f, ensure_ascii=False, indent=4)
     with open('data/stocks/fallers/fallers.json', 'w', encoding='utf-8') as f:
@@ -406,5 +415,5 @@ K: 2000 - 3000
 """
 
 if __name__ == '__main__':
-    fetch_fresh_data()  # this updates the data every day after closing
+    # fetch_fresh_data()  # this updates the data every day after closing
     calc_all_risers_and_fallers()  # this populates the risers and fallers list
