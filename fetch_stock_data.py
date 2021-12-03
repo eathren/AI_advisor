@@ -406,7 +406,7 @@ def calc_all_risers_and_fallers():
         json.dump(risers, f, ensure_ascii=False, indent=4)
     with open('data/stocks/fallers/fallers.json', 'w', encoding='utf-8') as f:
         json.dump(fallers, f, ensure_ascii=False, indent=4)
-
+    return risers, fallers
 
 """     
 N: 1-1000 stocks

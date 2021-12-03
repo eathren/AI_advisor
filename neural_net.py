@@ -160,14 +160,16 @@ class NeuralNet:
         pred_price_unscaled = mm_scaler.inverse_transform(pred_price)
 
         # Print last price and predicted price for the next day
-        price_today = round(df_new['adjusted close'][-1], 2)
+        previous_price = round(df_new['adjusted close'][-1], 2)
         predicted_price = round(pred_price_unscaled.ravel()[0], 2)
-        percent = round(100 - (predicted_price * 100) / price_today, 2)
+        percent = round(100 - (predicted_price * 100) / previous_price, 2)
 
         plus = '+'
         minus = ''
-        print(f'The close price for {self.id} at the previous close was {price_today}')
+        print(f'The close price for {self.id} at the previous close was {previous_price}')
         print(f'The predicted close price is {predicted_price} ({plus if percent > 0 else minus}{percent}%)')
+
+        return self.id, previous_price, predicted_price
 
     def partition_dataset(self, sequence_length, train_df, index_close):
         """
@@ -185,7 +187,6 @@ class NeuralNet:
             x.append(train_df[i - sequence_length:i, :])  # contains sequence_length values 0-sequence_length * columsn
             y.append(train_df[
                          i, index_close])  # contains the prediction values for validation (3rd column = Close),  for single-step prediction
-
         # Convert the x and y to numpy arrays
         x = np.array(x)
         y = np.array(y)
@@ -194,4 +195,4 @@ class NeuralNet:
 
 if __name__ == "__main__":
     net = NeuralNet("AMC")
-    net.train()
+    _, _, _ = net.train() # run the net with whatever stock is supplied
