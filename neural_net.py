@@ -171,16 +171,30 @@ class NeuralNet:
         print(f'The close price for {self.id} at the previous close was {previous_price}')
         print(f'The predicted close price is {predicted_price} ({plus if percent > 0 else minus}{percent}%)')
 
+        # set $ values to be retrieved later in calculate_stocks_daily.py
         self.previous_price = previous_price
         self.predicted_price = predicted_price
 
-    def get_previous_price(self):
+    def get_previous_price(self) -> float:
+        """
+        gets previous price
+        :return self.previous_price:
+        """
         return self.previous_price
 
-    def get_predicted_price(self):
+    def get_predicted_price(self) -> float:
+        """
+        getter for predicted_price
+        :return predicted_price:
+        """
         return self.predicted_price
 
-    def get_id(self):
+    def get_id(self) -> string:
+        """
+        getter for self.id
+
+        :return self.id:
+        """
         return self.id
 
     def partition_dataset(self, sequence_length, train_df, index_close):
