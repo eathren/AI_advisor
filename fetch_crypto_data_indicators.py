@@ -39,7 +39,6 @@ class CryptoData:
         self.data = self.fetch_data(stock_abv)
         self.df = self.create_pd_df()
 
-        # self.top_risers = self.get_weekly_risers()
         # self.best_to_buy = []
         # self.best_to_sell = []
         # self.fear_and_greed = fear_and_greed.get().value
