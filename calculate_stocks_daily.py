@@ -27,12 +27,18 @@ if __name__ == "__main__":
         # Each neural net calculation takes about 5 minutes on my laptop.
         # so run this BEFORE the markets open by at least 12 hours.
         try:
-            id, previous_price, predicted_price = NeuralNet(stock, full=True, new_data=False)
+            #run and train the neural net. see neural_net.py
+            net = NeuralNet(stock, full=True, new_data=False)
+            #getters
+            id = net.get_id()
+            previous_price = net.get_previous_price()
+            predicted_price = net.get_previous_price()
+
             predictions[id] = {'previous': previous_price, 'predicted': predicted_price}
         except:
             print(f"Something happened during the neural net calculation for {id}")
-    # write all these predictions to a file.
 
+    # write all these predictions to a file.
     with open(f"data/stocks/predictions/{date_today}.json", "w+") as f:
         with open('data/stocks/risers/risers.json', 'w', encoding='utf-8') as f:
 

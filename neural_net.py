@@ -32,6 +32,8 @@ class NeuralNet:
     def __init__(self, id):
         self.id = id
         self.data = StockData(id, full=True, new_data=True)
+        self.previous_price = 0
+        self.predicted_price = 0
 
     def train(self):
         today = date.today()
@@ -169,7 +171,17 @@ class NeuralNet:
         print(f'The close price for {self.id} at the previous close was {previous_price}')
         print(f'The predicted close price is {predicted_price} ({plus if percent > 0 else minus}{percent}%)')
 
-        return self.id, previous_price, predicted_price
+        self.previous_price = previous_price
+        self.predicted_price = predicted_price
+
+    def get_previous_price(self):
+        return self.previous_price
+
+    def get_predicted_price(self):
+        return self.predicted_price
+
+    def get_id(self):
+        return self.id
 
     def partition_dataset(self, sequence_length, train_df, index_close):
         """
@@ -195,4 +207,4 @@ class NeuralNet:
 
 if __name__ == "__main__":
     net = NeuralNet("AMC")
-    _, _, _ = net.train() # run the net with whatever stock is supplied
+    _, _, _ = net.train()  # run the net with whatever stock is supplied
