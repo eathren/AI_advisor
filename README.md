@@ -29,14 +29,12 @@ Using something like pycharm, pycharm wants to install for you, so you can do th
 
 Project entry point is demo.py for limited use, and calculate_stocks_daily.py for full use. 
 
-### Goals:
-
-Take stock market and crypto data, and parse it into the most and least promising.
 
 ### Algorithms:
 
-Use NumPy and Pandas to quickly solve bulk data sets and calculate out things like MACD, StochRSI, and hopefully things
-like neural-net like datasets for recommendations.
+Use NumPy and Pandas to quickly solve bulk data sets and calculate the indicators. 
+
+A neural net is used for next day adjusted closing prediction. 
 
 The indicators that are used are RSI, Stoch RSI, EMA and SMA of varying time frames (7d, 14d, and 21d). 
 
