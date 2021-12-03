@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import handle_json
 import json
 from datetime import date, timedelta
-import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import tensorflow as tf
 from tensorflow import keras
@@ -122,7 +121,7 @@ class NeuralNet:
         train = train[train.index > display_start_date]
 
         # Visualize the data
-        fig, ax = plt.subplots(figsize=(16, 8), sharex=True)
+        fig, ax = plt.subplots(figsize=(16, 8), sharex=True) #HERE. This might cause issues.
 
         plt.title("Predictions vs Ground Truth", fontsize=20)
         plt.ylabel(self.id, fontsize=18)
@@ -220,5 +219,9 @@ class NeuralNet:
 
 
 if __name__ == "__main__":
+    """
+    Runs the net with a given stock, prints pred and previous price 
+    and plots the chart with train data.
+    """
     net = NeuralNet("AMC")
-    _, _, _ = net.train()  # run the net with whatever stock is supplied
+    net.train()  # run the net with whatever stock is supplied
