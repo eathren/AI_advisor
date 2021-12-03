@@ -1,6 +1,9 @@
 import json
 from os.path import exists as file_exists
 
+"""
+This file handles some logic to check if a file exists, and to write/read json data in those files.
+"""
 
 def store_json(file, data):
     with open(f"{file}.json", 'w+') as f:
@@ -15,4 +18,3 @@ def load_json(file):
 def does_file_exist(file):  # Might be a more elegant way to do this one.
     return file_exists(file)
 
-#  Make a class. If the file exists, fetch the data. Else, populate with a default instance and then work on it/save that to data.

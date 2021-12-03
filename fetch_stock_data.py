@@ -159,6 +159,14 @@ class StockData:
         return df
 
     def calc_if_riser_or_faller(self):
+        """
+        name: calc_if_riser_or_faller
+
+        This function will iterate through all a stock pandas dataframe and return it's name, the score
+        value, and rsi and cci indicators.
+
+        :return self.id:string, score:int, rsi: float, cci:float
+        """
         df = self.df
         score = 0  # this will be used to calculae a riser or faller.
         # score < 0 will be a possible faller.
@@ -197,8 +205,6 @@ class StockData:
             score += 4
 
         return self.id, score, rsi_val, cci_val
-
-        # print(self.df['MACD_12_26_9'])
 
     def add_SMA_moving_average(self, interval):
         self.df[str(interval) + '_Day_SMA'] = self.df['adjusted close'].rolling(window=interval).mean()
@@ -367,7 +373,6 @@ class StockData:
 
 def fetch_fresh_data():
     all_stocks = fetch_all_names()
-    # print(all_stocks)
     for i, name in enumerate(all_stocks[1:]):
         sleep(1)  # this should be 1 second, api is limited to 70 req/min
         stock = StockData(name, full=True)
