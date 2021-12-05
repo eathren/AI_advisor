@@ -15,8 +15,7 @@ from sklearn.preprocessing import MinMaxScaler
 from keras.models import Sequential  # Deep learning library, used for neural networks
 from keras.layers import LSTM, Dense  # Deep learning classes for recurrent and regular densely-connected layers
 
-from fetch_stock_data import StockData
-from fetch_crypto_data_indicators import CryptoData
+from stock_data import StockData
 
 """
 This file takes a range of stock closing prices, and then 
@@ -30,7 +29,7 @@ https://blog.quantinsti.com/neural-network-python/
 class NeuralNet:
     def __init__(self, id):
         self.id = id
-        self.data = StockData(id, full=True, new_data=True)
+        self.data = StockData(id, full=True, new_data=False)
         self.previous_price = 0
         self.predicted_price = 0
 
@@ -121,27 +120,30 @@ class NeuralNet:
         train = train[train.index > display_start_date]
 
         # Visualize the data
-        fig, ax = plt.subplots(figsize=(16, 8), sharex=True) #HERE. This might cause issues.
-
+        # fig, ax = plt.subplots(figsize=(16, 8), sharex=True) #HERE. This might cause issues.
+        fig, ax = plt.subplots()
         plt.title("Predictions vs Ground Truth", fontsize=20)
+        plt.rcParams["figure.autolayout"] = True
+        plt.xticks(rotation=90)
         plt.ylabel(self.id, fontsize=18)
         plt.plot(train["adjusted close"], color="#039dfc", linewidth=1.0)
         plt.plot(valid["Predictions"], color="#E91D9E", linewidth=1.0)
         plt.plot(valid["adjusted close"], color="black", linewidth=1.0)
-        plt.legend(["Train", "Test Predictions", "Ground Truth"], loc="upper left")
-
+        my_xticks = ax.get_xticks()
+        plt.xticks([my_xticks[0], my_xticks[len(my_xticks)//2],  my_xticks[-1]], visible=True, rotation="horizontal")
         # Fill between plotlines
-        ax.fill_between(yt.index, 0, yt["adjusted close"], color="#b9e1fa")
-        ax.fill_between(yv.index, 0, yv["Predictions"], color="#F0845C")
-        ax.fill_between(yv.index, yv["adjusted close"], yv["Predictions"], color="grey")
+        # ax.fill_between(.ytindex, 0, yt["adjusted close"], color="#b9e1fa")
+        # ax.fill_between(yv.index, 0, yv["Predictions"], color="#F0845C")
+        # ax.fill_between(yv.index, yv["adjusted close"], yv["Predictions"], color="grey")
 
         # Create the bar plot with the differences
         valid.loc[valid["Difference"] >= 0, 'diff_color'] = "#2BC97A"
         valid.loc[valid["Difference"] < 0, 'diff_color'] = "#C92B2B"
         plt.bar(valid.index, valid["Difference"], width=0.8, color=valid['diff_color'])
 
-        plt.show()
+        plt.savefig(f"data/stocks/plots/{self.id}.png",bbox_inches='tight', dpi=150)
 
+        # plt.show()
         # Get fresh data
         df_new = dataset.filter(['adjusted close'])
 
@@ -171,8 +173,8 @@ class NeuralNet:
         print(f'The predicted close price is {predicted_price} ({plus if percent > 0 else minus}{percent}%)')
 
         # set $ values to be retrieved later in calculate_stocks_daily.py
-        self.previous_price = previous_price
-        self.predicted_price = predicted_price
+        self.previous_price = round(previous_price, 2)
+        self.predicted_price = round(predicted_price, 2)
 
     def get_previous_price(self) -> float:
         """
@@ -188,13 +190,13 @@ class NeuralNet:
         """
         return self.predicted_price
 
-    def get_id(self) -> string:
+    def get_id(self) -> str:
         """
         getter for self.id
 
         :return self.id:
         """
-        return self.id
+        return str(self.id)
 
     def partition_dataset(self, sequence_length, train_df, index_close):
         """
