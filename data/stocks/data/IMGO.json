@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "IMGO",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "21.51",
+            "2. high": "25.02",
+            "3. low": "21.51",
+            "4. close": "23.8",
+            "5. adjusted close": "23.8",
+            "6. volume": "113263",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "23.25",
+            "2. high": "23.42",
+            "3. low": "21.56",
+            "4. close": "21.86",
+            "5. adjusted close": "21.86",
+            "6. volume": "138323",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "22.42",
+            "2. high": "23.305",
+            "3. low": "21.8",
+            "4. close": "22.76",
+            "5. adjusted close": "22.76",
+            "6. volume": "91260",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "21.61",
             "2. high": "23.185",
             "3. low": "21.24",
             "4. close": "22.2",
             "5. adjusted close": "22.2",
-            "6. volume": "209408",
+            "6. volume": "219658",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

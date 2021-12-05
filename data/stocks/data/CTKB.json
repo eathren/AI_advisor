@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "CTKB",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "20.78",
+            "2. high": "21.13",
+            "3. low": "19.41",
+            "4. close": "19.48",
+            "5. adjusted close": "19.48",
+            "6. volume": "300234",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "22.73",
+            "2. high": "22.73",
+            "3. low": "20.69",
+            "4. close": "20.79",
+            "5. adjusted close": "20.79",
+            "6. volume": "212082",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "22.79",
+            "2. high": "23.12",
+            "3. low": "22.245",
+            "4. close": "22.69",
+            "5. adjusted close": "22.69",
+            "6. volume": "245216",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "23.28",
             "2. high": "23.42",
             "3. low": "22.21",
             "4. close": "22.95",
             "5. adjusted close": "22.95",
-            "6. volume": "130322",
+            "6. volume": "130979",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

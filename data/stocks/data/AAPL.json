@@ -2,11 +2,61 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AAPL",
-        "3. Last Refreshed": "2021-11-12",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "157.65",
+            "2. high": "161.02",
+            "3. low": "156.5328",
+            "4. close": "160.55",
+            "5. adjusted close": "160.55",
+            "6. volume": "117305597",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "153.71",
+            "2. high": "158.67",
+            "3. low": "153.05",
+            "4. close": "157.87",
+            "5. adjusted close": "157.87",
+            "6. volume": "137827673",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "150.995",
+            "2. high": "155.0",
+            "3. low": "150.99",
+            "4. close": "153.49",
+            "5. adjusted close": "153.49",
+            "6. volume": "88807000",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-16": {
+            "1. open": "149.94",
+            "2. high": "151.488",
+            "3. low": "149.34",
+            "4. close": "151.0",
+            "5. adjusted close": "151.0",
+            "6. volume": "59256210",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-15": {
+            "1. open": "150.37",
+            "2. high": "151.88",
+            "3. low": "149.43",
+            "4. close": "150.0",
+            "5. adjusted close": "150.0",
+            "6. volume": "59222803",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-12": {
             "1. open": "148.43",
             "2. high": "150.4",
@@ -954,56 +1004,6 @@
             "4. close": "137.27",
             "5. adjusted close": "136.864627226",
             "6. volume": "52485781",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-30": {
-            "1. open": "136.17",
-            "2. high": "137.41",
-            "3. low": "135.87",
-            "4. close": "136.96",
-            "5. adjusted close": "136.555542689",
-            "6. volume": "63261393",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-29": {
-            "1. open": "134.8",
-            "2. high": "136.49",
-            "3. low": "134.35",
-            "4. close": "136.33",
-            "5. adjusted close": "135.927403145",
-            "6. volume": "64556081",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-28": {
-            "1. open": "133.41",
-            "2. high": "135.245",
-            "3. low": "133.35",
-            "4. close": "134.78",
-            "5. adjusted close": "134.381980459",
-            "6. volume": "62111303",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-25": {
-            "1. open": "133.46",
-            "2. high": "133.89",
-            "3. low": "132.81",
-            "4. close": "133.11",
-            "5. adjusted close": "132.716912144",
-            "6. volume": "70783746",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-24": {
-            "1. open": "134.45",
-            "2. high": "134.64",
-            "3. low": "132.93",
-            "4. close": "133.41",
-            "5. adjusted close": "133.016026213",
-            "6. volume": "68710998",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

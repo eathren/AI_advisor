@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "FATBB",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "16.28",
+            "2. high": "16.66",
+            "3. low": "16.15",
+            "4. close": "16.37",
+            "5. adjusted close": "16.37",
+            "6. volume": "11359",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "16.71",
+            "2. high": "16.9644",
+            "3. low": "15.9579",
+            "4. close": "16.4",
+            "5. adjusted close": "16.4",
+            "6. volume": "34374",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "16.54",
+            "2. high": "17.94",
+            "3. low": "16.54",
+            "4. close": "17.03",
+            "5. adjusted close": "17.03",
+            "6. volume": "52648",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "15.06",
             "2. high": "19.42",
             "3. low": "14.58",
             "4. close": "18.92",
             "5. adjusted close": "18.92",
-            "6. volume": "144222",
+            "6. volume": "149746",
             "7. dividend amount": "0.1300",
             "8. split coefficient": "1.0"
         },

@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ICCM",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "6.64",
+            "2. high": "6.64",
+            "3. low": "6.08",
+            "4. close": "6.22",
+            "5. adjusted close": "6.22",
+            "6. volume": "37988",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "6.25",
+            "2. high": "6.3",
+            "3. low": "6.0204",
+            "4. close": "6.22",
+            "5. adjusted close": "6.22",
+            "6. volume": "59822",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "5.86",
+            "2. high": "5.96",
+            "3. low": "5.6223",
+            "4. close": "5.96",
+            "5. adjusted close": "5.96",
+            "6. volume": "54359",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "6.0",
             "2. high": "6.04",
             "3. low": "5.55",
             "4. close": "5.69",
             "5. adjusted close": "5.69",
-            "6. volume": "55258",
+            "6. volume": "55269",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

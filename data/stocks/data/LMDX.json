@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "LMDX",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "10.05",
+            "2. high": "10.384",
+            "3. low": "10.05",
+            "4. close": "10.35",
+            "5. adjusted close": "10.35",
+            "6. volume": "73290",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "10.54",
+            "2. high": "11.0857",
+            "3. low": "10.01",
+            "4. close": "10.36",
+            "5. adjusted close": "10.36",
+            "6. volume": "103460",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "9.5",
+            "2. high": "10.73",
+            "3. low": "9.42",
+            "4. close": "10.49",
+            "5. adjusted close": "10.49",
+            "6. volume": "161686",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "9.95",
             "2. high": "9.95",
             "3. low": "9.3",
             "4. close": "9.62",
             "5. adjusted close": "9.62",
-            "6. volume": "77589",
+            "6. volume": "79607",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

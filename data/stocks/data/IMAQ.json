@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "IMAQ",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "9.83",
+            "2. high": "9.85",
+            "3. low": "9.8201",
+            "4. close": "9.84",
+            "5. adjusted close": "9.84",
+            "6. volume": "15360",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "9.82",
+            "2. high": "9.8489",
+            "3. low": "9.8147",
+            "4. close": "9.8301",
+            "5. adjusted close": "9.8301",
+            "6. volume": "45070",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "9.83",
+            "2. high": "9.86",
+            "3. low": "9.82",
+            "4. close": "9.84",
+            "5. adjusted close": "9.84",
+            "6. volume": "24925",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "9.83",
             "2. high": "9.85",
             "3. low": "9.83",
             "4. close": "9.83",
             "5. adjusted close": "9.83",
-            "6. volume": "60007",
+            "6. volume": "183758",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

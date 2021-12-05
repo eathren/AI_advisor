@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "CVRX",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "14.37",
+            "2. high": "14.37",
+            "3. low": "12.78",
+            "4. close": "13.22",
+            "5. adjusted close": "13.22",
+            "6. volume": "109347",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "14.91",
+            "2. high": "16.61",
+            "3. low": "13.64",
+            "4. close": "14.34",
+            "5. adjusted close": "14.34",
+            "6. volume": "128944",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "16.21",
+            "2. high": "16.22",
+            "3. low": "14.0",
+            "4. close": "15.01",
+            "5. adjusted close": "15.01",
+            "6. volume": "175647",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "18.29",
             "2. high": "18.29",
             "3. low": "16.16",
             "4. close": "16.2",
             "5. adjusted close": "16.2",
-            "6. volume": "107886",
+            "6. volume": "120687",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },
@@ -974,16 +1004,6 @@
             "4. close": "26.07",
             "5. adjusted close": "26.07",
             "6. volume": "552940",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-30": {
-            "1. open": "26.25",
-            "2. high": "29.0",
-            "3. low": "25.0",
-            "4. close": "28.0",
-            "5. adjusted close": "28.0",
-            "6. volume": "2856070",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

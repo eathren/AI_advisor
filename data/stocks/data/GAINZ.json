@@ -2,11 +2,41 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "GAINZ",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "26.2901",
+            "2. high": "26.43",
+            "3. low": "26.2901",
+            "4. close": "26.43",
+            "5. adjusted close": "26.43",
+            "6. volume": "5548",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "26.3417",
+            "2. high": "26.3417",
+            "3. low": "25.95",
+            "4. close": "26.27",
+            "5. adjusted close": "26.27",
+            "6. volume": "14305",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "26.25",
+            "2. high": "26.25",
+            "3. low": "26.25",
+            "4. close": "26.25",
+            "5. adjusted close": "26.25",
+            "6. volume": "259",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "26.29",
             "2. high": "26.4143",

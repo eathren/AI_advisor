@@ -2,11 +2,31 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "AMTBB",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-17",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-17": {
+            "1. open": "28.54",
+            "2. high": "28.72",
+            "3. low": "28.105",
+            "4. close": "28.72",
+            "5. adjusted close": "28.72",
+            "6. volume": "3933",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-16": {
+            "1. open": "28.5",
+            "2. high": "29.05",
+            "3. low": "28.28",
+            "4. close": "29.05",
+            "5. adjusted close": "29.05",
+            "6. volume": "10984",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-15": {
             "1. open": "28.21",
             "2. high": "28.71",
@@ -984,26 +1004,6 @@
             "4. close": "19.4",
             "5. adjusted close": "19.4",
             "6. volume": "7181",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-28": {
-            "1. open": "19.47",
-            "2. high": "19.47",
-            "3. low": "19.35",
-            "4. close": "19.35",
-            "5. adjusted close": "19.35",
-            "6. volume": "24646",
-            "7. dividend amount": "0.0000",
-            "8. split coefficient": "1.0"
-        },
-        "2021-06-25": {
-            "1. open": "19.4",
-            "2. high": "19.45",
-            "3. low": "19.3",
-            "4. close": "19.35",
-            "5. adjusted close": "19.35",
-            "6. volume": "18959",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         }

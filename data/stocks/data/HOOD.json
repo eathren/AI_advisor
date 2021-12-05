@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "HOOD",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "30.3",
+            "2. high": "30.8",
+            "3. low": "28.8",
+            "4. close": "28.99",
+            "5. adjusted close": "28.99",
+            "6. volume": "14289543",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "32.9",
+            "2. high": "32.93",
+            "3. low": "30.41",
+            "4. close": "30.53",
+            "5. adjusted close": "30.53",
+            "6. volume": "12654119",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "33.8",
+            "2. high": "33.98",
+            "3. low": "32.81",
+            "4. close": "32.88",
+            "5. adjusted close": "32.88",
+            "6. volume": "6763787",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "34.37",
             "2. high": "34.44",
             "3. low": "32.87",
             "4. close": "33.87",
             "5. adjusted close": "33.87",
-            "6. volume": "8855621",
+            "6. volume": "8929807",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

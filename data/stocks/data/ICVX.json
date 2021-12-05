@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "ICVX",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "27.76",
+            "2. high": "30.49",
+            "3. low": "27.4492",
+            "4. close": "28.07",
+            "5. adjusted close": "28.07",
+            "6. volume": "70693",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "28.44",
+            "2. high": "28.815",
+            "3. low": "27.245",
+            "4. close": "28.12",
+            "5. adjusted close": "28.12",
+            "6. volume": "51661",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "27.09",
+            "2. high": "29.625",
+            "3. low": "26.21",
+            "4. close": "28.3",
+            "5. adjusted close": "28.3",
+            "6. volume": "76637",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "25.01",
             "2. high": "27.03",
             "3. low": "24.7747",
             "4. close": "26.79",
             "5. adjusted close": "26.79",
-            "6. volume": "68061",
+            "6. volume": "75289",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

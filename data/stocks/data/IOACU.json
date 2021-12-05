@@ -2,11 +2,41 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "IOACU",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "10.13",
+            "2. high": "10.13",
+            "3. low": "10.09",
+            "4. close": "10.1",
+            "5. adjusted close": "10.1",
+            "6. volume": "10872",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "10.11",
+            "2. high": "10.11",
+            "3. low": "10.093",
+            "4. close": "10.095",
+            "5. adjusted close": "10.095",
+            "6. volume": "51868",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "10.07",
+            "2. high": "10.09",
+            "3. low": "10.07",
+            "4. close": "10.09",
+            "5. adjusted close": "10.09",
+            "6. volume": "26479",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "10.07",
             "2. high": "10.09",

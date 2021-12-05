@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "HCTI",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "2.31",
+            "2. high": "2.5134",
+            "3. low": "2.2957",
+            "4. close": "2.44",
+            "5. adjusted close": "2.44",
+            "6. volume": "93390",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "2.55",
+            "2. high": "2.61",
+            "3. low": "2.22",
+            "4. close": "2.31",
+            "5. adjusted close": "2.31",
+            "6. volume": "372093",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "2.62",
+            "2. high": "2.62",
+            "3. low": "2.52",
+            "4. close": "2.55",
+            "5. adjusted close": "2.55",
+            "6. volume": "72282",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "2.55",
             "2. high": "2.63",
             "3. low": "2.52",
             "4. close": "2.61",
             "5. adjusted close": "2.61",
-            "6. volume": "149987",
+            "6. volume": "150039",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

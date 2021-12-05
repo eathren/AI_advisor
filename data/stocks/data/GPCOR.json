@@ -2,11 +2,41 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "GPCOR",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "0.38",
+            "2. high": "0.38",
+            "3. low": "0.38",
+            "4. close": "0.38",
+            "5. adjusted close": "0.38",
+            "6. volume": "200",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "0.38",
+            "2. high": "0.38",
+            "3. low": "0.3795",
+            "4. close": "0.38",
+            "5. adjusted close": "0.38",
+            "6. volume": "60000",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "0.38",
+            "2. high": "0.38",
+            "3. low": "0.36",
+            "4. close": "0.36",
+            "5. adjusted close": "0.36",
+            "6. volume": "14450",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "0.369",
             "2. high": "0.38",

@@ -2,11 +2,51 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "BMAQU",
-        "3. Last Refreshed": "2021-11-15",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "10.75",
+            "2. high": "10.75",
+            "3. low": "10.65",
+            "4. close": "10.7",
+            "5. adjusted close": "10.7",
+            "6. volume": "13147",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "11.08",
+            "2. high": "11.09",
+            "3. low": "10.68",
+            "4. close": "10.75",
+            "5. adjusted close": "10.75",
+            "6. volume": "16821",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "10.86",
+            "2. high": "10.86",
+            "3. low": "10.68",
+            "4. close": "10.68",
+            "5. adjusted close": "10.68",
+            "6. volume": "1101",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-16": {
+            "1. open": "10.65",
+            "2. high": "11.0",
+            "3. low": "10.65",
+            "4. close": "11.0",
+            "5. adjusted close": "11.0",
+            "6. volume": "1560",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-15": {
             "1. open": "10.63",
             "2. high": "10.99",

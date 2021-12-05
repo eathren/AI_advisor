@@ -1,7 +1,4 @@
 from matplotlib import pyplot as plt
-from sklearn import preprocessing
-from sklearn.model_selection import train_test_split
-
 from fetch_crypto_data_indicators import CryptoData
 import numpy as np
 import pandas as pd
@@ -12,11 +9,6 @@ class logistic_regression:
 
     def __init__(self, data):
         self.df = data.df.copy()
-
-        '''
-        self.df = self.df.iloc[-500:, :]
-        self.df = self.df.reset_index(drop=True)
-        '''
 
         del self.df['high']
         del self.df['low']
@@ -54,18 +46,15 @@ class logistic_regression:
         self.last_date = self.raw_df_for_prediction.iloc[-1:, 0:1].values
         self.raw_df = self.df.copy()
 
-        print(self.df)
-
         normalization_columns = ['adjusted close', 'next adjusted close', "5_Day_RSI", "10_Day_RSI", "15_Day_RSI",
                                  "30_Day_RSI", "60_Day_RSI"]
-        scaler = preprocessing.StandardScaler()
-        scaled = scaler.fit_transform(self.df[normalization_columns])
 
-        self.df[normalization_columns] = pd.DataFrame(scaled)
+        for i in range(0, len(normalization_columns)):
+            self.df[normalization_columns[i]] = (self.df[normalization_columns[i]] - self.df[normalization_columns[i]].mean() )/ self.df[normalization_columns[i]].std()
+
 
         self.df = self.df.dropna()
 
-        self.df.to_csv("test.csv")
 
         corr = self.df.corr()
 
@@ -80,12 +69,10 @@ class logistic_regression:
         self.predict_test_Set()
 
     def add_rise_down_result(self):
-        self.df['1: rise; 0: down'] = np.where(self.df['next adjusted close']  > self.df['adjusted close'], 1, 0)
+        self.df['1: rise; 0: down'] = np.where(((self.df['next adjusted close'] - self.df['adjusted close'])/ self.df['adjusted close'] )>= 0.001, 1, 0)
         title = ['date', '1: rise; 0: down', 'adjusted close', 'next adjusted close',"5_Day_RSI", "10_Day_RSI",
                  "15_Day_RSI", "30_Day_RSI", "60_Day_RSI"]
         self.df = self.df[title]
-
-        self.df.to_csv("test.csv")  # TODO
 
     def split_dataset(self, TrainSet_percent=0.9):
 
@@ -114,7 +101,7 @@ class logistic_regression:
 
     def fit(self):
 
-        alpha = 0.5
+        alpha = 0.01
         iterations = 1000
         i = 0
         train_x = self.train_x.to_numpy()
@@ -137,6 +124,8 @@ class logistic_regression:
 
 
     def predict_test_Set(self):
+        print(self.cofficient)
+        print("test x",self.test_x.shape)
         model = self.test_x.dot(self.cofficient) + self.b
         pred = self.calculate_sigmoid(model)
         prediction = [1 if i > self.threshold else 0 for i in pred]
@@ -221,9 +210,12 @@ class logistic_regression:
         import datetime
 
         temp = self.raw_df_for_prediction.iloc[-self.shift_days:, 3:]
+
+        normalization_columns = [ "5_Day_RSI", "10_Day_RSI", "15_Day_RSI", "60_Day_RSI"]
+
+
         model = temp.dot(self.cofficient) + self.b
         pred = self.calculate_sigmoid(model)
-
         prediction = [1 if i > self.threshold else 0 for i in pred]
         dict = {"prediction": prediction}
         prediction = pd.DataFrame(dict)
@@ -262,7 +254,3 @@ if __name__ == '__main__':
     result = logistic_model.predict()
 
     print(result)
-    '''
-    prediction = SVM_model.predict()
-    print(ten_day_prediction)
-    '''

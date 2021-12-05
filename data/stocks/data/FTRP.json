@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "FTRP",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "4.53",
+            "2. high": "4.687",
+            "3. low": "4.2674",
+            "4. close": "4.4",
+            "5. adjusted close": "4.4",
+            "6. volume": "188363",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "4.7",
+            "2. high": "4.75",
+            "3. low": "4.45",
+            "4. close": "4.52",
+            "5. adjusted close": "4.52",
+            "6. volume": "76370",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "4.76",
+            "2. high": "4.8646",
+            "3. low": "4.58",
+            "4. close": "4.64",
+            "5. adjusted close": "4.64",
+            "6. volume": "70906",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "5.11",
             "2. high": "5.11",
             "3. low": "4.69",
             "4. close": "4.71",
             "5. adjusted close": "4.71",
-            "6. volume": "93929",
+            "6. volume": "93960",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

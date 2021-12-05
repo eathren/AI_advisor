@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "LILM",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "8.75",
+            "2. high": "8.86",
+            "3. low": "8.22",
+            "4. close": "8.52",
+            "5. adjusted close": "8.52",
+            "6. volume": "1089558",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "9.16",
+            "2. high": "9.23",
+            "3. low": "8.61",
+            "4. close": "8.77",
+            "5. adjusted close": "8.77",
+            "6. volume": "1010628",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "9.5487",
+            "2. high": "9.6",
+            "3. low": "9.1101",
+            "4. close": "9.17",
+            "5. adjusted close": "9.17",
+            "6. volume": "802049",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "9.75",
             "2. high": "9.75",
             "3. low": "9.36",
             "4. close": "9.47",
             "5. adjusted close": "9.47",
-            "6. volume": "762066",
+            "6. volume": "768081",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

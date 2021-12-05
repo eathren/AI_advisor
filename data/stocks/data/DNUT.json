@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "DNUT",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "13.9",
+            "2. high": "14.07",
+            "3. low": "13.7",
+            "4. close": "13.82",
+            "5. adjusted close": "13.82",
+            "6. volume": "1091086",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "14.8",
+            "2. high": "14.94",
+            "3. low": "13.64",
+            "4. close": "13.69",
+            "5. adjusted close": "13.69",
+            "6. volume": "1343001",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "14.59",
+            "2. high": "15.08",
+            "3. low": "14.52",
+            "4. close": "14.98",
+            "5. adjusted close": "14.98",
+            "6. volume": "916486",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "14.8497",
             "2. high": "15.17",
             "3. low": "14.34",
             "4. close": "14.54",
             "5. adjusted close": "14.54",
-            "6. volume": "2065119",
+            "6. volume": "2104163",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

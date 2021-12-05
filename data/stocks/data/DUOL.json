@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "DUOL",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "132.95",
+            "2. high": "136.58",
+            "3. low": "132.41",
+            "4. close": "135.96",
+            "5. adjusted close": "135.96",
+            "6. volume": "441090",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "138.5",
+            "2. high": "139.12",
+            "3. low": "135.01",
+            "4. close": "135.04",
+            "5. adjusted close": "135.04",
+            "6. volume": "504409",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "136.69",
+            "2. high": "145.0",
+            "3. low": "136.69",
+            "4. close": "141.28",
+            "5. adjusted close": "141.28",
+            "6. volume": "798150",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "138.96",
             "2. high": "141.83",
             "3. low": "135.13",
             "4. close": "138.93",
             "5. adjusted close": "138.93",
-            "6. volume": "383375",
+            "6. volume": "384051",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

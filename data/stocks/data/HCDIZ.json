@@ -2,11 +2,41 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "HCDIZ",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "0.500101",
+            "2. high": "0.59",
+            "3. low": "0.500101",
+            "4. close": "0.5303",
+            "5. adjusted close": "0.5303",
+            "6. volume": "154800",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "0.579799",
+            "2. high": "0.579799",
+            "3. low": "0.49",
+            "4. close": "0.49",
+            "5. adjusted close": "0.49",
+            "6. volume": "75827",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "0.4899",
+            "2. high": "0.5648",
+            "3. low": "0.485",
+            "4. close": "0.52",
+            "5. adjusted close": "0.52",
+            "6. volume": "163377",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "0.4702",
             "2. high": "0.490001",

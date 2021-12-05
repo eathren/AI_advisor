@@ -2,18 +2,48 @@
     "Meta Data": {
         "1. Information": "Daily Time Series with Splits and Dividend Events",
         "2. Symbol": "INKT",
-        "3. Last Refreshed": "2021-11-16",
+        "3. Last Refreshed": "2021-11-19",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2021-11-19": {
+            "1. open": "16.1",
+            "2. high": "16.78",
+            "3. low": "15.59",
+            "4. close": "15.98",
+            "5. adjusted close": "15.98",
+            "6. volume": "47379",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-18": {
+            "1. open": "16.56",
+            "2. high": "17.9",
+            "3. low": "15.66",
+            "4. close": "16.0",
+            "5. adjusted close": "16.0",
+            "6. volume": "54882",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
+        "2021-11-17": {
+            "1. open": "15.92",
+            "2. high": "18.9365",
+            "3. low": "15.01",
+            "4. close": "16.99",
+            "5. adjusted close": "16.99",
+            "6. volume": "85006",
+            "7. dividend amount": "0.0000",
+            "8. split coefficient": "1.0"
+        },
         "2021-11-16": {
             "1. open": "16.9",
             "2. high": "18.4167",
             "3. low": "16.0",
             "4. close": "16.18",
             "5. adjusted close": "16.18",
-            "6. volume": "35242",
+            "6. volume": "41268",
             "7. dividend amount": "0.0000",
             "8. split coefficient": "1.0"
         },

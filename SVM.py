@@ -1,7 +1,4 @@
 from matplotlib import pyplot as plt
-from sklearn import preprocessing
-from sklearn.model_selection import train_test_split
-
 from fetch_crypto_data_indicators import CryptoData
 import numpy as np
 import pandas as pd
@@ -10,11 +7,6 @@ class SVM:
 
     def __init__(self, data):
         self.df = data.df.copy()
-
-        '''
-        self.df = self.df.iloc[-100:, :]
-        self.df = self.df.reset_index(drop=True)
-        '''
 
         del self.df['high']
         del self.df['low']
@@ -53,17 +45,16 @@ class SVM:
         self.last_date = self.raw_df_for_prediction.iloc[-1:, 0:1].values
         self.raw_df = self.df.copy()
 
-        print(self.df)
+        self.threshold = 0
 
         normalization_columns = ['adjusted close','next adjusted close',"5_Day_RSI", "10_Day_RSI", "15_Day_RSI", "30_Day_RSI", "60_Day_RSI"]
-        scaler = preprocessing.StandardScaler()
-        scaled = scaler.fit_transform(self.df[normalization_columns])
-
-        self.df[normalization_columns] = pd.DataFrame(scaled)
+        for i in range(0, len(normalization_columns)):
+            self.df[normalization_columns[i]] = (self.df[normalization_columns[i]] - self.df[
+                normalization_columns[i]].mean()) / self.df[normalization_columns[i]].std()
 
         self.df = self.df.dropna()
 
-        self.df.to_csv("test.csv")
+        print("df row num", self.df.shape)
 
         corr = self.df.corr()
 
@@ -79,11 +70,10 @@ class SVM:
 
 
     def add_rise_down_result(self):
-        self.df['1: rise; 0: down'] = np.where(((self.df['next adjusted close'] - self.df['adjusted close'])/ self.df['adjusted close'] )>= 0.05, 1, 0)
-        title = ['date','1: rise; 0: down','adjusted close', 'next adjusted close', "5_Day_RSI", "10_Day_RSI", "15_Day_RSI", "30_Day_RSI", "60_Day_RSI"]
+        self.df['1: rise; -1: down'] = np.where(((self.df['next adjusted close'] - self.df['adjusted close'])/ self.df['adjusted close'] )>= 0.001, 1, -1)
+        title = ['date','1: rise; -1: down','adjusted close', 'next adjusted close', "5_Day_RSI", "10_Day_RSI", "15_Day_RSI", "30_Day_RSI", "60_Day_RSI"]
         self.df = self.df[title]
 
-        #self.df.to_csv("test.csv")  # TODO
 
 
     def split_dataset(self, TrainSet_percent = 0.9):
@@ -111,6 +101,9 @@ class SVM:
 
         self.cofficient = np.zeros(self.num_feature)
 
+        print("number of 1 in trainset",np.count_nonzero(np.where(self.train_y == 1)))
+        print("number of -1 in trainset",np.count_nonzero(np.where(self.train_y == -1)))
+
 
     def fit(self):
 
@@ -133,62 +126,11 @@ class SVM:
 
             i += 1
 
-        '''
-        overfit = False
-        max_score = -99999999999
-        
-        while alpha <= 0.1:
-            while overfit == False:
-                temp_w = self.cofficient
-                temp_b = self.b
-                i = 0
-                while i < iterations:
-                    for k, train_x_values in enumerate(train_x):
-                        if train_y[k] * (np.dot(train_x_values, temp_w) - temp_b)  >= 1:
-                            temp_w = temp_w - alpha * (2 * self.lambda_value * temp_w)
-
-                        else:
-                            temp_w = temp_w -  alpha * (2 * self.lambda_value * temp_w - np.dot(train_x_values, train_y[k]))
-                            temp_b = temp_b - alpha * train_y[k]
-
-                    i += 1
-
-                prediction = self.raw_test_x.dot(temp_w) - temp_b
-                prediction = np.rint(prediction)
-                accuracy_df = np.where(self.raw_test_y == prediction, True, False)
-                num_true = np.count_nonzero(accuracy_df == True)
-                num_test = self.raw_test_y.shape[0]
-                score = num_true/num_test
-
-
-                if score > max_score:
-                    max_score = score
-
-                    if i <= 100:
-                        iterations += 10
-                        self.cofficient = temp_w
-                        self.b = temp_b
-                    elif i > 100 and i < 500:
-                        iterations += 50
-                        self.cofficient = temp
-                        self.b = temp_b
-                    else:
-                        overfit = True
-
-                else:
-                    overfit = True
-
-            overfit = False
-            iterations = 10
-            alpha += 0.01
-            '''
-
 
     def predict_test_Set(self):
+        print("test x", self.test_x.shape)
         prediction = self.test_x.dot(self.cofficient) - self.b
-        #prediction = np.rint(prediction)
-
-        prediction = [1 if i > 0.5 else 0 for i in prediction]
+        prediction = [1 if i > self.threshold else -1 for i in prediction]
         dict = {"prediction": prediction}
         prediction = pd.DataFrame(dict)
 
@@ -196,6 +138,7 @@ class SVM:
 
     def get_Summary(self):
         prediction = self.predict_test_Set()
+
         true_list = []
         true_positive_list = []
         true_negative_list = []
@@ -205,27 +148,27 @@ class SVM:
 
         for i in range (0, prediction.shape[0]):
 
-            if self.test_y.iloc[0] == prediction.iloc[i, 0]:
+            if self.test_y.iloc[i] == prediction.iloc[i, 0]:
                 true_list.append(True)
             else:
                 true_list.append(False)
 
-            if self.test_y.iloc[0] == 1 and prediction.iloc[i, 0] == 1:
+            if self.test_y.iloc[i] == 1 and prediction.iloc[i, 0] == 1:
                 true_positive_list.append(True)
             else:
                 true_positive_list.append(False)
 
-            if self.test_y.iloc[0] == 0 and prediction.iloc[i, 0] == 0:
+            if self.test_y.iloc[i] == -1 and prediction.iloc[i, 0] == -1:
                 true_negative_list.append(True)
             else:
                 true_negative_list.append(False)
 
-            if self.test_y.iloc[0] == 0 and prediction.iloc[i, 0] == 1:
+            if self.test_y.iloc[i] == -1 and prediction.iloc[i, 0] == 1:
                 false_positive_list.append(True)
             else:
                 false_positive_list.append(False)
 
-            if self.test_y.iloc[0] == 1 and prediction.iloc[i, 0] == 0:
+            if self.test_y.iloc[i] == 1 and prediction.iloc[i, 0] == -1:
                 false_negative_list.append(True)
             else:
                 false_negative_list.append(False)
@@ -238,17 +181,17 @@ class SVM:
         num_test = self.test_y.shape[0]
         score = num_true / num_test
         precision = num_true_positive/(num_true_positive + num_false_positive)
-        #recall = num_true_positive / (num_true_positive + num_false_negative)
+        recall = num_true_positive / (num_true_positive + num_false_negative)
 
         # for debug
         num_1 = np.count_nonzero(self.test_y == 1)
         print("number of positive(1) in test set", num_1)
-        num_0 = np.count_nonzero(self.test_y == 0)
-        print("number of negative(0) in test set", num_0)
+        num_0 = np.count_nonzero(self.test_y == -1)
+        print("number of negative(-1) in test set", num_0)
         pred_to_1 = np.count_nonzero(prediction == 1)
         print("number of predicting to 1 in test set", pred_to_1)
-        pred_to_0 = np.count_nonzero(prediction == 0)
-        print("number of predicting to 0 in test set", pred_to_0)
+        pred_to_0 = np.count_nonzero(prediction == -1)
+        print("number of predicting to -1 in test set", pred_to_0)
 
         print("\n")
 
@@ -260,7 +203,7 @@ class SVM:
         print("Nunber of dataset: ", num_test)
         print("accuracy score: ", score)
         print("Precision is: ", precision)
-        #print("Recall: ", recall)
+        print("Recall: ", recall)
 
 
     def predict(self):
@@ -269,10 +212,13 @@ class SVM:
         temp = self.raw_df_for_prediction.iloc[-self.shift_days:, 3:]
 
         prediction = pd.DataFrame()
-        prediction['1: rise; 0: down'] = temp.dot(self.cofficient) - self.b
+        prediction['1: rise; -1: down'] = temp.dot(self.cofficient) - self.b
+        prediction['1: rise; -1: down'] = pd.to_numeric(prediction['1: rise; -1: down'])
+
+        prediction['1: rise; -1: down'] = [1 if i > self.threshold else -1 for i in prediction['1: rise; -1: down']]
 
         prediction_result_list = []
-        for j in range (0, len(prediction['1: rise; 0: down'])):
+        for j in range (0, len(prediction['1: rise; -1: down'])):
             prediction_result_list.append(int(prediction.iloc[j, 0]))
 
         next_date_list = []
@@ -299,14 +245,10 @@ class SVM:
 
 
 if __name__ == '__main__':
-    data = CryptoData('AMZN')
+    data = CryptoData('TSLA')
 
     SVM_model = SVM(data)
 
     result = SVM_model.predict()
 
     print(result)
-    '''
-    prediction = SVM_model.predict()
-    print(ten_day_prediction)
-    '''
