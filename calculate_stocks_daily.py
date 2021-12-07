@@ -24,10 +24,7 @@ def calculate_with_net(data, direction="risers") -> dict:
     """
     output = {}
 
-
     path = f"data/stocks/{direction}/{direction}.json"
-
-
 
     with open(path, "r") as f:
         data = json.load(f)
@@ -43,42 +40,34 @@ def calculate_with_net(data, direction="risers") -> dict:
             net.train()
 
             # getters
-            previous_price = round(net.get_previous_price(), 2)
-            predicted_price = round(net.get_predicted_price(), 2)
+            previous_price = str(round(net.get_previous_price(), 2))
+            predicted_price = str(round(net.get_predicted_price(), 2))
             # update predictions dict with that stocks' data.
             # difference = round(((predicted_price - predicted_price) / (previous_price + predicted_price)/2) * 100, 2)
-            output[str(id)] = {"previous": previous_price, "predicted": predicted_price}
-            print(output)
+            output[id] = {"previous": previous_price, "predicted": predicted_price}
+            print("O", output)
         except:
             print(f"Something happened during the neural net calculation for {id}")
 
         with open(f"data/stocks/predictions/{direction}/{date_today}.json", "w+") as f:
-            json.dump(predictions, f, ensure_ascii=False, indent=4)
-
-    return output
-
+            json.dump(output, f, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
     today = date.today()
     date_today = today.strftime("%Y-%m-%d")
 
     # fetch_fresh_data()  # this makes an api call to every NASDAQ stock and updates to latest compact data
-    # this is designed to run every morning, or after previous market close.
+                        # this is designed to run every morning, or after previous market close.
 
-    # risers, fallers = calc_all_risers_and_fallers()  # iterates thru all stocks and finds the ones with oscillators on extreme ends.
+    # iterates thru all stocks and finds the ones with oscillators on extreme ends.
+    # risers, fallers = calc_all_risers_and_fallers()
     with open("data/stocks/risers/risers.json", "r") as f:
         risers = json.load(f)
     with open("data/stocks/fallers/fallers.json", "r") as f:
         fallers = json.load(f)
 
-    # this is where we'll save predictions
-    predictions = {}
-    predictions.update(calculate_with_net(data=risers, direction='risers'))
-    predictions.update(calculate_with_net(data=fallers, direction='fallers'))
-
-    # write all these predictions to a file.
-    with open(f"data/stocks/predictions/{date_today}.json", "w+") as f:
-        json.dump(predictions, f, ensure_ascii=False, indent=4)
+    calculate_with_net(data=risers, direction='risers')
+    calculate_with_net(data=fallers, direction='fallers')
 
     print("Success!")
 

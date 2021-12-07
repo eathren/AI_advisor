@@ -377,7 +377,7 @@ class StockData:
 
 def fetch_fresh_data():
     all_stocks = fetch_all_names()
-    for i, name in enumerate(all_stocks[1350:]):
+    for i, name in enumerate(all_stocks[1:]):
         try:
             sleep(1)  # this should be 1 second, api is limited to 70 req/min
             stock = StockData(name, full=True)
