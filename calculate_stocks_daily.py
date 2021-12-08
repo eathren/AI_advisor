@@ -56,11 +56,11 @@ if __name__ == "__main__":
     today = date.today()
     date_today = today.strftime("%Y-%m-%d")
 
-    # fetch_fresh_data()  # this makes an api call to every NASDAQ stock and updates to latest compact data
+    fetch_fresh_data()  # this makes an api call to every NASDAQ stock and updates to latest compact data
                         # this is designed to run every morning, or after previous market close.
 
     # iterates thru all stocks and finds the ones with oscillators on extreme ends.
-    # risers, fallers = calc_all_risers_and_fallers()
+    risers, fallers = calc_all_risers_and_fallers()
     with open("data/stocks/risers/risers.json", "r") as f:
         risers = json.load(f)
     with open("data/stocks/fallers/fallers.json", "r") as f:
