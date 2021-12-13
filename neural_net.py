@@ -1,21 +1,21 @@
+import json
 import math
+from datetime import date, timedelta
+
+import handle_json
+import matplotlib.dates as mdates
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import handle_json
-import json
-from datetime import date, timedelta
-import matplotlib.dates as mdates
 import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
-from sklearn.preprocessing import MinMaxScaler
+from keras.layers import LSTM, Dense  # Deep learning classes for recurrent and regular densely-connected layers
+from keras.models import Sequential  # Deep learning library, used for neural networks
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.preprocessing import MinMaxScaler
-from keras.models import Sequential  # Deep learning library, used for neural networks
-from keras.layers import LSTM, Dense  # Deep learning classes for recurrent and regular densely-connected layers
-
+from sklearn.preprocessing import MinMaxScaler
 from stock_data import StockData
+from tensorflow import keras
+from tensorflow.keras import layers
 
 """
 This file takes a range of stock closing prices, and then 
@@ -29,14 +29,14 @@ https://blog.quantinsti.com/neural-network-python/
 class NeuralNet:
     def __init__(self, id):
         self.id = id
-        self.data = StockData(id, full=True, new_data=False)
+        self.data = StockData(id, full=True).df
         self.previous_price = 0
         self.predicted_price = 0
 
     def train(self):
         today = date.today()
         date_today = today.strftime("%Y-%m-%d")
-        dataset = self.data.df
+        dataset = self.data
         # Feature Selection - only adjusted close data
         train_df = dataset.filter(['adjusted close'])
         data_unscaled = train_df.values
