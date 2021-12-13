@@ -5,7 +5,7 @@ from os.path import exists
 
 
 def write(path: str, data: json):
-    with open(path, 'w+', encoding='utf-8') as f:
+    with open(path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
 
