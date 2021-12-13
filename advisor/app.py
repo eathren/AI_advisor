@@ -1,16 +1,16 @@
 import json
-from stock_data import StockData,  calc_all_risers_and_fallers
-from neural_net import NeuralNet
 from datetime import date
-from file_handling import read, write, file_exists
 
+from .file_handling import read, write, file_exists
+from .stock_data import StockData,  calc_all_risers_and_fallers
+from .neural_net import NeuralNet
 """
 This file serves as an entry point to create price predictions for the stocks that are expected to rise or fall the most 
 in the current day, based on previous day values. 
 """
 
 
-class Advise:
+class Advisor:
     @staticmethod
     def run():
         today = date.today()
@@ -22,6 +22,7 @@ class Advise:
         # iterates thru all stocks and finds the ones with oscillators on extreme ends.
         _, _ = calc_all_risers_and_fallers()
 
+        print(file_exists("data/stocks/risers/risers.json"))
         risers = read("data/stocks/risers/risers.json")
         fallers = read("data/stocks/fallers/fallers.json")
 

@@ -11,8 +11,8 @@ import pandas_ta as ta
 import requests
 from alpaca_trade_api.rest import REST, TimeFrame, TimeFrameUnit
 
-from apis import alpaca, alpha_advantage
-from file_handling import read, write, file_exists
+from .apis import alpaca, alpha_advantage
+from .util import read, write, file_exists
 from dotenv import load_dotenv
 
 load_dotenv()
