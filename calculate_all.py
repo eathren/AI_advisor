@@ -2,7 +2,7 @@ import json
 from stock_data import StockData,  calc_all_risers_and_fallers
 from neural_net import NeuralNet
 from datetime import date
-
+from file_handling import read, write, file_exists
 
 """
 This file serves as an entry point to create price predictions for the stocks that are expected to rise or fall the most 
@@ -42,28 +42,25 @@ def calculate_with_net(data, direction="risers") -> dict:
             previous_price = str(round(net.get_previous_price(), 2))
             predicted_price = str(round(net.get_predicted_price(), 2))
             # update predictions dict with that stocks' data.
-            # difference = round(((predicted_price - predicted_price) / (previous_price + predicted_price)/2) * 100, 2)
-            output[id] = {"previous": previous_price, "predicted": predicted_price}
+            output[id] = {"previous": previous_price,
+                          "predicted": predicted_price}
             print("O", output)
         except:
-            print(f"Something happened during the neural net calculation for {id}")
+            print(
+                f"Something happened during the neural net calculation for {id}")
 
         with open(f"data/stocks/predictions/{direction}/{date_today}.json", "w+") as f:
             json.dump(output, f, ensure_ascii=False, indent=4)
+
 
 if __name__ == "__main__":
     today = date.today()
     date_today = today.strftime("%Y-%m-%d")
 
-    # fetch_fresh_data()  # this makes an api call to every NASDAQ stock and updates to latest compact data
-                        # this is designed to run every morning, or after previous market close.
-
     # iterates thru all stocks and finds the ones with oscillators on extreme ends.
-    risers, fallers = calc_all_risers_and_fallers()
-    with open("data/stocks/risers/risers.json", "r") as f:
-        risers = json.load(f)
-    with open("data/stocks/fallers/fallers.json", "r") as f:
-        fallers = json.load(f)
+    _, _ = calc_all_risers_and_fallers()
+    risers = read("data/stocks/risers/risers.json")
+    fallers = read("data/stocks/fallers/fallers.json")
 
     calculate_with_net(data=risers, direction='risers')
     calculate_with_net(data=fallers, direction='fallers')
