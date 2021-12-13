@@ -49,16 +49,19 @@ def calculate_with_net(data, direction="risers") -> dict:
             print(
                 f"Something happened during the neural net calculation for {id}")
 
-        with open(f"data/stocks/predictions/{direction}/{date_today}.json", "w+") as f:
-            json.dump(output, f, ensure_ascii=False, indent=4)
+        write(f"data/stocks/predictions/{direction}/{date_today}.json", output)
 
 
 if __name__ == "__main__":
     today = date.today()
     date_today = today.strftime("%Y-%m-%d")
 
+    # fetch_fresh_data()  # this makes an api call to every NASDAQ stock and updates to latest compact data
+    # this is designed to run every morning, or after previous market close.
+
     # iterates thru all stocks and finds the ones with oscillators on extreme ends.
     _, _ = calc_all_risers_and_fallers()
+
     risers = read("data/stocks/risers/risers.json")
     fallers = read("data/stocks/fallers/fallers.json")
 
