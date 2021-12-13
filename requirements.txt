@@ -1,11 +1,10 @@
 absl-py==1.0.0
 aiohttp==3.7.4
-alpaca-trade-api==1.4.3
+alpaca-trade-api==1.4.2
 appdirs==1.4.4
 astunparse==1.6.3
 async-timeout==3.0.1
 attrs==21.2.0
-autopep8==1.6.0
 backcall==0.2.0
 backports.entry-points-selectable==1.1.0
 cachetools==4.2.4
@@ -20,7 +19,6 @@ distlib==0.3.3
 fear-and-greed==0.1
 filelock==3.0.12
 flatbuffers==2.0
-fonttools==4.28.3
 gast==0.4.0
 google-auth==2.3.3
 google-auth-oauthlib==0.4.6
@@ -46,7 +44,6 @@ multitasking==0.0.9
 numpy==1.21.3
 oauthlib==3.1.1
 opt-einsum==3.3.0
-packaging==21.3
 pandas==1.3.4
 pandas-ta==0.3.14b0
 parso==0.8.2
@@ -57,7 +54,6 @@ prompt-toolkit==3.0.21
 protobuf==3.19.1
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
-pycodestyle==2.8.0
 Pygments==2.10.0
 pyparsing==3.0.1
 python-dateutil==2.8.2
@@ -81,7 +77,6 @@ tensorflow-gpu==2.7.0
 tensorflow-io-gcs-filesystem==0.22.0
 termcolor==1.1.0
 threadpoolctl==3.0.0
-toml==0.10.2
 traitlets==5.1.1
 typing_extensions==4.0.1
 url-normalize==1.4.3

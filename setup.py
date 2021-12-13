@@ -8,6 +8,7 @@ with open("README.md", "r") as f:
 
 with open("requirements.txt", "r") as f:
     requirements = [line.strip() for line in f]
+
 setup(
     name='AI Stock Advisor',
     version='.1',
