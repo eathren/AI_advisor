@@ -45,79 +45,31 @@ class StockData:
 
     def __init__(self, id=None, full=False):
         self.id = id.upper()
-        if full:  # full data is used for neural net. Alpaca API only gets 1000 entries.
+        if full:  # full data is used for neural net. Alpaca API only gets 1000 entries and runs much faster, so it is for score calculation.
             self.df = alpha_advantage.get_response(name=self.id)
         else:
             self.df = alpaca.get_response(name=self.id).astype(float)
+        self.score = 0
 
-    def get_id(self):
+    # Getter methods
+    def get_id(self) -> str:
         return str(self.id)
 
-    def read_data(self) -> dict:
-        """
-        This function will read the data from the stock/data folder if it exists.
-        If it doesn't it will fetch new data.
+    def get_score(self) -> int:
+        return int(self.score)
 
-        :return dictionary of stock price data:
-        """
-        file_path = f"data/stocks/data/{self.id}.json"
-        if handle_json.file_exists(file_path):
-            with open(file_path, "r") as f:
-                temp = json.load(f)
-            return temp
-        else:
-            return self.fetch_json()
-        return None
+    # Popultes df with indicators to use for analysis
+    def populate_df_with_indicators(self):
+        df = self.df
+        df.ta.cores = 8  # How many cores to use.
+        # applies the custom strategy to our dataframe.
+        df.ta.strategy(CustomStrategy, append=True)
 
-    def fetch_json(self):
-        """
-        name: fetch_json
+        # rsi = df.ta.rsi(close='close', length=14, append=True)
+        # macd = df.ta.macd(close='close', fast=12, slow=26,
+        #                   signal=9, append=True, signal_indicators=True)
 
-        This function fetches all the stock data for a given stock ID.
-
-        :return json stock data:
-        """
-        # This is a check on how much data to request from the API. compact is 30 days. Full is all.
-        if self.full == True:
-            size = 'full'
-        else:
-            size = 'compact'
-        params = {'symbol': self.id, 'apikey': AA_KEY, 'outputsize': size}
-        response = requests.get(
-            "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED",
-            params=params)
-        print(response.url)
-        if response.status_code == 200:
-            return response.json()
-        else:
-            print(
-                f"An error has occured with fetching the json data for {self.id}")
-
-    def json_to_pd_df(self):
-        """
-        Turns the json data into a pandas datafram
-        :param self.json, json stock data from Alpha Advantage.
-        :return df, a PD dataframe object:
-        """
-        # Pandas is dumb when it comes to renaming rows. Make them columns to rename instead.
-        df = pd.DataFrame(self.data['Time Series (Daily)']).transpose()
-        # rename columns, since the api has a terrible naming convention.
-        df = df.rename(columns={'1. open': 'open', '2. high': 'high', '3. low': 'low', '4. close': 'close',
-                                '5. adjusted close': 'close', '6. volume': 'volume',
-                                '7. dividend amount': 'dividend amount', '8. split coefficient': 'split coefficient'})
-        # change datatypes from Objects to floats
-        df = df.astype(float)
-        return df
-
-    def fetch_stock(self) -> dict:
-        data = pd.json_normalize(self.json)
-        return data
-
-    def write_data(self):
-        file_path = "data/stocks/data/" + self.id + ".json"
-        with open(file_path, 'w', encoding='utf-8') as f:
-            data = self.data.to_json()
-            json.dump(data, f, ensure_ascii=False, indent=4)
+        # cci = df.ta.cci(high='high', low='low', close='close', append=True)
 
     def calc_if_riser_or_faller(self):
         """
@@ -132,20 +84,12 @@ class StockData:
         score = 0  # this will be used to calculae a riser or faller.
         # score < 0 will be a possible faller.
         # score > 0 will be a possible riser.
-        # Temporary rsi using pandas ta until ours works a little better.
-        rsi = df.ta.rsi(close='close', length=14, append=True)
-        macd = df.ta.macd(close='close', fast=12, slow=26,
-                          signal=9, append=True, signal_indicators=True)
-        cci = df.ta.cci(high='high', low='low', close='close', append=True)
-        cci_val = df['CCI_14_0.015'].iloc[-1]
 
-        df.ta.cores = 8  # How many cores to use.
-        df.ta.strategy(CustomStrategy)
-        plt.figure()
-        plt.plot(df['CCI_14_0.015'])
+        cci_val = df['CCI_14_0.015'].iloc[-1]
+        rsi_val = rsi.iloc[-1]
+
         # df = df.ta.strategy(timed=True)  # This populates ALL INDICATORS
         # rsi oscillator check
-        rsi_val = rsi.iloc[-1]
 
         if rsi_val > 90:
             score += 3
@@ -171,8 +115,18 @@ class StockData:
         elif cci_val < -200:
             score -= 4
 
+        self.score = score
         return self.id, score, rsi_val, cci_val
 
+    def print_df(self):
+        print(self.df)
+
+    def plot_df(self):
+        ax = plt.gca()
+        plt.plot(self.df)
+        plt.show()
+
+    @staticmethod
     def print_random(self):
         """
         prints a random stock
@@ -217,5 +171,6 @@ def calc_all_risers_and_fallers():
 if __name__ == '__main__':
     # calc_all_risers_and_fallers()  # this populates the risers and fallers list
     stock = StockData("AAPL", full=False)
-    stock.calc_if_riser_or_faller()
-    print(stock.df)
+    stock.populate_df_with_indicators()
+    stock.print_df()
+    stock.plot_df()

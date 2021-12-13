@@ -44,13 +44,6 @@ class CryptoData:
         self.fear_and_greed = fear_and_greed.get().value
         self.buy_signal = False
 
-    # FOR LIVE DATA USE THIS
-    # def fetch_data(self):
-    #     raw = requests.get(
-    #         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true")
-    #     data = np.array(raw.json())
-    #     return data
-
     def fetch_data(self):
         # this is for not blowing up CoinGecko's API. Use for dev.
         with open('data/old.json') as old:
@@ -61,8 +54,6 @@ class CryptoData:
         ret = np.cumsum(a, dtype=float)
         ret[n:] = ret[n:] - ret[:-n]
         return ret[n - 1:] / n
-
-
 
     def get_weekly_risers(self):
         top_risers = []
@@ -81,5 +72,3 @@ if __name__ == '__main__':
     data = CryptoData()
     print(data.top_risers)
     print(data.fear_and_greed)
-
-    # Add data to a dictionary. If it's in the dict 3 times, then print a medium buy signal.
