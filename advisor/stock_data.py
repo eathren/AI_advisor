@@ -11,8 +11,8 @@ import pandas_ta as ta
 import requests
 from alpaca_trade_api.rest import REST, TimeFrame, TimeFrameUnit
 
-from .apis import alpaca, alpha_advantage
-from .util import read, write, file_exists
+from apis import alpaca, alpha_advantage
+import util
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -65,12 +65,6 @@ class StockData:
         # applies the custom strategy to our dataframe.
         df.ta.strategy(CustomStrategy, append=True)
 
-        # rsi = df.ta.rsi(close='close', length=14, append=True)
-        # macd = df.ta.macd(close='close', fast=12, slow=26,
-        #                   signal=9, append=True, signal_indicators=True)
-
-        # cci = df.ta.cci(high='high', low='low', close='close', append=True)
-
     def calc_if_riser_or_faller(self):
         """
         name: calc_if_riser_or_faller
@@ -84,7 +78,12 @@ class StockData:
         score = 0  # this will be used to calculae a riser or faller.
         # score < 0 will be a possible faller.
         # score > 0 will be a possible riser.
+        df.ta.cores = 8  # How many cores to use.
+        rsi = df.ta.rsi(close='close', length=14, append=True)
+        macd = df.ta.macd(close='close', fast=12, slow=26,
+                          signal=9, append=True, signal_indicators=True)
 
+        cci = df.ta.cci(high='high', low='low', close='close', append=True)
         cci_val = df['CCI_14_0.015'].iloc[-1]
         rsi_val = rsi.iloc[-1]
 
@@ -148,7 +147,7 @@ def calc_all_risers_and_fallers():
     all_stocks = fetch_all_names()
     risers = {}
     fallers = {}
-    for i, name in enumerate(all_stocks[1:]):
+    for i, name in enumerate(all_stocks[1:5]):
         try:
             stock = StockData(name, full=False)
             id, score, rsi, cci = stock.calc_if_riser_or_faller()
@@ -160,17 +159,16 @@ def calc_all_risers_and_fallers():
         except:
             print("Error 1: Something happened for stock: ", name)
 
-    with open('data/stocks/risers/risers.json', 'w', encoding='utf-8') as f:
-        json.dump(risers, f, ensure_ascii=False, indent=4)
-    with open('data/stocks/fallers/fallers.json', 'w', encoding='utf-8') as f:
-        json.dump(fallers, f, ensure_ascii=False, indent=4)
+    util.write('data/stocks/risers/risers.json', risers)
+    util.write('data/stocks/fallers/fallers.json', fallers)
 
     return risers, fallers
 
 
 if __name__ == '__main__':
     # calc_all_risers_and_fallers()  # this populates the risers and fallers list
-    stock = StockData("AAPL", full=False)
-    stock.populate_df_with_indicators()
+    stock = StockData("INTU", full=False)
+    # stock.populate_df_with_indicators()
+    calc_all_risers_and_fallers()
     stock.print_df()
     stock.plot_df()

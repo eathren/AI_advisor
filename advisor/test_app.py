@@ -15,6 +15,12 @@ class TestAdvisor(unittest.TestCase):
         os.remove(path)
         self.assertFalse(file_exists(path))
 
+    def test_alpaca_reponse(self):
+        pass
+
+    def test_alpha_advantage_response(self):
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

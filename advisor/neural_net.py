@@ -17,7 +17,7 @@ from sklearn.preprocessing import MinMaxScaler
 from tensorflow import keras
 from tensorflow.keras import layers
 
-from .stock_data import StockData
+from stock_data import StockData
 """
 This file takes a range of stock closing prices, and then 
 trains a model to make an estimate for the stock for the next day

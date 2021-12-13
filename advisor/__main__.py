@@ -1,4 +1,5 @@
-from .app import Advisor
+
+from app import run
 
 if __name__ == "__main__":
-    Advisor.run()
+    run()
