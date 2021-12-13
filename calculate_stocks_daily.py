@@ -1,6 +1,6 @@
 import json
 
-from stock_data import StockData, fetch_fresh_data, fetch_all_names, calc_all_risers_and_fallers
+from stock_data import StockData,  fetch_all_names, calc_all_risers_and_fallers
 from neural_net import NeuralNet
 from datetime import date
 
@@ -56,9 +56,7 @@ if __name__ == "__main__":
     today = date.today()
     date_today = today.strftime("%Y-%m-%d")
 
-    fetch_fresh_data()  # this makes an api call to every NASDAQ stock and updates to latest compact data
-                        # this is designed to run every morning, or after previous market close.
-
+    
     # iterates thru all stocks and finds the ones with oscillators on extreme ends.
     risers, fallers = calc_all_risers_and_fallers()
     with open("data/stocks/risers/risers.json", "r") as f:

@@ -21,28 +21,12 @@ AA_KEY = os.getenv('AA_KEY')
 RISER_THRESHOLD = -5
 FALLER_THRESHOLD = 6
 
-"""
-How this is going to work:
-Set up a dict of each stock ticker, perhaps in a json file.
-Start a neural net with default configurations. 
-Run the stock's data through the neural net day by day. 
-For each file, analyze their daily open/endpoints.
-Try and find promising stocks from these.
-
-ACTIONS THAT NEED TO BE TAKEN!
-Write functions for MA, MACD, RSI, STOCH RSI, and more!
-This data exists in a pandas dictionary for speed. If that doesn't do it, we can try Numpy
-
-
-Training for the models might need to come from historical data. Looks like the AA API can only do one ID at a time. 
-AA Free has a 500/day limit. 25/mo is the price for a unlimited daily calls. 
-Stocks do daily adjusted or weekly adjusted?
-
-http://www.fmlabs.com/reference/default.htm?url=SimpleMA.htm
-"""
-
-
 class StockData:
+    """
+    name: StockData
+    Params: id: string, stock name. Ex: "AAPL" -> Apple
+    Params: full: boolean, this indicates whether to do a full historical data fetch
+    """
     def __init__(self, id=None, full=False):
         self.id = id.upper()
         if full:  # full data is used for neural net. Alpaca API only gets 1000 entries.
@@ -115,7 +99,6 @@ class StockData:
     def write_data(self):
         file_path = "data/stocks/data/" + self.id + ".json"
         with open(file_path, 'w', encoding='utf-8') as f:
-            # other choice to dump: self.data.to_json()
             data = self.data.to_json()
             json.dump(data, f, ensure_ascii=False, indent=4)
 
@@ -137,6 +120,10 @@ class StockData:
         macd = df.ta.macd(close='close', fast=12, slow=26, signal=9, append=True, signal_indicators=True)
         cci = df.ta.cci(high='high', low='low', close='close', append=True)
         cci_val = df['CCI_14_0.015'].iloc[-1]
+        
+        df.ta.cores = 8 # How many cores to use.
+        df = df.ta.strategy(timed=True) # This populates ALL INDICATORS
+        print(df.columns)
         # rsi oscillator check
         rsi_val = rsi.iloc[-1]
 
