@@ -2,14 +2,15 @@ import json
 import math
 from datetime import date, timedelta
 
-import handle_json
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-from keras.layers import LSTM, Dense  # Deep learning classes for recurrent and regular densely-connected layers
-from keras.models import Sequential  # Deep learning library, used for neural networks
+# Deep learning classes for recurrent and regular densely-connected layers
+from keras.layers import LSTM, Dense
+# Deep learning library, used for neural networks
+from keras.models import Sequential
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import MinMaxScaler
@@ -62,8 +63,10 @@ class NeuralNet:
         test_data = np_data[train_data_len - sequence_length:, :]
 
         # Generate training data and test data
-        x_train, y_train = self.partition_dataset(sequence_length, train_data, index_close)
-        x_test, y_test = self.partition_dataset(sequence_length, test_data, index_close)
+        x_train, y_train = self.partition_dataset(
+            sequence_length, train_data, index_close)
+        x_test, y_test = self.partition_dataset(
+            sequence_length, test_data, index_close)
 
         # Print the shapes: the result is: (rows, training_sequence, features) (prediction value, )
         print(x_train.shape, y_train.shape)
@@ -80,7 +83,8 @@ class NeuralNet:
         neurons = sequence_length
 
         # Model with sequence_length Neurons
-        model.add(LSTM(neurons, return_sequences=True, input_shape=(x_train.shape[1], 1)))
+        model.add(LSTM(neurons, return_sequences=True,
+                  input_shape=(x_train.shape[1], 1)))
         model.add(LSTM(neurons, return_sequences=False))
         model.add(Dense(25, activation='relu'))
         model.add(Dense(1))
@@ -99,12 +103,15 @@ class NeuralNet:
         print(f'Median Absolute Error (mae): {np.round(mae, 2)}')
 
         # Mean Absolute Percentage Error (mape)
-        mape = np.mean((np.abs(np.subtract(y_test_unscaled, y_pred) / y_test_unscaled))) * 100
+        mape = np.mean(
+            (np.abs(np.subtract(y_test_unscaled, y_pred) / y_test_unscaled))) * 100
         print(f'Mean Absolute Percentage Error (mape): {np.round(mape, 2)} %')
 
         # Median Absolute Percentage Error (mdape)
-        mdape = np.median((np.abs(np.subtract(y_test_unscaled, y_pred) / y_test_unscaled))) * 100
-        print(f'Median Absolute Percentage Error (mdape): {np.round(mdape, 2)} %')
+        mdape = np.median(
+            (np.abs(np.subtract(y_test_unscaled, y_pred) / y_test_unscaled))) * 100
+        print(
+            f'Median Absolute Percentage Error (mdape): {np.round(mdape, 2)} %')
 
         # The date from which on the date is displayed
         display_start_date = "2019-01-01"
@@ -113,7 +120,8 @@ class NeuralNet:
         train = train_df[:train_data_length + 1]
         valid = train_df[train_data_length:]
         valid.insert(1, "Predictions", y_pred, True)
-        valid.insert(1, "Difference", valid["Predictions"] - valid["adjusted close"], True)
+        valid.insert(1, "Difference",
+                     valid["Predictions"] - valid["adjusted close"], True)
 
         # Zoom in to a closer timeframe
         valid = valid[valid.index > display_start_date]
@@ -130,7 +138,8 @@ class NeuralNet:
         plt.plot(valid["Predictions"], color="#E91D9E", linewidth=1.0)
         plt.plot(valid["adjusted close"], color="black", linewidth=1.0)
         my_xticks = ax.get_xticks()
-        plt.xticks([my_xticks[0], my_xticks[len(my_xticks)//2],  my_xticks[-1]], visible=True, rotation="horizontal")
+        plt.xticks([my_xticks[0], my_xticks[len(my_xticks)//2],
+                   my_xticks[-1]], visible=True, rotation="horizontal")
         # Fill between plotlines
         # ax.fill_between(.ytindex, 0, yt["adjusted close"], color="#b9e1fa")
         # ax.fill_between(yv.index, 0, yv["Predictions"], color="#F0845C")
@@ -139,18 +148,21 @@ class NeuralNet:
         # Create the bar plot with the differences
         valid.loc[valid["Difference"] >= 0, 'diff_color'] = "#2BC97A"
         valid.loc[valid["Difference"] < 0, 'diff_color'] = "#C92B2B"
-        plt.bar(valid.index, valid["Difference"], width=0.8, color=valid['diff_color'])
+        plt.bar(valid.index, valid["Difference"],
+                width=0.8, color=valid['diff_color'])
 
-        plt.savefig(f"data/stocks/plots/{self.id}.png",bbox_inches='tight', dpi=150)
+        plt.savefig(
+            f"data/stocks/plots/{self.id}.png", bbox_inches='tight', dpi=150)
 
         # plt.show()
         # Get fresh data
         df_new = dataset.filter(['adjusted close'])
 
         # Get the last N day closing price values and scale the data to be values between 0 and 1
-        last_days_scaled = mm_scaler.transform(df_new[-sequence_length:].values)
+        last_days_scaled = mm_scaler.transform(
+            df_new[-sequence_length:].values)
 
-        # Create an empty list and Append past n days
+        # Create an empty list and append past n days
         X_test = []
         X_test.append(last_days_scaled)
 
@@ -169,8 +181,10 @@ class NeuralNet:
 
         plus = '+'
         minus = ''
-        print(f'The close price for {self.id} at the previous close was {previous_price}')
-        print(f'The predicted close price is {predicted_price} ({plus if percent > 0 else minus}{percent}%)')
+        print(
+            f'The close price for {self.id} at the previous close was {previous_price}')
+        print(
+            f'The predicted close price is {predicted_price} ({plus if percent > 0 else minus}{percent}%)')
 
         # set $ values to be retrieved later in calculate_stocks_daily.py
         self.previous_price = round(previous_price, 2)
@@ -211,10 +225,10 @@ class NeuralNet:
         x, y = [], []
         data_len = train_df.shape[0]
         for i in range(sequence_length, data_len):
-            x.append(train_df[i - sequence_length:i, :])  # contains sequence_length values 0-sequence_length * columsn
+            # contains sequence_length values 0 - sequence_length * column
+            x.append(train_df[i - sequence_length:i, :])
             y.append(train_df[
-                         i, index_close])  # contains the prediction values for validation (3rd column = Close),  for single-step prediction
-        # Convert the x and y to numpy arrays
+                i, index_close])  # contains the prediction values for validation,  for single-step prediction
         x = np.array(x)
         y = np.array(y)
         return x, y
