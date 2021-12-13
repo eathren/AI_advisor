@@ -2,8 +2,8 @@ import csv
 import json
 import os
 
-import pandas as pd
 import requests
+import pandas as pd
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -25,7 +25,8 @@ def get_response(name):
         params=params)
     print(response.url)
     if response.status_code == 200:
-        return json_to_pd_df(response.json())  # turn json to pd dataframe that is renamed
+        # turn json to pd dataframe that is renamed
+        return json_to_pd_df(response.json())
     else:
         print(f"An error has occured with fetching the json data for {name}")
 

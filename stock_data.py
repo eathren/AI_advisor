@@ -4,14 +4,15 @@ import os
 import random
 from time import sleep
 
-import handle_json
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import pandas_ta as ta
 import requests
 from alpaca_trade_api.rest import REST, TimeFrame, TimeFrameUnit
+
 from apis import alpaca, alpha_advantage
+from file_handling import read, write, file_exists
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -21,12 +22,27 @@ AA_KEY = os.getenv('AA_KEY')
 RISER_THRESHOLD = -5
 FALLER_THRESHOLD = 6
 
+CustomStrategy = ta.Strategy(
+    name="Momo and Volatility",
+    description="SMA 50,200, BBANDS, RSI, MACD and Volume SMA 20",
+    ta=[
+        {"kind": "sma", "length": 50},
+        {"kind": "sma", "length": 200},
+        {"kind": "bbands", "length": 20},
+        {"kind": "rsi"},
+        {"kind": "macd", "fast": 8, "slow": 21},
+        {"kind": "sma", "close": "volume", "length": 20, "prefix": "VOLUME"},
+    ]
+)
+
+
 class StockData:
     """
     name: StockData
     Params: id: string, stock name. Ex: "AAPL" -> Apple
     Params: full: boolean, this indicates whether to do a full historical data fetch
     """
+
     def __init__(self, id=None, full=False):
         self.id = id.upper()
         if full:  # full data is used for neural net. Alpaca API only gets 1000 entries.
@@ -74,7 +90,8 @@ class StockData:
         if response.status_code == 200:
             return response.json()
         else:
-            print(f"An error has occured with fetching the json data for {self.id}")
+            print(
+                f"An error has occured with fetching the json data for {self.id}")
 
     def json_to_pd_df(self):
         """
@@ -117,13 +134,16 @@ class StockData:
         # score > 0 will be a possible riser.
         # Temporary rsi using pandas ta until ours works a little better.
         rsi = df.ta.rsi(close='close', length=14, append=True)
-        macd = df.ta.macd(close='close', fast=12, slow=26, signal=9, append=True, signal_indicators=True)
+        macd = df.ta.macd(close='close', fast=12, slow=26,
+                          signal=9, append=True, signal_indicators=True)
         cci = df.ta.cci(high='high', low='low', close='close', append=True)
         cci_val = df['CCI_14_0.015'].iloc[-1]
-        
-        df.ta.cores = 8 # How many cores to use.
-        df = df.ta.strategy(timed=True) # This populates ALL INDICATORS
-        print(df.columns)
+
+        df.ta.cores = 8  # How many cores to use.
+        df.ta.strategy(CustomStrategy)
+        plt.figure()
+        plt.plot(df['CCI_14_0.015'])
+        # df = df.ta.strategy(timed=True)  # This populates ALL INDICATORS
         # rsi oscillator check
         rsi_val = rsi.iloc[-1]
 
@@ -190,12 +210,12 @@ def calc_all_risers_and_fallers():
         json.dump(risers, f, ensure_ascii=False, indent=4)
     with open('data/stocks/fallers/fallers.json', 'w', encoding='utf-8') as f:
         json.dump(fallers, f, ensure_ascii=False, indent=4)
-        
+
     return risers, fallers
 
 
 if __name__ == '__main__':
-    # fetch_fresh_data()  # this updates the data every day after closing
     # calc_all_risers_and_fallers()  # this populates the risers and fallers list
-    stock = StockData("AAPL", full=True).df
-    print(stock)
+    stock = StockData("AAPL", full=False)
+    stock.calc_if_riser_or_faller()
+    print(stock.df)
