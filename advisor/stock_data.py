@@ -26,12 +26,15 @@ CustomStrategy = ta.Strategy(
     name="Momo and Volatility",
     description="SMA 50,200, BBANDS, RSI, MACD and Volume SMA 20",
     ta=[
+        {"kind": "sma", "length": 10},
+        {"kind": "sma", "length": 20},
         {"kind": "sma", "length": 50},
         {"kind": "sma", "length": 200},
         {"kind": "bbands", "length": 20},
         {"kind": "rsi"},
         {"kind": "macd", "fast": 8, "slow": 21},
         {"kind": "sma", "close": "volume", "length": 20, "prefix": "VOLUME"},
+
     ]
 )
 
@@ -51,7 +54,12 @@ class StockData:
             self.df = alpaca.get_response(name=self.id).astype(float)
         self.score = 0
 
+        self.shift_days = 5
+        self.populate_df_with_indicators()
+        self.df.astype(float)
+
     # Getter methods
+
     def get_id(self) -> str:
         return str(self.id)
 
@@ -64,6 +72,8 @@ class StockData:
         df.ta.cores = 8  # How many cores to use.
         # applies the custom strategy to our dataframe.
         df.ta.strategy(CustomStrategy, append=True)
+        df['next_close'] = df['close'].shift(
+            - self.shift_days)
 
     def calc_if_riser_or_faller(self):
         """
@@ -125,6 +135,9 @@ class StockData:
         plt.plot(self.df)
         plt.show()
 
+    def linear_regression(self):
+        self.df.ta.linear_regression()
+
     @staticmethod
     def print_random(self):
         """
@@ -147,7 +160,7 @@ def calc_all_risers_and_fallers():
     all_stocks = fetch_all_names()
     risers = {}
     fallers = {}
-    for i, name in enumerate(all_stocks[1:5]):
+    for i, name in enumerate(all_stocks[1:]):
         try:
             stock = StockData(name, full=False)
             id, score, rsi, cci = stock.calc_if_riser_or_faller()
@@ -158,7 +171,6 @@ def calc_all_risers_and_fallers():
                 risers[id] = {"score": score, "rsi": rsi, "cci": cci}
         except:
             print("Error 1: Something happened for stock: ", name)
-
     util.write('data/stocks/risers/risers.json', risers)
     util.write('data/stocks/fallers/fallers.json', fallers)
 
