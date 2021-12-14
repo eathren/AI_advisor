@@ -18,9 +18,8 @@ def run():
     # this is designed to run every morning, or after previous market close.
 
     # iterates thru all stocks and finds the ones with oscillators on extreme ends.
-    _, _ = calc_all_risers_and_fallers()
+    # _, _ = calc_all_risers_and_fallers()
 
-    print(file_exists("data/stocks/risers/risers.json"))
     risers = read("data/stocks/risers/risers.json")
     fallers = read("data/stocks/fallers/fallers.json")
 
@@ -44,7 +43,8 @@ def calculate_with_net(data, direction="risers") -> dict:
     output = {}
 
     data = read(f"data/stocks/{direction}/{direction}.json")
-
+    today = date.today()
+    date_today = today.strftime("%Y-%m-%d")
     for stock in data:
         # This calculates the daily stock price and prediction
         # Each neural net calculation takes about 1-5 minutes.
