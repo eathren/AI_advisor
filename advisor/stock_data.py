@@ -22,6 +22,7 @@ AA_KEY = os.getenv('AA_KEY')
 RISER_THRESHOLD = -5
 FALLER_THRESHOLD = 6
 
+# used to populate the StockData.df for fields used for calculations.
 CustomStrategy = ta.Strategy(
     name="Momo and Volatility",
     description="SMA 50,200, BBANDS, RSI, MACD and Volume SMA 20",
@@ -75,6 +76,12 @@ class StockData:
         df['next_close'] = df['close'].shift(
             - self.shift_days)
 
+        rsi = df.ta.rsi(close='close', length=14, append=True)
+        macd = df.ta.macd(close='close', fast=12, slow=26,
+                          signal=9, append=True, signal_indicators=True)
+
+        cci = df.ta.cci(high='high', low='low', close='close', append=True)
+
     def calc_if_riser_or_faller(self):
         """
         name: calc_if_riser_or_faller
@@ -89,11 +96,10 @@ class StockData:
         # score < 0 will be a possible faller.
         # score > 0 will be a possible riser.
         df.ta.cores = 8  # How many cores to use.
-        rsi = df.ta.rsi(close='close', length=14, append=True)
-        macd = df.ta.macd(close='close', fast=12, slow=26,
-                          signal=9, append=True, signal_indicators=True)
+        
+        self.populate_df_with_indicators()
 
-        cci = df.ta.cci(high='high', low='low', close='close', append=True)
+     
         cci_val = df['CCI_14_0.015'].iloc[-1]
         rsi_val = rsi.iloc[-1]
 
@@ -126,6 +132,9 @@ class StockData:
 
         self.score = score
         return self.id, score, rsi_val, cci_val
+
+    def rsi_score(self):
+        rsi = 
 
     def print_df(self):
         print(self.df)

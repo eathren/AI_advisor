@@ -63,7 +63,11 @@ target/
 .idea/
 .Idea/
 
-data/stocks/data/
-data/stocks/plots/
-
+data/stocks/data/*
+data/stocks/predictions/fallers/*
+data/stocks/predictions/risers/*
+data/stocks/plots/*
+data/stocks/fallers/*
+data/stocks/risers/*
+data/stocks/favorites/*
 .env
