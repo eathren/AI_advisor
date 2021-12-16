@@ -4,14 +4,13 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import date
+from email.message import EmailMessage
 
 from dotenv import load_dotenv
 
 import util
 
 load_dotenv()
-
-
 
 def send_daily_update():
     destination = os.getenv('EMAIL_TO')
@@ -21,8 +20,8 @@ def send_daily_update():
     today = date.today()
     date_today = today.strftime("%Y-%m-%d")
     
-    msg = MIMEMultipart("alternative")
-    msg['Subject'] = f"Daily Update: {date_today}"
+    msg = EmailMessage()
+    msg['Subject'] = f"Daily Stock Advisor Update: {date_today}"
     msg['From'] = source
     msg['To'] = destination
 
@@ -34,28 +33,42 @@ def send_daily_update():
 
     smtp_server.login(source,password) #logging into out email id
     
-    pred_fallers = util.read(f"data/stocks/predictions/fallers/2021-12-13.json")
-    pred_risers = util.read(f"data/stocks/predictions/risers/2021-12-13.json")
+    pred_fallers = util.read(f"data/stocks/predictions/fallers/{date_today}.json")
+    pred_risers = util.read(f"data/stocks/predictions/risers/{date_today}.json")
 
-    msg_to_be_sent =f'''
-    Hello {destination}!
-    Today's updates are as follows:
-    {make_prediction_string(pred_fallers)}
-    {make_prediction_string(pred_risers)}
-
-    Good luck, and happy trading!
-    - AI Advisor
+    content = f'''\
+    <html>
+        <head></head>
+        <body>
+        <h3>Hello {destination}!</h3>
+        <b>Today's updates are as follows:</b>
+        <p>
+        {make_prediction_string(pred_fallers)}
+        {make_prediction_string(pred_risers)}
+        Good luck, and happy trading!
+        - AI Advisor
+        </p>
+        </body>
+    </html>
     '''
 
-    #sending the mail by specifying the from and to address and the message 
-    smtp_server.sendmail(source,destination,msg_to_be_sent)
-    print('Successfully the mail is sent') #priting a message on sending the mail
-    smtp_server.quit()#terminating the server
+    msg.set_content(MIMEText(content, 'html', 'utf-8'))
+
+
+    try:
+        # Send the message via our own SMTP server.
+        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+        server.login(source, password)
+        server.send_message(msg)
+        print('Mail sent successfully.') 
+        smtp_server.quit()
+    except SMTPException:
+        print(" Unable to send mail")
 
 def make_prediction_string(predictions:dict) -> str:
-    output = "The projected fallers are: \n"
+    output = "<h3>The projected fallers are:</h3> \n"
     for key in predictions:
-        output += f"ID: {key}. Previous Close: {predictions[key]['previous']} Predicted Close: {predictions[key]['predicted']} \n"
+        output += f"<b>{key}</b>:<br>Previous: <b>{predictions[key]['previous']}</b><br> Predicted: <b>{predictions[key]['predicted']}</b><br>"
     return output
 
 if __name__ == "__main__":

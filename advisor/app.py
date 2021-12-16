@@ -4,6 +4,7 @@ from datetime import date
 from file_handling import read, write, file_exists
 from stock_data import StockData,  calc_all_risers_and_fallers
 from neural_net import NeuralNet
+from send_email import send_daily_update
 """
 This file serves as an entry point to create price predictions for the stocks that are expected to rise or fall the most
 in the current day, based on previous day values.
@@ -14,11 +15,8 @@ def run():
     today = date.today()
     date_today = today.strftime("%Y-%m-%d")
 
-    # fetch_fresh_data()  # this makes an api call to every NASDAQ stock and updates to latest compact data
-    # this is designed to run every morning, or after previous market close.
-
     # iterates thru all stocks and finds the ones with oscillators on extreme ends.
-    # _, _ = calc_all_risers_and_fallers()
+    _, _ = calc_all_risers_and_fallers()
 
     risers = read("data/stocks/risers/risers.json")
     fallers = read("data/stocks/fallers/fallers.json")
@@ -26,6 +24,7 @@ def run():
     calculate_with_net(data=risers, direction='risers')
     calculate_with_net(data=fallers, direction='fallers')
 
+    send_daily_update()
     print("Success!")
 
 
