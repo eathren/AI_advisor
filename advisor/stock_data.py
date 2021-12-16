@@ -38,7 +38,7 @@ class StockData:
             self.df = alpaca.get_response(name=self.id).astype(float)
         self.score = 0
 
-        self.shift_days = 5
+        self.populate_df_with_indicators()
         self.df.astype(float)
 
     # Getter methods
@@ -50,30 +50,31 @@ class StockData:
         return int(self.score)
 
     # Popultes df with indicators to use for analysis
-    # def populate_df_with_indicators(self):
-    #     df = self.df
+    def populate_df_with_indicators(self):
+        df = self.df
 
-    #     df.ta.cores = 8  # How many cores to use.
-    #     # applies the custom strategy to our dataframe.
-    #     df['next_close'] = df['close'].shift(
-    #         - self.shift_days)
+        df.ta.cores = 8  # How many cores to use.
+        # applies the custom strategy to our dataframe.
 
-    #     # used to populate the StockData.df for fields used for calculations.
-    #     CustomStrategy = ta.Strategy(
-    #         name="Momo and Volatility",
-    #         description="SMA 50,200, BBANDS, RSI, MACD and Volume SMA 20",
-    #         ta=[
-    #             {"kind": "sma", "length": 10},
-    #             {"kind": "sma", "length": 20},
-    #             {"kind": "sma", "length": 50},
-    #             {"kind": "sma", "length": 200},
-    #             {"kind": "bbands", "length": 20},
-    #             {"kind": "rsi"},
-    #             {"kind": "macd", "fast": 8, "slow": 21},
-    #             {"kind": "sma", "close": "volume", "length": 20, "prefix": "VOLUME"},
-    #         ]
-    #     )
-    #     df.ta.strategy(CustomStrategy, append=True)
+
+        # used to populate the StockData.df for fields used for calculations.
+        CustomStrategy = ta.Strategy(
+            name="Momo and Volatility",
+            description="SMA 50,200, BBANDS, RSI, MACD and Volume SMA 20",
+            ta=[
+                {"kind": "sma", "length": 20},
+                {"kind": "sma", "length": 50},
+                {"kind": "sma", "length": 200},
+                {"kind": "bbands", "length": 20},
+                {"kind": "rsi"},
+                {"kind": "obv"},
+                {"kind": "macd", "fast": 8, "slow": 21, "signal_indicators":True},
+                {"kind": "cci"},
+                {"kind": "sma", "close": "volume", "length": 20, "prefix": "VOLUME"},
+            ]
+        )
+        df.ta.strategy(CustomStrategy, append=True)
+        print(df.columns.tolist())
 
     def calc_if_riser_or_faller(self):
         """
@@ -91,18 +92,14 @@ class StockData:
         df.ta.cores = 8  # How many cores to use.
 
         # self.populate_df_with_indicators()
-        rsi = df.ta.rsi(close='close', length=14, append=True)
-        macd = df.ta.macd(close='close', fast=12, slow=26,
-                          signal=9, append=True, signal_indicators=True)
+        # macd = df.ta.macd(close='close', fast=12, slow=26,
+        #                   signal=9, append=True, signal_indicators=True)
 
-        cci = df.ta.cci(high='high', low='low', close='close', append=True)
 
         cci_val = df['CCI_14_0.015'].iloc[-1]
-        rsi_val = rsi.iloc[-1]
+        rsi_val = df['RSI_14'].iloc[-1]
 
-        # df = df.ta.strategy(timed=True)  # This populates ALL INDICATORS
         # rsi oscillator check
-
         if rsi_val > 90:
             score += 3
         elif 70 < rsi_val < 90:
@@ -134,8 +131,15 @@ class StockData:
         print(self.df)
 
     def plot_df(self):
-        ax = plt.gca()
-        plt.plot(self.df)
+        df = self.df
+        plt.title(f"{self.id}")
+        plt.xlabel("Date")
+        plt.ylabel("Value (USD)")
+        # plt.plot(df['OBV'], label="OBV")
+        plt.plot(df['close'], label="CLOSE", linewidth=1.0)
+        plt.plot(df['SMA_50'], label="SMA_50", linewidth=2.0)
+        plt.plot(df['SMA_200'], label="SMA_200", linewidth=2.0)
+        plt.legend(loc="upper left")
         plt.show()
 
     def linear_regression(self):
@@ -152,7 +156,7 @@ class StockData:
 
 def fetch_all_names():
     all_stocks = []
-    with open('data/nasdaq_ids.csv') as csv_file:
+    with open('data/sp500.csv') as csv_file:
         csv_data = csv.reader(csv_file)
         for row in csv_data:
             all_stocks.append(row[0])
@@ -184,6 +188,6 @@ if __name__ == '__main__':
     # calc_all_risers_and_fallers()  # this populates the risers and fallers list
     stock = StockData("INTU", full=False)
     # stock.populate_df_with_indicators()
-    calc_all_risers_and_fallers()
+    # calc_all_risers_and_fallers()
     stock.print_df()
     stock.plot_df()
