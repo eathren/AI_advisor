@@ -30,7 +30,7 @@ class StockData:
     Params: full: boolean, this indicates whether to do a full historical data fetch
     """
 
-    def __init__(self, id=None, full=False):
+    def __init__(self, id=None, full=False, plot=False):
         self.id = id.upper()
         if full:  # full data is used for neural net. Alpaca API only gets 1000 entries and runs much faster, so it is for score calculation.
             self.df = alpha_advantage.get_response(name=self.id)
@@ -40,6 +40,7 @@ class StockData:
 
         self.populate_df_with_indicators()
         self.df.astype(float)
+        self.plot_df(save=True)
 
     # Getter methods
 
@@ -68,13 +69,13 @@ class StockData:
                 {"kind": "bbands", "length": 20},
                 {"kind": "rsi"},
                 {"kind": "obv"},
-                {"kind": "macd", "fast": 8, "slow": 21, "signal_indicators":True},
+                {"kind": "macd", "fast": 8, "slow": 21},
                 {"kind": "cci"},
                 {"kind": "sma", "close": "volume", "length": 20, "prefix": "VOLUME"},
             ]
         )
         df.ta.strategy(CustomStrategy, append=True)
-        print(df.columns.tolist())
+        # print(df.columns.tolist())
 
     def calc_if_riser_or_faller(self):
         """
@@ -130,17 +131,39 @@ class StockData:
     def print_df(self):
         print(self.df)
 
-    def plot_df(self):
+    def plot_df(self, save=False):
         df = self.df
-        plt.title(f"{self.id}")
+
+        # using the variable axs for multiple Axes
+       
+  
+        fig, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1, sharex=True,  gridspec_kw={'height_ratios': [2, 1, 1, 1]})
+        fig.suptitle(f"{self.id}")
         plt.xlabel("Date")
-        plt.ylabel("Value (USD)")
+        # using tuple unpacking for multiple Axes
+   
         # plt.plot(df['OBV'], label="OBV")
-        plt.plot(df['close'], label="CLOSE", linewidth=1.0)
-        plt.plot(df['SMA_50'], label="SMA_50", linewidth=2.0)
-        plt.plot(df['SMA_200'], label="SMA_200", linewidth=2.0)
-        plt.legend(loc="upper left")
-        plt.show()
+        ax1.plot(df['close'], label="CLOSE", linewidth=1.0)
+        # ax1.plot(df['BBL_20_2.0'], linewidth=.3)
+        # ax1.plot(df['BBP_20_2.0'], linewidth=.3)
+        ax1.plot(df['SMA_50'], label="SMA_50", linewidth=2.0)
+        ax1.plot(df['SMA_200'], label="SMA_200", linewidth=2.0)
+        ax2.plot(df['MACDs_8_21_9'], label="MACD_S")
+        ax2.plot(df['MACDh_8_21_9'], label="MACD_F")
+        ax3.plot(df['RSI_14'], label="RSI_14")
+        # ax3.plot(df['CCI_14_0.015'], label="CCI_14")
+        ax4.plot(df['OBV'], label="OBV")
+        ax1.legend(loc="upper left")
+        ax2.legend(loc="upper left")
+        ax3.legend(loc="upper left")
+        ax4.legend(loc="upper left")
+        # manager = plt.get_current_fig_manager()
+        # manager.resize(*manager.window.maxsize())
+        if save:
+            plt.savefig(f"data/stocks/plots/TA/{self.id}.png", bbox_inches='tight', dpi=150)
+        else:
+            plt.show()
+
 
     def linear_regression(self):
         self.df.ta.linear_regression()
@@ -189,5 +212,5 @@ if __name__ == '__main__':
     stock = StockData("INTU", full=False)
     # stock.populate_df_with_indicators()
     # calc_all_risers_and_fallers()
-    stock.print_df()
-    stock.plot_df()
+    # stock.print_df()
+    stock.plot_df(save=True)

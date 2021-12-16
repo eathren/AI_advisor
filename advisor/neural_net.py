@@ -30,7 +30,7 @@ https://blog.quantinsti.com/neural-network-python/
 class NeuralNet:
     def __init__(self, id):
         self.id = id
-        self.data = StockData(id, full=True).df
+        self.data = StockData(id, full=True, plot=True).df
         self.previous_price = 0
         self.predicted_price = 0
 
@@ -152,7 +152,7 @@ class NeuralNet:
                 width=0.8, color=valid['diff_color'])
 
         plt.savefig(
-            f"data/stocks/plots/{self.id}.png", bbox_inches='tight', dpi=150)
+            f"data/stocks/plots/predictions/{self.id}.png", bbox_inches='tight', dpi=150)
 
         # plt.show()
         # Get fresh data
@@ -189,6 +189,8 @@ class NeuralNet:
         # set $ values to be retrieved later in calculate_stocks_daily.py
         self.previous_price = round(previous_price, 2)
         self.predicted_price = round(predicted_price, 2)
+
+        self.data.
 
     def get_previous_price(self) -> float:
         """
