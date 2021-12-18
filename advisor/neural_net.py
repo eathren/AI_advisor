@@ -190,7 +190,6 @@ class NeuralNet:
         self.previous_price = round(previous_price, 2)
         self.predicted_price = round(predicted_price, 2)
 
-        self.data.
 
     def get_previous_price(self) -> float:
         """

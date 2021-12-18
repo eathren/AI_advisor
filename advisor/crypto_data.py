@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 import pandas_ta as ta
 import requests
+import fear_and_greed
 from alpaca_trade_api.rest import REST, TimeFrame, TimeFrameUnit
 
 from apis import alpaca, alpha_advantage
@@ -27,15 +28,16 @@ check if volume is rising
 
 """
 
-class StockData:
+class CryptoData:
     """
-    name: StockData
-    Params: id: string, stock name. Ex: "AAPL" -> Apple
+    name: CryptoData
+    Params: id: string, crypto name. Ex: "AAPL" -> Apple
     Params: full: boolean, this indicates whether to do a full historical data fetch
     """
 
     def __init__(self, id=None, full=False, plot=False):
         self.id = id.upper()
+        self.fear_and_greed = fear_and_greed.get().value
         if full:  # full data is used for neural net. Alpaca API only gets 1000 entries and runs much faster, so it is for score calculation.
             self.df = alpha_advantage.get_response(name=self.id)
         else:
@@ -64,7 +66,7 @@ class StockData:
         # applies the custom strategy to our dataframe.
 
 
-        # used to populate the StockData.df for fields used for calculations.
+        # used to populate the CryptoData.df for fields used for calculations.
         CustomStrategy = ta.Strategy(
             name="Momo and Volatility",
             description="SMA 50,200, BBANDS, RSI, MACD and Volume SMA 20",
@@ -87,7 +89,7 @@ class StockData:
         """
         name: calc_if_riser_or_faller
 
-        This function will iterate through all a stock pandas dataframe and return it's name, the score
+        This function will iterate through all a crypto pandas dataframe and return it's name, the score
         value, and rsi and cci indicators.
 
         :return self.id:string, score:int, rsi: float, cci:float
@@ -170,7 +172,7 @@ class StockData:
             else:
                 plt.show()
         except:
-            print(f"Failed to print stock {self.id}")
+            print(f"Failed to print crypto {self.id}")
 
 
     def linear_regression(self):
@@ -179,7 +181,7 @@ class StockData:
     @staticmethod
     def print_random(self):
         """
-        prints a random stock
+        prints a random crypto
         """
         all_stocks = self.fetch_all_names()
         print(all_stocks[random.randint(2, len(all_stocks) - 1)])
@@ -201,15 +203,15 @@ def calc_all_risers_and_fallers():
     fallers = {}
     for i, name in enumerate(all_stocks[1:]):
         try:
-            stock = StockData(name, full=False)
-            id, score, rsi, cci = stock.calc_if_riser_or_faller()
+            crypto = CryptoData(name, full=False)
+            id, score, rsi, cci = crypto.calc_if_riser_or_faller()
             print(f"id: {id}, score:{score}, rsi:{rsi}, cci:{cci}")
             if score >= FALLER_THRESHOLD:
                 fallers[id] = {"score": score, "rsi": rsi, "cci": cci}
             if score <= RISER_THRESHOLD:
                 risers[id] = {"score": score, "rsi": rsi, "cci": cci}
         except:
-            print("Error 1: Something happened for stock: ", name)
+            print("Error 1: Something happened for crypto: ", name)
     util.write('data/stocks/risers/risers.json', risers)
     util.write('data/stocks/fallers/fallers.json', fallers)
 
@@ -217,9 +219,9 @@ def calc_all_risers_and_fallers():
 
 if __name__ == '__main__':
     # calc_all_risers_and_fallers()  # this populates the risers and fallers list
-    stock = StockData("AGLE", full=True, plot=True)
-    # stock.populate_df_with_indicators()
+    crypto = CryptoData("AGLE", full=True, plot=True)
+    # crypto.populate_df_with_indicators()
     # calc_all_risers_and_fallers()
-    # stock.print_df()
-    stock.plot_df(save=True)
+    # crypto.print_df()
+    crypto.plot_df(save=True)
     print("success")

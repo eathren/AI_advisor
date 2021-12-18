@@ -16,7 +16,7 @@ def run():
     date_today = today.strftime("%Y-%m-%d")
 
     # iterates thru all stocks and finds the ones with oscillators on extreme ends.
-    # _, _ = calc_all_risers_and_fallers()
+    _, _ = calc_all_risers_and_fallers()
 
     risers = read("data/stocks/risers/risers.json")
     fallers = read("data/stocks/fallers/fallers.json")
