@@ -2,6 +2,8 @@
 
 This system is experimental, and stock prices are highly volatile. Please invest cautiously. We are not financial advisors, and nothing contained in the project is financial advice.
 
+Full writeup: https://docs.google.com/document/d/12ebXzwmPQIeAmrdfSDvvqG13CFhqh2kIGzMFy5zs4Fk/edit?usp=sharing
+
 ### Overview
 
 This project is designed to make stock recommendations based off of indicators and a ML neural net trained on previous data for each stock.
@@ -43,9 +45,8 @@ The indicators that are used are RSI, Stoch RSI, EMA and SMA of varying time fra
 
 example.env has all the codes and formats to create your own .env file, and you will need to populate the API keys yourself. If you add the email functionality in, you will need to add those permissions to an account. It is suggested you make a new gmail to do that, as allowing insecure settings **might** leave your account at risk.
 
-### Project Due Date:
 
-Full review: https://docs.google.com/document/d/12ebXzwmPQIeAmrdfSDvvqG13CFhqh2kIGzMFy5zs4Fk/edit?usp=sharing
+
 
 ### Contributors:
 
